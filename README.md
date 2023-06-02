@@ -1,5 +1,10 @@
 # NETCLICK - Booking cinema ticket app
 
+## Table of contents
+
+- [Wireframe](#wireframe)
+- [Requirements](#requirements)
+
 ## Wireframe
 
 ### Login page
