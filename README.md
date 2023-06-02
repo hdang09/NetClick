@@ -20,30 +20,30 @@
 
 ## Requirements
 
-**User features**
+### User features
 
-### User Registration and Login
+**User Registration and Login**
 
 ```
 • Users should be able to create an account and login to the application.
 • User information should include name, email address, password.
 ```
 
-### Movie Browsing and Searching
+**Movie Browsing and Searching**
 
 ```
-• Users should be able to search for movies by title, actor, oWr director.
+• Users should be able to search for movies by title, actor or director.
 • The application should display detailed information about each movie.
 ```
 
-### Reviews and Ratings
+**Reviews and Ratings**
 
 ```
 • Users should be able to write a review and rating movies.
 • Users should be able to view movie’s review and rate.
 ```
 
-### Ticket Purchasing
+**Ticket Purchasing**
 
 ```
 • Users should be able to purchase tickets for watching movies.
@@ -51,15 +51,15 @@
 • Users should be able to select their preferred purchase tickets using a credit card or other payment method.
 ```
 
-### Transaction History
+**Transaction History**
 
 ```
 • Users should be able to view their transaction history, including past purchases and upcoming ticket reservations.
 ```
 
-**Admin Features**
+### Admin Features
 
-### Movie Management
+**Movie Management**
 
 ```
 • Admins should beable to add, edit, and delete movies from the application.
@@ -67,7 +67,7 @@
 • Admins should be able to set showtimes and update availability for each movie.
 ```
 
-### User Management
+**User Management**
 
 ```
 • Admins should be able to view and manage user accounts, including resetting passwords and deleting accounts if necessary.
