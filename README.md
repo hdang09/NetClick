@@ -7,6 +7,8 @@
 
 ## Wireframe
 
+Here is our [wireframe](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
+
 ### Login page
 
 <img src="./github/login-page.png" />
@@ -21,7 +23,7 @@
 
 ### Subscription page
 
-<img src="./github/home-page.png" />
+<img src="./github/subscription-page.png" />
 
 ## Requirements
 
