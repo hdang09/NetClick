@@ -1,4 +1,6 @@
-# NETCLICK - Booking cinema ticket app
+# NETCLICK - A Movie Web Application
+
+NetClick is an internet-connected streaming service that operates on a subscription model
 
 ## Table of contents
 
@@ -7,23 +9,51 @@
 
 ## Wireframe
 
-Here is our [wireframe](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
+You can view full our wireframe in here: [Figma](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
+<img src="./github/wireframe.png" />
+
+### Reister page
+
+When user didn't have any account, we can go to this page:
+<img src="./github/register-page.png" />
+If username exists or retype password not match, it will show the message:
+<img src="./github/register-error.png" />
 
 ### Login page
 
+Here is the login page:
 <img src="./github/login-page.png" />
+If the password is wrong, it will show the message:
+<img src="./github/login-error.png" />
 
 ### Home page
 
+Here is the home page:
 <img src="./github/home-page.png" />
 
 ### Preview page
 
+Here is the preview page for the film:
 <img src="./github/preview-page.png" />
+
+### Movie page
+
+If the user has purchased subscription, it will navigate to the **Movie page**
+<img src="./github/movie-page.png" />
 
 ### Subscription page
 
+If the user hasn't purchased subscription, it will navigate to the **Subscription page**
 <img src="./github/subscription-page.png" />
+The user can choose which payment method to pay:
+<img src="./github/subscription-page-2.png" />
+
+### Payment page
+
+Here is the page if the user choose to pay with credit card:
+<img src="./github/payment-credit.png" />
+And here is with digital card:
+<img src="./github/payment-digital.png" />
 
 ## Requirements
 
@@ -32,39 +62,51 @@ Here is our [wireframe](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetCli
 **User Registration and Login**
 
 ```
-• Users should be able to create an account and login to the application.
-• User information should include name, email address, password.
+The user registration and login feature enables users to create an account and securely log into the application. The login form requires users to enter their username and password, and the application verifies the credentials for authentication. If the entered password is incorrect, an error message is displayed.
+
+The register form collects the user's desired username, email address, password, and re-typed password for confirmation. The application checks if the username already exists in the database and displays an error message if it is taken. It also ensures that the entered password matches the re-typed password and prompts the user to correct any mismatches.
+
+User information, such as name, email address, and password, is stored to facilitate user identification and authentication.
+
 ```
 
 **Movie Browsing and Searching**
 
 ```
-• Users should be able to search for movies by title, actor or director.
-• The application should display detailed information about each movie.
+The movie browsing and searching feature allows users to find movies based on different criteria. Users can search for movies by title, actor, or director. The application retrieves relevant movie information from its database based on the user's search input.
+
+When a user selects a movie, the application displays detailed information about the movie. This includes a description of the plot, cast and crew details, ratings, reviews, release date, runtime, genre, and more. This comprehensive display helps users make informed decisions about the movies they want to watch.
+
+The application also provides additional sections to enhance the browsing experience. The "Top List" section showcases popular movies, and the "Incoming Movies" section highlights upcoming releases. Additionally, the application offers recommendations based on user preferences and viewing history, suggesting movies that users might enjoy.
+
+```
+
+**History and Like Button**
+
+```
+The history and like button feature lets users mark movies as favorites, keeping track of their preferences. It saves this information for easy access and also records the user's watched movie history, allowing them to resume from where they left off.
 ```
 
 **Reviews and Ratings**
 
 ```
-• Users should be able to write a review and rating movies.
-• Users should be able to view movie’s review and rate.
+Users have the ability to write reviews and provide ratings for movies using the reviews and ratings feature. They can share their opinions, thoughts, and experiences about a movie by writing a review. Additionally, users can rate movies based on their overall satisfaction or enjoyment level. The application also allows users to view reviews.
 ```
 
-**Ticket Purchasing**
+**Subscriptions Purchasing**
 
 ```
-• Users should be able to purchase tickets for watching movies.
-• The application should display available ticket tiers.
-• Users should be able to select their preferred purchase tickets using a credit card or other payment method.
+The ticket purchasing feature allows users to purchase subscriptions for watching movies. Users can choose from different subscription tiers such as weekly, monthly, or annually. The application displays available subscription options, including free and paid plans. Users can select their preferred subscription and proceed with the purchase using various payment methods such as credit cards, e-banking, ATMs, or Visa/MasterCard.
+
 ```
 
 **Transaction History**
 
 ```
-• Users should be able to view their transaction history, including past purchases and upcoming ticket reservations.
+Users can view their transaction history through the transaction history feature. This feature provides a record of past purchases and upcoming ticket reservations. Users can refer to this history to track their movie-related transactions, including subscriptions and ticket reservations.
 ```
 
-### Admin Features
+### Admin Features (Future plans)
 
 **Movie Management**
 
