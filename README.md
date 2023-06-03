@@ -10,50 +10,50 @@ NetClick is an internet-connected streaming service that operates on a subscript
 ## Wireframe
 
 You can view full our wireframe in here: [Figma](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
-<img src="./github/wireframe.png" />
+<img src="./.github/wireframe.png" />
 
 ### Reister page
 
 When user didn't have any account, we can go to this page:
-<img src="./github/register-page.png" />
+<img src="./.github/register-page.png" />
 If username exists or retype password not match, it will show the message:
-<img src="./github/register-error.png" />
+<img src="./.github/register-error.png" />
 
 ### Login page
 
 Here is the login page:
-<img src="./github/login-page.png" />
+<img src="./.github/login-page.png" />
 If the password is wrong, it will show the message:
-<img src="./github/login-error.png" />
+<img src="./.github/login-error.png" />
 
 ### Home page
 
 Here is the home page:
-<img src="./github/home-page.png" />
+<img src="./.github/home-page.png" />
 
 ### Preview page
 
 Here is the preview page for the film:
-<img src="./github/preview-page.png" />
+<img src="./.github/preview-page.png" />
 
 ### Movie page
 
 If the user has purchased subscription, it will navigate to the **Movie page**
-<img src="./github/movie-page.png" />
+<img src="./.github/movie-page.png" />
 
 ### Subscription page
 
 If the user hasn't purchased subscription, it will navigate to the **Subscription page**
-<img src="./github/subscription-page.png" />
+<img src="./.github/subscription-page.png" />
 The user can choose which payment method to pay:
-<img src="./github/subscription-page-2.png" />
+<img src="./.github/subscription-page-2.png" />
 
 ### Payment page
 
 Here is the page if the user choose to pay with credit card:
-<img src="./github/payment-credit.png" />
+<img src="./.github/payment-credit.png" />
 And here is with digital card:
-<img src="./github/payment-digital.png" />
+<img src="./.github/payment-digital.png" />
 
 ## Requirements
 
