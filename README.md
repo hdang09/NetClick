@@ -95,11 +95,11 @@ Users can view their transaction history through the transaction history feature
 
 **Movie Management**
 
-• Admins should beable to add, edit, and delete movies from the application.
-• Admins should be able to upload trailers and promotional materials for each movie.
+• Admins should beable to add, edit, and delete movies from the application.\
+• Admins should be able to upload trailers and promotional materials for each movie.\
 • Admins should be able to set showtimes and update availability for each movie.
 
 **User Management**
 
-• Admins should be able to view and manage user accounts, including resetting passwords and deleting accounts if necessary.
+• Admins should be able to view and manage user accounts, including resetting passwords and deleting accounts if necessary.\
 • Admins should be able to view user transaction history and refund purchases if necessary.
