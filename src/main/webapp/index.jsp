@@ -1,5 +1,5 @@
-<%-- Document : index Created on : Jun 10, 2023, 11:19:23 PM Author : Admin --%> <%@page contentType="text/html"
-pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -43,56 +43,18 @@ pageEncoding="UTF-8"%>
         <div class="my-2">
           <h2 class="text-gray-400 font-bold my-5 text-xl">Recommended</h2>
           <ul class="flex justify-between">
-            <li class="w-40 relative flex justify-center">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-                alt="Movie"
-                class="rounded-md"
-              />
-              <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
-                Watch Now
-              </button>
-            </li>
-            <li class="w-40 relative flex justify-center">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-                alt="Movie"
-                class="rounded-md"
-              />
-              <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
-                Watch Now
-              </button>
-            </li>
-            <li class="w-40 relative flex justify-center">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-                alt="Movie"
-                class="rounded-md"
-              />
-              <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
-                Watch Now
-              </button>
-            </li>
-            <li class="w-40 relative flex justify-center">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-                alt="Movie"
-                class="rounded-md"
-              />
-              <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
-                Watch Now
-              </button>
-            </li>
-            <li class="w-40 relative flex justify-center">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-                alt="Movie"
-                class="rounded-md"
-              />
-              <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
-                Watch Now
-              </button>
-            </li>
+            <c:forEach begin="1" end="5">
+              <li class="w-40 relative flex justify-center">
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
+                  alt="Movie"
+                  class="rounded-md"
+                />
+                <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
+                  Watch Now
+                </button>
+              </li>
+            </c:forEach>
           </ul>
         </div>
       </main>
