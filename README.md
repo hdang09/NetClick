@@ -45,14 +45,14 @@ If the user has purchased subscription, it will navigate to the **Movie page**
 
 If the user hasn't purchased subscription, it will navigate to the **Subscription page**
 <img src="./.github/subscription-page.png" />
-The user can choose which payment method to pay:
+\The user can choose which payment method to pay:
 <img src="./.github/subscription-page-2.png" />
 
 ### Payment page
 
 Here is the page if the user choose to pay with credit card:
 <img src="./.github/payment-credit.png" />
-And here is with digital card:
+\And here is with digital card:
 <img src="./.github/payment-digital.png" />
 
 ## Requirements
