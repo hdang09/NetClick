@@ -23,9 +23,21 @@
 
       <!-- MAIN CONTENT -->
       <main class="p-6">
-          <h1 class="font-bold text-2xl">Tag Page - ${param.tag.toUpperCase()}</h1>
-          <p>Get started by editing <b>tag.jsp</b> </p>
-          <%-- YOUR CODE HERE --%>
+        <ul class="flex text-gray-400 font-semibold mb-6">
+          <li class="mx-3"><a href="/tags?tag=movie">Movie</a></li>
+          <li class="mx-3"><a href="/tags?tag=adventure">Adventure</a></li>
+          <li class="mx-3"><a href="/tags?tag=classic">Classic</a></li>
+          <li class="mx-3"><a href="/tags?tag=comedes">Comedies</a></li>
+          <li class="mx-3">
+            <a href="/tags?tag=documentaries">Documetaries</a>
+          </li>
+          <li class="mx-3"><a href="/tags?tag=dramas">Dramas</a></li>
+          <li class="mx-3"><a href="/tags?tag=horror">Horror</a></li>
+        </ul>
+          
+        <h1 class="font-bold text-2xl">Tag Page - ${param.tag.toUpperCase()}</h1>
+        <p>Get started by editing <b>tag.jsp</b> </p>
+        <%-- YOUR CODE HERE --%>
       </main>
 
     </div>
