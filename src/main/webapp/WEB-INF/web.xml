@@ -24,6 +24,10 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controllers.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>controllers.PaymentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PreviewController</servlet-name>
         <url-pattern>/preview</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
