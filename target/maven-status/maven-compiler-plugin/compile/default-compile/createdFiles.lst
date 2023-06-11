@@ -1,0 +1,6 @@
+controllers\NewMoviesController.class
+controllers\PreviewController.class
+controllers\RegisterController.class
+controllers\LoginController.class
+controllers\SubscriptionController.class
+controllers\TagsController.class

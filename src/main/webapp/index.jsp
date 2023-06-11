@@ -1,4 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -23,15 +24,15 @@
       <!-- MAIN CONTENT -->
       <main class="p-6 w-[60rem] border-r-2">
         <ul class="flex text-gray-400 font-semibold mb-6">
-          <li class="mx-3 font-bold"><a href="/movie?tag=movie">Movie</a></li>
-          <li class="mx-3"><a href="/movie?tag=adventure">Adventure</a></li>
-          <li class="mx-3"><a href="/movie?tag=classic">Classic</a></li>
-          <li class="mx-3"><a href="/movie?tag=comedes">Comedies</a></li>
+          <li class="mx-3 font-bold"><a href="/tags?tag=movie">Movie</a></li>
+          <li class="mx-3"><a href="/tags?tag=adventure">Adventure</a></li>
+          <li class="mx-3"><a href="/tags?tag=classic">Classic</a></li>
+          <li class="mx-3"><a href="/tags?tag=comedes">Comedies</a></li>
           <li class="mx-3">
-            <a href="/movie?tag=documentaries">Documetaries</a>
+            <a href="/tags?tag=documentaries">Documetaries</a>
           </li>
-          <li class="mx-3"><a href="/movie?tag=dramas">Dramas</a></li>
-          <li class="mx-3"><a href="/movie?tag=horror">Horror</a></li>
+          <li class="mx-3"><a href="/tags?tag=dramas">Dramas</a></li>
+          <li class="mx-3"><a href="/tags?tag=horror">Horror</a></li>
         </ul>
 
         <img
@@ -50,9 +51,9 @@
                   alt="Movie"
                   class="rounded-md"
                 />
-                <button class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto">
+                <a href="/preview?movie=love-again" class="w-32 h-10 bg-red-700 text-white text-sm rounded-md absolute bottom-2 m-auto flex items-center justify-center">
                   Watch Now
-                </button>
+                </a>
               </li>
             </c:forEach>
           </ul>
