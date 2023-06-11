@@ -20,7 +20,6 @@
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
-
       <!-- MAIN CONTENT -->
       <main class="p-6 w-[60rem] border-r-2">
         <ul class="flex text-gray-400 font-semibold mb-6">

@@ -2,5 +2,7 @@ controllers\NewMoviesController.class
 controllers\PreviewController.class
 controllers\RegisterController.class
 controllers\LoginController.class
+utils\DBUtils.class
 controllers\SubscriptionController.class
 controllers\TagsController.class
+.netbeans_automatic_build
