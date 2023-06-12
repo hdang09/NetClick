@@ -1,7 +1,8 @@
-D:\CODE\Java\netclick\src\main\java\controllers\NewMoviesController.java
-D:\CODE\Java\netclick\src\main\java\controllers\RegisterController.java
-D:\CODE\Java\netclick\src\main\java\controllers\SubscriptionController.java
-D:\CODE\Java\netclick\src\main\java\controllers\TagsController.java
-D:\CODE\Java\netclick\src\main\java\controllers\LoginController.java
-D:\CODE\Java\netclick\src\main\java\utils\DBUtils.java
-D:\CODE\Java\netclick\src\main\java\controllers\PreviewController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\RegisterController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\PaymentController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\LoginController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\utils\DBUtils.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\NewMoviesController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\PreviewController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\SubscriptionController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\TagsController.java
