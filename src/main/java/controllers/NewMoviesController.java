@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.MovieDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -56,6 +57,7 @@ public class NewMoviesController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("movies", new MovieDAO().getAll());
         request.getRequestDispatcher("new-movies.jsp").forward(request, response);
     }
 
