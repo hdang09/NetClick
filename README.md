@@ -2,60 +2,12 @@
 
 NetClick is an internet-connected streaming service that operates on a subscription model
 
-## Table of contents
+## 1. Requirements
 
-- [Wireframe](#wireframe)
-- [Requirements](#requirements)
-
-## Wireframe
-
-You can view full our wireframe in here: [Figma](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
-<img src="./.github/wireframe.png" />
-
-### Reister page
-
-When user didn't have any account, we can go to this page:
-<img src="./.github/register-page.png" />
-If username exists or retype password not match, it will show the message:
-<img src="./.github/register-error.png" />
-
-### Login page
-
-Here is the login page:
-<img src="./.github/login-page.png" />
-If the password is wrong, it will show the message:
-<img src="./.github/login-error.png" />
-
-### Home page
-
-Here is the home page:
-<img src="./.github/home-page.png" />
-
-### Preview page
-
-Here is the preview page for the film:
-<img src="./.github/preview-page.png" />
-
-### Movie page
-
-If the user has purchased subscription, it will navigate to the **Movie page**
-<img src="./.github/movie-page.png" />
-
-### Subscription page
-
-If the user hasn't purchased subscription, it will navigate to the **Subscription page**
-<img src="./.github/subscription-page.png" />
-\The user can choose which payment method to pay:
-<img src="./.github/subscription-page-2.png" />
-
-### Payment page
-
-Here is the page if the user choose to pay with credit card:
-<img src="./.github/payment-credit.png" />
-\And here is with digital card:
-<img src="./.github/payment-digital.png" />
-
-## Requirements
+<!-- - Name of your system: NetClick
+- What is the purpose of the system: ...
+- Who use the system: For everyone
+- List all features your system can do, arrange the features in a specific classification: -->
 
 ### User features
 
@@ -103,3 +55,64 @@ Users can view their transaction history through the transaction history feature
 
 • Admins should be able to view and manage user accounts, including resetting passwords and deleting accounts if necessary.\
 • Admins should be able to view user transaction history and refund purchases if necessary.
+
+## 2. Wireframe or screenshots of the system
+
+You can view full our wireframe in here: [Figma](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
+<img src="./.github/wireframe.png" />
+
+### Reister page
+
+When user didn't have any account, we can go to this page:
+<img src="./.github/register-page.png" />
+If username exists or retype password not match, it will show the message:
+<img src="./.github/register-error.png" />
+
+### Login page
+
+Here is the login page:
+<img src="./.github/login-page.png" />
+If the password is wrong, it will show the message:
+<img src="./.github/login-error.png" />
+
+### Home page
+
+Here is the home page:
+<img src="./.github/home-page.png" />
+
+### Preview page
+
+Here is the preview page for the film:
+<img src="./.github/preview-page.png" />
+
+### Movie page
+
+If the user has purchased subscription, it will navigate to the **Movie page**
+<img src="./.github/movie-page.png" />
+
+### Subscription page
+
+If the user hasn't purchased subscription, it will navigate to the **Subscription page**
+<img src="./.github/subscription-page.png" />\
+\The user can choose which payment method to pay:
+<img src="./.github/subscription-page-2.png" />
+
+### Payment page
+
+Here is the page if the user choose to pay with credit card:
+<img src="./.github/payment-credit.png" />\
+And here is with digital card:
+<img src="./.github/payment-digital.png" />
+
+## 3. Database design
+
+You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagrams.com/#/d/o6Ffqs)
+<img src="./.github/diagram.png" />
+
+## 4. System design
+
+## 5. Conclusion and Discussion
+
+<!-- - The pros and cons of your application: ...
+- What you've learned during developing of your application: ...
+- What would you improve your application in the future: ... -->

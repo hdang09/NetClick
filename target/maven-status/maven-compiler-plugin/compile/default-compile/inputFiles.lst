@@ -1,8 +1,13 @@
 E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\RegisterController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\dao\MovieDAO.java
 E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\PaymentController.java
-E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\LoginController.java
 E:\Workspace\se170040\prj301-se1714-05\src\main\java\utils\DBUtils.java
 E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\NewMoviesController.java
-E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\PreviewController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\dao\AccountDAO.java
 E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\SubscriptionController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\HomeController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\LoginController.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\dto\AccountDTO.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\dto\MovieDTO.java
+E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\PreviewController.java
 E:\Workspace\se170040\prj301-se1714-05\src\main\java\controllers\TagsController.java

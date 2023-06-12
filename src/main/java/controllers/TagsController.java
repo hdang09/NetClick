@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.MovieDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,7 +36,7 @@ public class TagsController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TagController</title>");            
+            out.println("<title>Servlet TagController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TagController at " + request.getContextPath() + "</h1>");
@@ -56,6 +57,9 @@ public class TagsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String tag = request.getParameter("tag");
+        request.setAttribute("movies", new MovieDAO().getByTag(tag));
+        System.out.println(new MovieDAO().getByTag(tag));
         request.getRequestDispatcher("tags.jsp").forward(request, response);
     }
 

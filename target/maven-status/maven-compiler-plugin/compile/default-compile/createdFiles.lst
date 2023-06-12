@@ -1,8 +1,13 @@
+controllers\HomeController.class
 controllers\NewMoviesController.class
-controllers\PreviewController.class
 controllers\RegisterController.class
+controllers\SubscriptionController.class
+dto\MovieDTO.class
+controllers\TagsController.class
+dao\AccountDAO.class
+controllers\PreviewController.class
 controllers\PaymentController.class
 controllers\LoginController.class
 utils\DBUtils.class
-controllers\SubscriptionController.class
-controllers\TagsController.class
+dto\AccountDTO.class
+dao\MovieDAO.class

@@ -1,4 +1,5 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html class="h-full">
@@ -14,28 +15,15 @@
       integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"/>
-      <style>
-        html, body {
-          height: 100%;
-        }
-  
-        body {
-          display: flex;
-          flex-direction: column;
-        }
-  
-        .flex-grow {
-          flex-grow: 1;
-        }
-  
-        footer {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-        }
-      </style>
   </head>
+  <!-- header -->
+  <header class="w-screen">
+    <div class="block container px-6 py-6">
+      <div class="items-center">
+       <a href="index.jps"><img src="img/favicon.png" alt="Logo" class="h-12"></a>
+      </div>
+    </div>
+  </header>  
     <!-- MAIN CONTENT -->
   <body class="flex flex-col items-center justify-center h-full">
     <div class="flex-grow">
@@ -79,11 +67,16 @@
           Sign in 
       </button>
       </div>
+      <h1 class="flex items-center justify-center mt-3 text-gray-900 opacity-100 hover:opacity-50">
+        <a href="#">Forgot password?</a></h1>
+      <!-- end button -->
                 </div>          
               </div>
             </form>
         </div>
         </div>
+        <!-- end form -->
+        <!-- footer -->
         <footer class="inline-block w-full bg-gray-800 ">
           <div class="flex items-center justify-center mt-4 mb-2">
               <a href="#" class="inline-block w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2 transition-opacity duration-300 hover:bg-opacity-50">
@@ -103,7 +96,7 @@
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Terms</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Privacy Policy</a></li>
           </ul>
-          <p class="text-center text-gray-500 text-xs mt-6">NetClick ©2023</p>
+          <p class="text-center text-gray-500 text-xs mt-6">NetClick Â©2023</p>
       </footer>
       
   </body>

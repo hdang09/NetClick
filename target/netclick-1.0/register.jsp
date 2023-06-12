@@ -6,13 +6,21 @@
 <html class="h-full">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>NetClick</title>
+    <title>Sign in</title>
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   </head>
+  <!-- header -->
+  <header>
+    <div class="flex container  m-0 px-6 py-6">
+      <div class="flex items-center">
+       <a href="index.jps"><img src="img/favicon.png" alt="Logo" class="h-12"></a>
+      </div>
+    </div>
+  </header>  
+  <!-- body -->
   <body class="flex flex-col h-full bg-pink-50">
     <div class="flex-grow">
       <div class="w-full flex justify-center items-center mt-28">
@@ -97,8 +105,10 @@
         <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Terms</a></li>
         <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Privacy Policy</a></li>
       </ul>
-      <p class="text-center text-gray-500 text-xs mt-6">NetClick ©2023</p>
+      <p class="text-center text-gray-500 mt-2">NetClick ©2023</p>
     </footer>
   </body>
 </html>
+
+
 

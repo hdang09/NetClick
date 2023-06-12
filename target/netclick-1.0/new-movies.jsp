@@ -6,28 +6,23 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>NetClick</title>
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <%@ include file="components/imports.jsp" %>
   </head>
+  
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
       <main class="p-6">
-          <h1 class="font-bold text-2xl">New Movies Page</h1>
-          <p>Get started by editing <b>new-movies.jsp</b> </p>
-          <%-- YOUR CODE HERE --%>
+          <ul class="flex flex-wrap">
+              <c:forEach var="movie" items="${movies}">
+                  <c:set var="movie" value="${movie}" scope="request" />
+                  <jsp:include page="components/movie.jsp" />
+              </c:forEach>
+          </ul>
       </main>
-
+      
     </div>
   </body>
 </html>
