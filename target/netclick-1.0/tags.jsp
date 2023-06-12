@@ -16,6 +16,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Global styles -->
+    <link rel="stylesheet" href="css/globals.css">
   </head>
   <body>
     <div class="flex">
@@ -35,9 +37,12 @@
           <li class="mx-3"><a href="/tags?tag=horror">Horror</a></li>
         </ul>
           
-        <h1 class="font-bold text-2xl">Tag Page - ${param.tag.toUpperCase()}</h1>
-        <p>Get started by editing <b>tag.jsp</b> </p>
-        <%-- YOUR CODE HERE --%>
+        <ul class="flex justify-between flex-wrap">
+            <c:forEach var="movie" items="${movies}">
+                <c:set var="movie" value="${movie}" scope="request" />
+                <jsp:include page="components/movie.jsp" />
+            </c:forEach>
+        </ul>
       </main>
 
     </div>

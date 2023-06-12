@@ -16,18 +16,24 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Global styles -->
+    <link rel="stylesheet" href="css/globals.css">
   </head>
+  
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
       <main class="p-6">
-          <h1 class="font-bold text-2xl">New Movies Page</h1>
-          <p>Get started by editing <b>new-movies.jsp</b> </p>
-          <%-- YOUR CODE HERE --%>
+          <ul class="flex justify-between flex-wrap">
+              <c:forEach var="movie" items="${movies}">
+                  <c:set var="movie" value="${movie}" scope="request" />
+                  <jsp:include page="components/movie.jsp" />
+              </c:forEach>
+          </ul>
       </main>
-
+      
     </div>
   </body>
 </html>

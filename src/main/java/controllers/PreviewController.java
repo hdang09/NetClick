@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.MovieDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -55,6 +56,8 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("movie", new MovieDAO().getById(id));
         request.getRequestDispatcher("preview.jsp").forward(request, response);
     }
 

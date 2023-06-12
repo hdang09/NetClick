@@ -16,6 +16,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Global styles -->
+    <link rel="stylesheet" href="css/globals.css">
   </head>
   <body>
     <div class="flex">
@@ -26,6 +28,7 @@
           <h1 class="font-bold text-2xl">Preview Page</h1>
           <p>Get started by editing <b>preview.jsp</b> </p>
           <%-- YOUR CODE HERE --%>
+          ${movie}
       </main>
 
     </div>

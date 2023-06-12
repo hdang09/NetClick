@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<aside class="w-60 h-screen border-r-2 pl-8 pt-4">
+<aside class="min-w-[15rem] h-screen border-r-2 pl-8 pt-4">
   <!-- LOGO -->
   <div class="text-red-700">
     <i class="fa-brands fa-neos"></i>
@@ -9,15 +9,6 @@
   <!-- MENU -->
   <div class="mt-8">
     <h3 class="text-gray-300 font-bold text-sm uppercase">MENU</h3>
-<%--    
-    <% request.setAttribute("menu", new String[]{"/", "/new-movies", "/subscription"}); %>
-    <c:forEach items="${menu}" var="item" >
-      <a href="${item}" class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'].equals(item) ? 'text-red-700 border-r-4 border-red-700': 'text-gray-400'}">
-        <i class="fa-solid fa-house"></i>
-        <span class="ml-3 font-bold">${item.substring(1, item.length())}</span>
-      </a>
-    </c:forEach>
---%>
     <a href="/" class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == null ? 'text-red-700 border-r-4 border-red-700': 'text-gray-400'}">
       <i class="fa-solid fa-house"></i>
       <span class="ml-3 font-bold">Home</span>
@@ -38,7 +29,6 @@
     <a href="/tags?tag=action" class="my-5 flex items-center text-lg text-gray-400">
       <i class="fa-solid fa-film"></i>
       <span class="ml-3 font-bold">Action</span>
-      ${request.getRequestURI()}
     </a>
     <a href="/tags?tag=adventure" class="my-5 flex items-center text-lg text-gray-400">
       <i class="fa-solid fa-film"></i>
