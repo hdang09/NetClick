@@ -1,5 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 
+    Document   : forgotpass
+    Created on : Jun 13, 2023, 7:20:12 AM
+    Author     : Quan
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html class="h-full">
@@ -18,9 +23,9 @@
   </head>
   <!-- header -->
   <header class="w-screen">
-    <div class="flex container px-6 pt-14 -mb-14">
+    <div class="block container px-6 py-6">
       <div class="items-center">
-       <a href="index.jps"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
+       <a href="index.jps"><img src="img/favicon.png" alt="Logo" class="h-12"></a>
       </div>
     </div>
   </header>  
@@ -77,7 +82,7 @@
         </div>
         <!-- end form -->
         <!-- footer -->
-        <footer class="inline-block w-full bg-gray-800 ">
+        <footer class="inline-block w-full bg-gray-800 sticky bottom-0">
           <div class="flex items-center justify-center mt-4 mb-2">
               <a href="#" class="inline-block w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2 transition-opacity duration-300 hover:bg-opacity-50">
                 <i class="fa-brands fa-instagram text-white"></i>  

@@ -18,9 +18,9 @@
   </head>
   <!-- header -->
   <header class="w-screen">
-    <div class="block container px-6 py-6">
+    <div class="flex container px-6 pt-14 -mb-14">
       <div class="items-center">
-       <a href="index.jps"><img src="img/favicon.png" alt="Logo" class="h-12"></a>
+       <a href="index.jps"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
       </div>
     </div>
   </header>  
