@@ -59,12 +59,14 @@
                       <!-- button -->
     <div class="flex items-center justify-between">
       <button
-          class="bg-gray-50 hover:bg-gray-200 text-black font-thin py-2 px-14 rounded border-black border-solid border-2"
+          class="font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+          focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 py-2 px-14"
           type="button"><a href="">
                   Log in
                 </a>
       </button>
-        <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded focus:outline-none border-black border-solid border-2">
+        <button class="font-medium tracking-wide text-clay capitalize transition-colors duration-300 transform bg-blue-white rounded-lg hover:bg-gray-300 
+          focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 py-2 px-14 ">
             <a href="/register.jsp">Sign in</a>
       </button>
       </div>

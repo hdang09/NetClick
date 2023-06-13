@@ -1,11 +1,6 @@
-<%-- 
-    Document   : visap
-    Created on : Jun 13, 2023, 10:52:24 AM
-    Author     : Quan
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ include file="components/imports.jsp" %>
 <!DOCTYPE html>
 <html class="h-full">
   <head>
@@ -19,18 +14,13 @@
   <!-- header -->
   <header>
     <div class="flex container  m-0 px-6 py-6">
-      <div class="flex items-center">
-          <a href="/index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-20"></a>
-      </div>
     </div>
   </header>  
+    <%@ include file="components/sidebar.jsp" %>
   <!-- body -->
   <body class="flex flex-col h-full">
     <div class="flex-grow">
-      <div class="text-center mt-2 w-fit">
-        <p>>Payment</p>
-      </div>
-      <div class="flex justify-center items-center mt-2">
+      <div class="flex justify-center items-center mt-10 mb-0">
         <h1 class="text-8xl font-light mb-8 px-3">Set up your credit</h1> 
     </div>
     <div class="flex justify-center items-center mb-4">
