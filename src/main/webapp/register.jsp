@@ -16,14 +16,14 @@
   <header>
     <div class="flex container m-0 px-6 py-6">
       <div class="flex items-center">
-       <a href="index.jps"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
+       <a href="/index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
       </div>
     </div>
   </header>  
   <!-- body -->
-  <body class="flex flex-col h-full bg-pink-50">
+  <body class="flex flex-col h-full">
     <div class="flex-grow">
-      <div class="w-full flex justify-center items-center mt-28">
+      <div class="w-full flex justify-center items-center">
         <h1 class="text-8xl font-light mb-8 px-3">Welcome to</h1>
         <div>
           <h2 class="bg-blue-500 rounded text-7xl text-white font-light pb-2 mb-2 px-3">NetClick</h2>
@@ -36,7 +36,7 @@
         <div class="w-full">
           <div class="max-w-md">
             <!-- login form -->
-            <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mt-20 mb-12 m-4">
+            <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mt-10 mb-12 m-4">
               <!-- user -->
               <div class="mb-4">
                 <label class="inline-block bg-gray-300 rounded text-gray-700 text-2xl font-bold px-1 mb-4" for="username">Username:</label>
@@ -77,8 +77,9 @@
               </div>
               <h1 class="flex items-center justify-center mt-1">or</h1>
               <div class="flex items-center justify-center">
-                <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#">
+                  <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#"><a href="login.jsp">
                   Log in
+                </a>
                 </button>
               </div>
             </form>

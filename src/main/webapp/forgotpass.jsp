@@ -1,4 +1,3 @@
-y
 <!DOCTYPE html>
 <html class="h-full">
   <head>
@@ -15,10 +14,10 @@ y
       referrerpolicy="no-referrer"/>
   </head>
   <!-- header -->
-  <header class="w-screen  pt-6">
+  <header class="w-screen">
     <div class="flex container px-6 py-6">
       <div class="items-center">
-          <a href="index.jps"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
+          <a href="index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
       </div>
     </div>
   </header>  
@@ -26,7 +25,7 @@ y
   <body class="flex flex-col items-center justify-center h-full">
     <div class="flex-grow">
       <div class="w-full flex justify-center items-center mt-28">
-    <h1 class="block text-8xl font-light mb-8 mt-28 px-3 ">Forgot password</h1>
+    <h1 class="block text-8xl font-light mb-8 px-3 ">Forgot password</h1>
   </div>
   <div class="block -mb-3">
     <h3 class="flex items-center justify-center text-2xl font-light">We will send you an email with instructions on how to reset your password.
@@ -36,7 +35,7 @@ y
         <div class="w-full">
             <div class="w-full max-w-md">
               <!-- login form -->
-              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-10 mb-12 mt-28 m-4">
+              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-10 mb-12 mt-10 m-4">
                   <div class="mb-4">
                     <!-- Email -->
                   <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4 mt-4" for="password">Enter your email:</label>
@@ -52,9 +51,10 @@ y
                   </div>
                   <h1 class="flex items-center justify-center mt-1">or</h1>
                   <div class="flex items-center justify-center">
-                    <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#">
-                      Log in
-                    </button>
+                        <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#"><a href="login.jsp">
+                  Log in
+                </a>
+                </button>
                   </div>
       <!-- end button -->
                 </div>          
