@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,12 +36,13 @@ public class SubscriptionController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SubscriptionController</title>");            
+            out.println("<title>Servlet SubscriptionController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SubscriptionController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+
         }
     }
 
@@ -56,6 +58,12 @@ public class SubscriptionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        if (username != null) {
+            request.getRequestDispatcher("watch.jsp").forward(request, response);
+            return;
+        }
         request.getRequestDispatcher("subscription.jsp").forward(request, response);
     }
 
