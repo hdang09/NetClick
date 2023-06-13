@@ -59,7 +59,9 @@
                         <p>1＄/month <br>Mobile</p>
                     </div>
                     <button type="submit"
-                    class="ml-auto block font-semibold rounded-md focus:outline-none text-blue-400 hover:text-blue-600 transition-colors">Change
+                            class="ml-auto block font-semibold rounded-md focus:outline-none text-blue-400 hover:text-blue-600 transition-colors"><a href="/subscription.jsp">
+                  Change
+                </a>
                 </button>
                 </div>
                 </ul>

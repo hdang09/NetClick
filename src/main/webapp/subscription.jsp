@@ -39,7 +39,7 @@
             <span class="my-1">Quanlity: Good</span>
             <span class="my-1">Resolution: 480p</span>
             <span class="my-1">Devices: Phone, Tablet</span>
-            <a href="/subscription?plan=mobile" class="text-center bg-blue-500 text-white py-2 rounded-lg mt-12">2$</a>
+            <a href="/subscription-plan.jsp" class="text-center bg-blue-500 text-white py-2 rounded-lg mt-12">2$</a>
           </div>
           <div class="border-1 border border-black flex flex-col p-3 mx-10 my-8 rounded-md" style="width: 200px">
             <i
