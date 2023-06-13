@@ -1,11 +1,4 @@
-<%-- 
-    Document   : forgotpass
-    Created on : Jun 13, 2023, 7:20:12 AM
-    Author     : Quan
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+y
 <!DOCTYPE html>
 <html class="h-full">
   <head>
@@ -22,10 +15,10 @@
       referrerpolicy="no-referrer"/>
   </head>
   <!-- header -->
-  <header class="w-screen">
-    <div class="block container px-6 py-6">
+  <header class="w-screen  pt-6">
+    <div class="flex container px-6 py-6">
       <div class="items-center">
-       <a href="index.jps"><img src="img/favicon.png" alt="Logo" class="h-12"></a>
+          <a href="index.jps"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
       </div>
     </div>
   </header>  
@@ -33,47 +26,36 @@
   <body class="flex flex-col items-center justify-center h-full">
     <div class="flex-grow">
       <div class="w-full flex justify-center items-center mt-28">
-    <h1 class="block text-8xl font-light mb-8 mt-28 px-3 ">Welcome to </h1>
-    <div>
-      <h2 class="flex bg-blue-500 rounded text-7xl text-white font-light pb-2 mb- mt-28 px-3">NetClick</h2>
-    </div>
+    <h1 class="block text-8xl font-light mb-8 mt-28 px-3 ">Forgot password</h1>
   </div>
   <div class="block -mb-3">
-    <h3 class="flex items-center justify-center text-2xl font-light">Explore unlimited movies, TV shows anywhere, anytime
+    <h3 class="flex items-center justify-center text-2xl font-light">We will send you an email with instructions on how to reset your password.
     </h3>
   </div>
       <div class="w-full max-w-md mx-auto">
         <div class="w-full">
             <div class="w-full max-w-md">
               <!-- login form -->
-              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-8 mb-12 mt-28 m-4">
-                  <div>
-                    <!-- user -->
-                  <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4" for="username">Username:</label> 
-                  <input
-                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="username" type="text" placeholder="Enter your username">
-                  </div>
+              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-10 mb-12 mt-28 m-4">
                   <div class="mb-4">
-                    <!-- password -->
-                  <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4 mt-4" for="password">Password:</label>
+                    <!-- Email -->
+                  <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4 mt-4" for="password">Enter your email:</label>
                   <input
                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                      id="password" type="password" placeholder="Enter your password">
+                      id="email" type="email" placeholder="name@example.com">
                   </div>
-                      <!-- button -->
-    <div class="flex items-center justify-between">
-      <button
-          class="bg-gray-50 hover:bg-gray-200 text-black font-thin py-2 px-14 rounded border-black border-solid border-2"
-          type="button">
-          Login
-      </button>
-      <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded focus:outline-none border-black border-solid border-2" href="#">
-          Sign in 
-      </button>
-      </div>
-      <h1 class="flex items-center justify-center mt-3 text-gray-900 opacity-100 hover:opacity-50">
-        <a href="#">Forgot password?</a></h1>
+                  <!-- button -->
+                  <div class="flex items-center justify-center">
+                    <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded w-fit border-black border-solid border-1" href="#">
+                      Email me
+                    </button>
+                  </div>
+                  <h1 class="flex items-center justify-center mt-1">or</h1>
+                  <div class="flex items-center justify-center">
+                    <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#">
+                      Log in
+                    </button>
+                  </div>
       <!-- end button -->
                 </div>          
               </div>
@@ -101,9 +83,10 @@
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Terms</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Privacy Policy</a></li>
           </ul>
-          <p class="text-center text-gray-500 text-xs mt-6">NetClick Â©2023</p>
+          <p class="text-center text-gray-500 text-xs mt-6">NetClick ©2023</p>
       </footer>
       
   </body>
   
 </html>
+
