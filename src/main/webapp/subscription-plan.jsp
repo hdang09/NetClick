@@ -26,7 +26,7 @@
           <h1 class="font-bold text-2xl">Subscription Page</h1>
           <!-- <p>Get started by editing <b>subscription.jsp</b> </p> -->
           <div class="flex justify-content flex-col items-center">
-            <span class="font-medium text-3xl" style="margin-top: 200px; margin-bottom: 20px">Choose how to pay</span>
+            <span class="font-medium text-3xl" style="margin-top: 100px; margin-bottom: 20px">Choose how to pay</span>
             <span class="text-xl" style="width: 400px; text-align: center">Your payment is encrypted and you can change how you pay anytime.</span>
             <div class="my-5 flex flex-col justify-center items-center">
                 <span class="text-zinc-500 text-lg">Secure for peace of mind.</span>
@@ -34,15 +34,15 @@
             </div>
           </div>
           <div class="flex justify-content flex-col items-center">
-            <a href="" class="flex items-center bg-gray-50 shadow-xl p-5 my-6 shadow-inner rounded-lg" style="width: 500px; height: 50px;">
+            <a href="" class="flex items-center bg-gray-50 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
                 <span class="text-2xl">Credit Card</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="" style="width: 45px; height: 20px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="" class="w-[45px] h-[20px]">
                 <span class="text-4xl" style="margin-left: 250px">></span>
             </a>
-            <a href="" class="flex items-center bg-gray-50 shadow-xl p-5 my-6 shadow-inner rounded-lg" style="width: 500px; height: 50px;">
+            <a href="" class="flex items-center bg-gray-50 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
                 <span class="text-2xl">Digital Wallet</span>
-                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="" style="width: 25px; height: 25px;">
-                <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-Square.png" alt="" style="width: 25px; height: 25px;">
+                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="" class="w-[25px] h-[25px]">
+                <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-Square.png" alt="" class="w-[25px] h-[25px]">
                 <span class="text-4xl" style="margin-left: 225px">></span>
             </a>
           </div>
