@@ -12,7 +12,7 @@
       <%@ include file="components/sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
-      <main class="p-6 w-full">
+      <main class="ml-0 sm:ml-[15rem] p-6 w-full">
         <div class="flex rounded-lg">
           <!-- Left content -->
           <div class="w-[40rem] bg-slate-200 text-xl p-6">
@@ -22,18 +22,27 @@
             <div class="flex">
               <h2>${movie.rating}</h2>
               <div>
-                <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i
-                ><i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i
-                ><i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i
-                ><i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i
-                ><i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
+                <c:forEach begin="1" end="${movie.rating}">
+                  <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
+                </c:forEach>
+                <c:forEach begin="1" end="${5 - movie.rating}">
+                  <i class="fa-solid fa-star text-xl mx-1 text-state-500"></i>
+                </c:forEach>
               </div>
             </div>
 
             <!-- Buttons-->
             <div class="mt-12 flex">
-              <a href="/404.jsp" class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md">+ Wishlist</a>
-              <a href="/subscription" class="inline-flex justify-center items-center w-40 h-12 bg-slate-400 text-white rounded-md ml-4">> Watch</a>
+              <a
+                href="/404.jsp"
+                class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md"
+                >+ Wishlist</a
+              >
+              <a
+                href="/subscription"
+                class="inline-flex justify-center items-center w-40 h-12 bg-slate-400 text-white rounded-md ml-4"
+                >> Watch</a
+              >
             </div>
 
             <!-- Movie info -->
@@ -56,9 +65,7 @@
         <div class="mt-4">
           <h2 class="font-bold text-xl text-slate-400">SIMILAR</h2>
           <ul class="flex justify-between flex-wrap">
-            <c:forEach begin="1" end="7">
-              <%@ include file="components/movie.jsp" %>
-            </c:forEach>
+            <c:forEach begin="1" end="7"> <%@ include file="components/movie.jsp" %> </c:forEach>
           </ul>
         </div>
       </main>

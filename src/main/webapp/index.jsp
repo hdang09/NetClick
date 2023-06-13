@@ -10,23 +10,21 @@
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
-      
+
       <!-- MAIN CONTENT -->
-      <main class="p-6 w-[60rem] border-r-2">
+      <main class="ml-0 sm:ml-[15rem] p-6 border-r-2 flex-1">
         <%@ include file="components/navbar.jsp" %>
-        
+
         <img
           src="https://collider.com/wp-content/uploads/the-avengers-movie-poster-banners-04.jpg"
           alt="Banner"
-          class="w-full h-80"
+          class="w-full h-80 object-cover"
         />
 
         <div class="my-2">
           <h2 class="text-gray-400 font-bold my-5 text-xl">Recommended</h2>
           <ul class="flex justify-between flex-wrap">
-            <c:forEach begin="1" end="5">
-              <%@ include file="components/movie.jsp" %>
-            </c:forEach>
+            <c:forEach begin="1" end="5"> <%@ include file="components/movie.jsp" %> </c:forEach>
           </ul>
         </div>
       </main>

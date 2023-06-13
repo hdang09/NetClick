@@ -107,4 +107,35 @@ public class MovieDAO {
 
         return null;
     }
+    
+    public ArrayList<MovieDTO> getRelatedByTag(int id, String tag) {
+                ArrayList<MovieDTO> movies = new ArrayList<>();
+
+        String sql = "SELECT * FROM movie m, tag t, MovieTag mt "
+                + "where m.id = mt.movie_id and t.id = mt.tag_id and tag_name = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, tag);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String thumbnail = rs.getString("thumbnail");
+                String movieUrl = rs.getString("movie_url");
+                String release = rs.getString("release");
+                String director = rs.getString("director");
+                int rating = rs.getInt("rating");
+                // ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, LocalDate.MAX, director, rating, director);
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
 }

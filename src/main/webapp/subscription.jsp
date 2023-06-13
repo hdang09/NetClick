@@ -12,7 +12,7 @@
       <%@ include file="components/sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
-      <main class="p-6 w-[100vw]">
+      <main class="ml-0 sm:ml-[15rem] p-6 w-[100vw]">
         <h1 class="font-bold text-2xl">Subscription Page</h1>
         <!-- <p>Get started by editing <b>subscription.jsp</b> </p> -->
         <div class="flex justify-center flex-col items-center">

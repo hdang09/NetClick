@@ -1,4 +1,4 @@
-<aside class="min-w-[15rem] h-screen border-r-2 pl-8 pt-4">
+<aside class="hidden sm:block min-w-[15rem] h-screen border-r-2 pl-8 pt-4 fixed">
   <!-- LOGO -->
   <div class="text-primary">
     <i class="fa-solid fa-shekel-sign fa-2xl"></i>
