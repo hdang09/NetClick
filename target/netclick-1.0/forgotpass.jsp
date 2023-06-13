@@ -1,6 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html class="h-full">
   <head>
@@ -18,7 +15,7 @@
   </head>
   <!-- header -->
   <header class="w-screen">
-    <div class="flex container px-6 pt-6 -mb-14">
+    <div class="flex container px-6 py-6">
       <div class="items-center">
           <a href="index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
       </div>
@@ -28,48 +25,37 @@
   <body class="flex flex-col items-center justify-center h-full">
     <div class="flex-grow">
       <div class="w-full flex justify-center items-center mt-28">
-    <h1 class="block text-8xl font-light mb-8 mt-10 px-3 ">Welcome to </h1>
-    <div>
-      <h2 class="flex bg-blue-500 rounded text-7xl text-white font-light pb-2 mb- mt-10 px-3">NetClick</h2>
-    </div>
+    <h1 class="block text-8xl font-light mb-8 px-3 ">Forgot password</h1>
   </div>
   <div class="block -mb-3">
-    <h3 class="flex items-center justify-center text-2xl font-light">Explore unlimited movies, TV shows anywhere, anytime
+    <h3 class="flex items-center justify-center text-2xl font-light">We will send you an email with instructions on how to reset your password.
     </h3>
   </div>
       <div class="w-full max-w-md mx-auto">
         <div class="w-full">
             <div class="w-full max-w-md">
               <!-- login form -->
-              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-8 mb-12 mt-10 m-4">
-                  <div>
-                    <!-- user -->
-                  <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4" for="username">Username:</label> 
-                  <input
-                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="username" type="text" placeholder="Enter your username">
-                  </div>
+              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-10 mb-12 mt-10 m-4">
                   <div class="mb-4">
-                    <!-- password -->
-                  <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4 mt-4" for="password">Password:</label>
+                    <!-- Email -->
+                  <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4 mt-4" for="password">Enter your email:</label>
                   <input
                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                      id="password" type="password" placeholder="Enter your password">
+                      id="email" type="email" placeholder="name@example.com">
                   </div>
-                      <!-- button -->
-    <div class="flex items-center justify-between">
-      <button
-          class="bg-gray-50 hover:bg-gray-200 text-black font-thin py-2 px-14 rounded border-black border-solid border-2"
-          type="button"><a href="">
+                  <!-- button -->
+                  <div class="flex items-center justify-center">
+                    <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded w-fit border-black border-solid border-1" href="#">
+                      Email me
+                    </button>
+                  </div>
+                  <h1 class="flex items-center justify-center mt-1">or</h1>
+                  <div class="flex items-center justify-center">
+                        <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#"><a href="login.jsp">
                   Log in
                 </a>
-      </button>
-        <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded focus:outline-none border-black border-solid border-2">
-            <a href="/register.jsp">Sign in</a>
-      </button>
-      </div>
-      <h1 class="flex items-center justify-center mt-3 text-gray-900 opacity-100 hover:opacity-50">
-          <a href="/forgotpass.jsp">Forgot password?</a></h1>
+                </button>
+                  </div>
       <!-- end button -->
                 </div>          
               </div>
@@ -78,7 +64,7 @@
         </div>
         <!-- end form -->
         <!-- footer -->
-        <footer class="inline-block w-full bg-gray-800 ">
+        <footer class="inline-block w-full bg-gray-800 sticky bottom-0">
           <div class="flex items-center justify-center mt-4 mb-2">
               <a href="#" class="inline-block w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2 transition-opacity duration-300 hover:bg-opacity-50">
                 <i class="fa-brands fa-instagram text-white"></i>  
@@ -91,15 +77,16 @@
               </a>
           </div>
           <ul class="list-none flex justify-center">
-              <li class="mx-2"><a href="index.jsp" class="text-white opacity-80 hover:opacity-100">Home</a></li>
+              <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Home</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Services</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">About</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Terms</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Privacy Policy</a></li>
           </ul>
-          <p class="text-center text-gray-500 text-xs mt-6">NetClick Â©2023</p>
+          <p class="text-center text-gray-500 text-xs mt-6">NetClick ©2023</p>
       </footer>
       
   </body>
   
 </html>
+

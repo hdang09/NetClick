@@ -18,9 +18,9 @@
   </head>
   <!-- header -->
   <header class="w-screen">
-    <div class="block container px-6 py-6">
+    <div class="flex container px-6 pt-6 -mb-14">
       <div class="items-center">
-       <a href="index.jps"><img src="img/favicon.png" alt="Logo" class="h-12"></a>
+          <a href="index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-12"></a>
       </div>
     </div>
   </header>  
@@ -28,9 +28,9 @@
   <body class="flex flex-col items-center justify-center h-full">
     <div class="flex-grow">
       <div class="w-full flex justify-center items-center mt-28">
-    <h1 class="block text-8xl font-light mb-8 mt-28 px-3 ">Welcome to </h1>
+    <h1 class="block text-8xl font-light mb-8 mt-10 px-3 ">Welcome to </h1>
     <div>
-      <h2 class="flex bg-blue-500 rounded text-7xl text-white font-light pb-2 mb- mt-28 px-3">NetClick</h2>
+      <h2 class="flex bg-blue-500 rounded text-7xl text-white font-light pb-2 mb- mt-10 px-3">NetClick</h2>
     </div>
   </div>
   <div class="block -mb-3">
@@ -41,7 +41,7 @@
         <div class="w-full">
             <div class="w-full max-w-md">
               <!-- login form -->
-              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-8 mb-12 mt-28 m-4">
+              <form class="bg-slate-100 shadow-md rounded px-8 pt-6 pb-8 mb-12 mt-10 m-4">
                   <div>
                     <!-- user -->
                   <label class="inline-block px-1 bg-gray-300 rounded text-gray-700 text-2xl font-bold mb-4" for="username">Username:</label> 
@@ -60,15 +60,16 @@
     <div class="flex items-center justify-between">
       <button
           class="bg-gray-50 hover:bg-gray-200 text-black font-thin py-2 px-14 rounded border-black border-solid border-2"
-          type="button">
-          Login
+          type="button"><a href="">
+                  Log in
+                </a>
       </button>
-      <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded focus:outline-none border-black border-solid border-2" href="#">
-          Sign in 
+        <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-2 px-14 rounded focus:outline-none border-black border-solid border-2">
+            <a href="/register.jsp">Sign in</a>
       </button>
       </div>
       <h1 class="flex items-center justify-center mt-3 text-gray-900 opacity-100 hover:opacity-50">
-        <a href="#">Forgot password?</a></h1>
+          <a href="/forgotpass.jsp">Forgot password?</a></h1>
       <!-- end button -->
                 </div>          
               </div>
@@ -90,7 +91,7 @@
               </a>
           </div>
           <ul class="list-none flex justify-center">
-              <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Home</a></li>
+              <li class="mx-2"><a href="index.jsp" class="text-white opacity-80 hover:opacity-100">Home</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Services</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">About</a></li>
               <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Terms</a></li>
