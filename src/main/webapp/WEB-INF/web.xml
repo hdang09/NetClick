@@ -13,6 +13,10 @@
         <servlet-class>controllers.SubscriptionController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SubscriptionPlanController</servlet-name>
+        <servlet-class>controllers.SubscriptionPlanController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TagsController</servlet-name>
         <servlet-class>controllers.TagsController</servlet-class>
     </servlet>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>SubscriptionController</servlet-name>
         <url-pattern>/subscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubscriptionPlanController</servlet-name>
+        <url-pattern>/subscription-plan</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TagsController</servlet-name>
