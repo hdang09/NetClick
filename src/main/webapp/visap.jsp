@@ -1,11 +1,6 @@
-<%-- 
-    Document   : visap
-    Created on : Jun 13, 2023, 10:52:24 AM
-    Author     : Quan
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ include file="components/imports.jsp" %>
 <!DOCTYPE html>
 <html class="h-full">
   <head>
@@ -19,18 +14,24 @@
   <!-- header -->
   <header>
     <div class="flex container  m-0 px-6 py-6">
-      <div class="flex items-center">
-          <a href="/index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-20"></a>
-      </div>
     </div>
   </header>  
+    <%@ include file="components/sidebar.jsp" %>
   <!-- body -->
   <body class="flex flex-col h-full">
+          <!-- Back -->
+        <div class="flex justify-between items-center">
+            <a href="#" class="flex items-center font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+               focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 p-2 rounded-full absolute top-6 right-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <span class="text-sm ml-1">Back</span>
+            </a>
+          </div>
+          <!-- End Back -->
     <div class="flex-grow">
-      <div class="text-center mt-2 w-fit">
-        <p>>Payment</p>
-      </div>
-      <div class="flex justify-center items-center mt-2">
+      <div class="flex justify-center items-center mt-10 mb-0">
         <h1 class="text-8xl font-light mb-8 px-3">Set up your credit</h1> 
     </div>
     <div class="flex justify-center items-center mb-4">

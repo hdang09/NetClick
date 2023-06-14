@@ -5,16 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>NetClick</title>
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+        <%@ include file="components/imports.jsp" %>
   </head>
   <body>
     <div class="flex">
@@ -22,6 +13,17 @@
 
       <!-- MAIN CONTENT -->
       <main class="ml-0 sm:ml-[15rem] p-6 w-[100vw]">
+          <!-- Back -->
+        <div class="flex justify-between items-center">
+            <a href="#" class="flex items-center font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+               focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 p-2 rounded-full absolute top-6 right-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <span class="text-sm ml-1">Back</span>
+            </a>
+          </div>
+          <!-- End Back -->
         <h1 class="font-bold text-2xl">Subscription Page</h1>
         <!-- <p>Get started by editing <b>subscription.jsp</b> </p> -->
         <div class="flex justify-content flex-col items-center">
@@ -35,7 +37,7 @@
           </div>
         </div>
         <div class="flex justify-content flex-col items-center">
-          <a href="" class="flex items-center bg-gray-50 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
+            <a href="/visap.jsp" class="flex items-center bg-slate-100 transition-opacity duration-500 hover:bg-opacity-10 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
             <span class="text-2xl">Credit Card</span>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
@@ -44,7 +46,7 @@
             />
             <span class="text-4xl" style="margin-left: 250px">></span>
           </a>
-          <a href="" class="flex items-center bg-gray-50 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
+            <a href="/momop.jsp" class="flex items-center bg-slate-100 transition-opacity duration-500 hover:bg-opacity-10 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
             <span class="text-2xl">Digital Wallet</span>
             <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="" class="w-[25px] h-[25px]" />
             <img

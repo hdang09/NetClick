@@ -1,12 +1,4 @@
-<%-- 
-    Document   : momop
-    Created on : Jun 13, 2023, 10:48:17 AM
-    Author     : Quan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
 
 <!DOCTYPE html>
 <html class="h-full">
@@ -17,24 +9,19 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <%@ include file="components/imports.jsp" %>
   </head>
   <!-- header -->
   <header>
-    <div class="flex container  m-0 px-6 py-6">
-      <div class="flex items-center">
-          <a href="/index.jsp"><img src="assets/favicon.png" alt="Logo" class="h-20"></a>
-      </div>
-    </div>
+      <div class="block h-8 mt-10 pt-12"></div>
   </header>  
   <!-- body -->
   <body class="flex flex-col h-full">
+       <%@ include file="components/sidebar.jsp" %>
     <div class="flex-grow">
       <!-- Breadcrumbs -->
     <!-- End -->
     <!-- maincontent -->
-      <div class="text-center mt-6 w-fit">
-        <p>>Payment</p>
-      </div>
       <div class="flex justify-center items-center mt-2">
         <h1 class="text-8xl font-light mb-8 px-3">Set up your phone number</h1> 
     </div>
@@ -59,7 +46,9 @@
                         <p>1＄/month <br>Mobile</p>
                     </div>
                     <button type="submit"
-                    class="ml-auto block font-semibold rounded-md focus:outline-none text-blue-400 hover:text-blue-600 transition-colors">Change
+                            class="ml-auto block font-semibold rounded-md focus:outline-none text-blue-400 hover:text-blue-600 transition-colors"><a href="/subscription.jsp">
+                  Change
+                </a>
                 </button>
                 </div>
                 </ul>

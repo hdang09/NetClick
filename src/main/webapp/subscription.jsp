@@ -10,7 +10,6 @@
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
-
       <!-- MAIN CONTENT -->
       <main class="ml-0 sm:ml-[15rem] p-6 w-[100vw]">
         <h1 class="font-bold text-2xl">Subscription Page</h1>
@@ -39,7 +38,9 @@
             <span class="my-1">Quanlity: Good</span>
             <span class="my-1">Resolution: 480p</span>
             <span class="my-1">Devices: Phone, Tablet</span>
-            <a href="/subscription?plan=mobile" class="text-center bg-blue-500 text-white py-2 rounded-lg mt-12">2$</a>
+            <a href="/subscription-plan.jsp" class="text-center bg-blue-500 text-white py-2 rounded-lg mt-12
+               font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+          focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">2$</a>
           </div>
           <div class="border-1 border border-black flex flex-col p-3 mx-10 my-8 rounded-md" style="width: 200px">
             <i
@@ -49,7 +50,9 @@
             <span class="my-1">Quanlity: Good</span>
             <span class="my-1">Resolution: 720p</span>
             <span class="my-1">Devices: Phone, Tablet, Computer, TV</span>
-            <a href="/subscription?plan=basic" class="text-center bg-purple-500 text-white py-2 rounded-lg mt-6">5$</a>
+            <a href="/subscription?plan=basic" class="text-center bg-purple-500 text-white py-2 rounded-lg mt-6
+               font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+          focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">5$</a>
           </div>
           <div class="border-1 border border-black flex flex-col p-3 mx-10 my-8 rounded-md" style="width: 200px">
             <i
@@ -59,7 +62,9 @@
             <span class="my-1">Quanlity: Better</span>
             <span class="my-1">Resolution: 1080p</span>
             <span class="my-1">Devices: Phone, Tablet, Computer, TV</span>
-            <a href="/subscription?plan=standard" class="text-center bg-orange-500 text-white py-2 rounded-lg mt-6"
+            <a href="/subscription?plan=standard" class="text-center bg-orange-500 text-white py-2 rounded-lg mt-6
+               font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+          focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
               >10$</a
             >
           </div>
@@ -71,7 +76,9 @@
             <span class="my-1">Quanlity: Best</span>
             <span class="my-1">Resolution: 4K+HDR</span>
             <span class="my-1">Devices: Phone, Tablet, Computer, TV</span>
-            <a href="/subscription?plan=premium" class="text-center bg-red-500 text-white py-2 rounded-lg mt-6">20$</a>
+            <a href="/subscription?plan=premium" class="text-center bg-red-500 text-white py-2 rounded-lg mt-6
+               font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+          focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">20$</a>
           </div>
         </div>
       </main>
