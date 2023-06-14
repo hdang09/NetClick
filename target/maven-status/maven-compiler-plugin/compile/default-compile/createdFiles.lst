@@ -3,6 +3,7 @@ controllers\NewMoviesController.class
 controllers\RegisterController.class
 controllers\SubscriptionController.class
 dto\MovieDTO.class
+controllers\SubscriptionPlanController.class
 controllers\TagsController.class
 dao\AccountDAO.class
 controllers\PreviewController.class
