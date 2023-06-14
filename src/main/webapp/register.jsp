@@ -77,7 +77,9 @@
               </div>
               <h1 class="flex items-center justify-center mt-1">or</h1>
               <div class="flex items-center justify-center">
-                  <button class="bg-gray-300 hover:bg-gray-600 hover:text-white text-black font-thin py-1 px-7 rounded border-black border-solid border-1" href="#"><a href="login.jsp">
+                  <button class="inline-block text-xm p-2 text-white
+                        transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 
+                        focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" href="#"><a href="login.jsp">
                   Log in
                 </a>
                 </button>
@@ -87,27 +89,15 @@
         </div>
       </div>
     </div>
-    <footer class="inline-block w-screen bg-gray-800">
-      <div class="flex items-center justify-center mt-4 mb-2">
-        <a href="#" class="inline-block w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2 transition-opacity duration-300 hover:bg-opacity-50">
-          <i class="fab fa-instagram text-white"></i>
+     <!-- footer -->
+<footer class="dark:bg-gray-900 m-auto mb-0 w-screen">
+    <div class="container flex flex-col items-center justify-center p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
+        <a href="#">
+            <img class="w-auto h-7 pr-1" src="assets/favicon-removebg-preview.png" alt="">
         </a>
-        <a href="#" class="inline-block w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2 transition-opacity duration-300 hover:bg-opacity-50">
-          <i class="fab fa-twitter text-white"></i>
-        </a>
-        <a href="#" class="inline-block w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2 transition-opacity duration-300 hover:bg-opacity-50">
-          <i class="fab fa-facebook text-white"></i>
-        </a>
-      </div>
-      <ul class="list-none flex justify-center">
-        <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Home</a></li>
-        <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Services</a></li>
-        <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">About</a></li>
-        <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Terms</a></li>
-        <li class="mx-2"><a href="#" class="text-white opacity-80 hover:opacity-100">Privacy Policy</a></li>
-      </ul>
-      <p class="text-center text-gray-500 mt-2">NetClick ©2023</p>
-    </footer>
+        <p class="items-center text-sm text-gray-600 dark:text-gray-300">© Copyright 2023. All Rights Reserved.</p>
+    </div>
+</footer>
   </body>
 </html>
 
