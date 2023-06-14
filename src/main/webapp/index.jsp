@@ -31,6 +31,5 @@
 
       <%@ include file="components/cta.jsp" %>
     </div>
-    
   </body>
 </html>

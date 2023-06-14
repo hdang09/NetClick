@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class RegisterController extends HttpServlet {
+public class AdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +34,10 @@ public class RegisterController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterController</title>");            
+            out.println("<title>Servlet AdminController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,7 +55,23 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        final String MOVIE_MANAGEMENT_PAGE = "/admin/movie-mgmt.jsp";
+        final String USER_MANAGEMENT_PAGE = "/admin/user-mgmt.jsp";
+        final String ADMIN_DASHBOARD = "/admin/dashboard.jsp";
+
+        String uri = request.getRequestURI();
+        String path = uri.substring(uri.indexOf("/", 1) + 1);
+        switch (path) {
+            case "users":
+                request.getRequestDispatcher("/user-mgmt.jsp").forward(request, response);
+                break;
+            case "movies":
+                request.getRequestDispatcher("/movie-mgmt.jsp").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
+        }
+
     }
 
     /**
