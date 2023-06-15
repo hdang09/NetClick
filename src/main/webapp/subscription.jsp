@@ -38,7 +38,7 @@
             <span class="my-1">Quanlity: Good</span>
             <span class="my-1">Resolution: 480p</span>
             <span class="my-1">Devices: Phone, Tablet</span>
-            <a href="/subscription-plan.jsp" class="flex items-center justify-center bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 text-white py-2 rounded-lg mt-12
+            <a href="/subscription-plan.jsp?plan=mobile" class="flex items-center justify-center bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 text-white py-2 rounded-lg mt-12
                font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg h-11 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">2$</a>
           </div>
           <%-- BASIC --%>
@@ -50,7 +50,7 @@
             <span class="my-1">Quanlity: Good</span>
             <span class="my-1">Resolution: 720p</span>
             <span class="my-1">Devices: Phone, Tablet, Computer, TV</span>
-            <a href="/subscription?plan=basic" class="flex items-center justify-center bg-purple-500 hover:shadow-lg hover:shadow-purple-500/50 text-white py-2 rounded-lg mt-6
+            <a href="/subscription-plan.jsp?plan=basic" class="flex items-center justify-center bg-purple-500 hover:shadow-lg hover:shadow-purple-500/50 text-white py-2 rounded-lg mt-6
                font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg h-11 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">5$</a>
           </div>
           <%-- STANDARD --%>
@@ -62,7 +62,7 @@
             <span class="my-1">Quanlity: Better</span>
             <span class="my-1">Resolution: 1080p</span>
             <span class="my-1">Devices: Phone, Tablet, Computer, TV</span>
-            <a href="/subscription?plan=standard" class="flex items-center justify-center bg-orange-500 hover:shadow-lg hover:shadow-orange-500/50 text-white py-2 rounded-lg mt-6
+            <a href="/subscription-plan.jsp?plan=standard" class="flex items-center justify-center bg-orange-500 hover:shadow-lg hover:shadow-orange-500/50 text-white py-2 rounded-lg mt-6
                font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg h-11 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
               >10$</a
             >
@@ -76,7 +76,7 @@
             <span class="my-1">Quanlity: Best</span>
             <span class="my-1">Resolution: 4K+HDR</span>
             <span class="my-1">Devices: Phone, Tablet, Computer, TV</span>
-            <a href="/subscription?plan=premium" class="flex items-center justify-center bg-red-500 hover:shadow-lg hover:shadow-red-500/50 text-white py-2 rounded-lg mt-6
+            <a href="/subscription-plan.jsp?plan=premium" class="flex items-center justify-center bg-red-500 hover:shadow-lg hover:shadow-red-500/50 text-white py-2 rounded-lg mt-6
                font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg h-11 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">20$</a>
           </div>
         </div>
