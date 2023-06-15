@@ -19,10 +19,10 @@
 
 ## 1. Requirements
 
-- Name of your system: NetClick
-- What is the purpose of the system: To provide online movie browsing, searching, and watching, with admin features for managing accounts, and administering the movies.
-- Who use the system: Movie enthusiasts and admins managing the movies and accounts.
-- List all features your system can do, arrange the features in a specific classification:
+- **Name of your system**: NetClick
+- **What is the purpose of the system**: To provide online movie browsing, searching, and watching, with admin features for managing accounts, and administering the movies.
+- **Who use the system**: Movie enthusiasts and admins managing the movies and accounts.
+- **List all features your system can do, arrange the features in a specific classification**:
 
 ### User features
 
