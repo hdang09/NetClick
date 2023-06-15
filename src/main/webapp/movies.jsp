@@ -13,14 +13,14 @@
 
       <!-- MAIN CONTENT -->
       <main class="ml-0 sm:ml-[15rem] p-10 w-[100vw]">
-        <div style="margin-top: 50px">
-          <span class="font-bold text-3xl" style="margin-left: 320px">Lets Go</span>
-          <div class="flex justify-center items-center" style="margin-top: 100px">
+        <div class="mt-[10px]">
+          <span class="font-bold text-3xl ml-[120px]">${movie.title}</span>
+          <div class="flex justify-center items-center mt-[20px]">
             <iframe
               width="960"
               height="620"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="YouTube video player"
+              src= ${movie.movie_url}
+              title="${movie.title}"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
