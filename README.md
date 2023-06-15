@@ -1,13 +1,29 @@
 # NETCLICK - A Movie Web Application
 
-NetClick is an internet-connected streaming service that operates on a subscription model
+<div align="center">
+    <img src="./.github/favicon.png" alt="Logo" width="60" height="60" />
+    <h1 color="#8AAAE5">NetClick</h1>
+</div>
+<p align="center">NetClick is an internet-connected streaming service that operates on a subscription model</p>
+
+## 0. Introduction
+
+- Team members:
+  - Trần Hải Đăng
+  - Trần Tấn Thành
+  - Trần Minh Quân
+- Technologies in use:
+  - Tailwind CSS
+  - Chart.js
+  - JSP, Servlet
+  - Microsoft SQL Server
 
 ## 1. Requirements
 
-<!-- - Name of your system: NetClick
-- What is the purpose of the system: ...
-- Who use the system: For everyone
-- List all features your system can do, arrange the features in a specific classification: -->
+- Name of your system: NetClick
+- What is the purpose of the system: To provide online movie browsing, searching, and watching, with admin features for managing accounts, and administering the movies.
+- Who use the system: Movie enthusiasts and admins managing the movies and accounts.
+- List all features your system can do, arrange the features in a specific classification:
 
 ### User features
 
@@ -27,7 +43,7 @@ When a user selects a movie, the application displays detailed information about
 
 The application also provides additional sections to enhance the browsing experience. The "Top List" section showcases popular movies, and the "Incoming Movies" section highlights upcoming releases. Additionally, the application offers recommendations based on user preferences and viewing history, suggesting movies that users might enjoy.
 
-**History and Like Button**
+**History and Like Button** (Future plans)
 
 The history and like button feature lets users mark movies as favorites, keeping track of their preferences. It saves this information for easy access and also records the user's watched movie history, allowing them to resume from where they left off.
 
@@ -43,18 +59,18 @@ The ticket purchasing feature allows users to purchase subscriptions for watchin
 
 Users can view their transaction history through the transaction history feature. This feature provides a record of past purchases and upcoming ticket reservations. Users can refer to this history to track their movie-related transactions, including subscriptions and ticket reservations.
 
-### Admin Features (Future plans)
+### Admin Features
 
 **Movie Management**
 
-• Admins should beable to add, edit, and delete movies from the application.\
-• Admins should be able to upload trailers and promotional materials for each movie.\
-• Admins should be able to set showtimes and update availability for each movie.
+- Admins should beable to add, edit, and delete movies from the application.
+- Admins should be able to upload trailers and promotional materials for each movie.
+- Admins should be able to set showtimes and update availability for each movie.
 
 **User Management**
 
-• Admins should be able to view and manage user accounts, including resetting passwords and deleting accounts if necessary.\
-• Admins should be able to view user transaction history and refund purchases if necessary.
+- Admins should be able to view and manage user accounts, including resetting passwords and deleting accounts if necessary.
+- Admins should be able to view user transaction history and refund purchases if necessary.
 
 ## 2. Wireframe or screenshots of the system
 
@@ -70,19 +86,19 @@ If username exists or retype password not match, it will show the message:
 
 ### Login page
 
-Here is the login page:
+<!-- Here is the login page: -->
 <img src="./.github/login-page.png" />
 If the password is wrong, it will show the message:
 <img src="./.github/login-error.png" />
 
 ### Home page
 
-Here is the home page:
+<!-- Here is the home page: -->
 <img src="./.github/home-page.png" />
 
 ### Preview page
 
-Here is the preview page for the film:
+<!-- Here is the preview page for the film: -->
 <img src="./.github/preview-page.png" />
 
 ### Movie page
@@ -93,16 +109,38 @@ If the user has purchased subscription, it will navigate to the **Movie page**
 ### Subscription page
 
 If the user hasn't purchased subscription, it will navigate to the **Subscription page**
-<img src="./.github/subscription-page.png" />\
+<img src="./.github/subscription-page.png" /><br />
 \The user can choose which payment method to pay:
 <img src="./.github/subscription-page-2.png" />
 
 ### Payment page
 
 Here is the page if the user choose to pay with credit card:
-<img src="./.github/payment-credit.png" />\
+<img src="./.github/payment-credit.png" /><br />
 And here is with digital card:
 <img src="./.github/payment-digital.png" />
+
+### Dashboard page (Admin)
+
+<img src="./.github/dashboard.png" />
+
+### User Management page (Admin)
+
+<img src="./.github/user-mgmt.png" />
+
+### Movie Management page (Admin)
+
+<img src="./.github/movie-mgmt.png" />
+
+### Movie Detail page (Admin)
+
+<img src="./.github/movie-detail.png" />
+
+### Movie Form page (Admin)
+
+This page is used for creating and editing the movie
+
+<img src="./.github/movie-form.png" />
 
 ## 3. Database design
 
@@ -113,6 +151,35 @@ You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagr
 
 ## 5. Conclusion and Discussion
 
-<!-- - The pros and cons of your application: ...
-- What you've learned during developing of your application: ...
-- What would you improve your application in the future: ... -->
+### Pros of NetClick:
+
+- Provides a comprehensive movie browsing and searching experience for users.
+- Offers various subscription options for users to choose from.
+- Allows users to mark movies as favorites and track their viewing history.
+- Provides admins with the ability to manage movies and user accounts efficiently.
+- Offers a transaction history feature for users to track their purchases.
+
+### Cons of NetClick:
+
+- The application may face competition from existing online movie streaming platforms.
+- The application's success may depend on the availability of popular and quality movie content.
+- The application may require a significant amount of resources to maintain and update its database regularly.
+
+### What was learned during the development of NetClick:
+
+- .....
+- .....
+- .....
+
+  <!-- - Developing an online movie streaming application requires a lot of effort and resources.
+  - The importance of ensuring the security of user information, especially during registration and login processes.
+  - The need to keep track of user preferences and viewing history to provide personalized recommendations and enhance the user experience.
+  - The importance of offering multiple payment options for user convenience. -->
+
+### Improvements for NetClick in the future:
+
+- Integrate a feature that allows users to create watchlists for easy access to movies they plan to watch.
+- Provide subtitles and dubbing options for users who prefer to watch movies in languages other than the original.
+- Implement a feature that suggests movies based on real-time user activities such as search queries and browsing history.
+- Offer a feature that provides users with recommendations for similar movies they may enjoy based on their ratings and reviews.
+- Integrate with social media platforms to allow users to share their reviews and ratings with friends and followers.
