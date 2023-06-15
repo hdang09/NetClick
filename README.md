@@ -1,7 +1,8 @@
 # NETCLICK - A Movie Web Application
 
 <div align="center">
-    <img src="./.github/netclick.png" alt="Logo"  />
+    <img src="./.github/favicon.png" alt="Logo" width="60" height="60" />
+    <h1 style="border: 0; margin: 0; color: #8AAAE5; font-weight: 700">NetClick</h1>
     <p>NetClick is an internet-connected streaming service that operates on a subscription model</p>
 </div>
 
