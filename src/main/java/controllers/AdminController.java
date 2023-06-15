@@ -4,8 +4,12 @@
  */
 package controllers;
 
+import dao.MovieDAO;
+import dto.MovieDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +62,7 @@ public class AdminController extends HttpServlet {
         final String MOVIE_MANAGEMENT_PAGE = "/admin/movie-mgmt.jsp";
         final String USER_MANAGEMENT_PAGE = "/admin/user-mgmt.jsp";
         final String ADMIN_DASHBOARD = "/admin/dashboard.jsp";
+        final int MOVIES_EACH_PAGE = 5;
 
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
@@ -65,7 +70,49 @@ public class AdminController extends HttpServlet {
             case "users":
                 request.getRequestDispatcher("/user-mgmt.jsp").forward(request, response);
                 break;
+            case "add-movie":
+                request.getRequestDispatcher("/edit-movie.jsp").forward(request, response);
+                break;
             case "movies":
+                // Delete movie
+                String deleteID = request.getParameter("deleteID");
+                if (deleteID != null) {
+                    int id = Integer.parseInt(deleteID);
+                    new MovieDAO().delete(id);
+                    response.sendRedirect("/admin/movies");
+                    return;
+                }
+
+                // TODO: Edit movie
+                String editID = request.getParameter("editID");
+                if (editID != null) {
+                    int id = Integer.parseInt(editID);
+                    MovieDTO movie = new MovieDAO().getById(id);
+                    request.setAttribute("movie", movie);
+                    request.getRequestDispatcher("/edit-movie.jsp").forward(request, response);
+                    return;
+                }
+
+                // Pagination
+                String idParam = request.getParameter("id");
+                if (idParam != null) {
+                    int id = Integer.parseInt(idParam);
+                    MovieDTO movie = new MovieDAO().getById(id);
+                    request.setAttribute("movie", movie);
+                    request.getRequestDispatcher("/movie-detail.jsp").forward(request, response);
+                    return;
+                }
+
+                List<MovieDTO> movies = new MovieDAO().getAll();
+                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
+                String startPageParam = request.getParameter("page");
+                if (startPageParam != null) {
+                    int startPage = Integer.parseInt(startPageParam);
+                    movies = movies.subList((startPage - 1) * MOVIES_EACH_PAGE, startPage * MOVIES_EACH_PAGE);
+                } else {
+                    movies = movies.subList(0, MOVIES_EACH_PAGE);
+                }
+                request.setAttribute("movies", movies);
                 request.getRequestDispatcher("/movie-mgmt.jsp").forward(request, response);
                 break;
             default:
@@ -85,6 +132,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // TODO: Edit movie
         processRequest(request, response);
     }
 
