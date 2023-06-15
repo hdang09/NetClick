@@ -71,7 +71,7 @@ public class AdminController extends HttpServlet {
                 request.getRequestDispatcher("/user-mgmt.jsp").forward(request, response);
                 break;
             case "add-movie":
-                request.getRequestDispatcher("/edit-movie.jsp").forward(request, response);
+                request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
                 break;
             case "movies":
                 // Delete movie
@@ -89,7 +89,7 @@ public class AdminController extends HttpServlet {
                     int id = Integer.parseInt(editID);
                     MovieDTO movie = new MovieDAO().getById(id);
                     request.setAttribute("movie", movie);
-                    request.getRequestDispatcher("/edit-movie.jsp").forward(request, response);
+                    request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
                     return;
                 }
 
