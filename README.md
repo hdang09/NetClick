@@ -2,7 +2,6 @@
 
 <div align="center">
     <img src="./.github/favicon.png" alt="Logo" width="60" height="60" />
-    <p style="border: 0; margin: 0; color: #8AAAE5; font-weight: 800; font-size: 24px;">NetClick</p>
     <p>NetClick is an internet-connected streaming service that operates on a subscription model</p>
 </div>
 
