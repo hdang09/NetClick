@@ -83,7 +83,7 @@ public class AdminController extends HttpServlet {
                     return;
                 }
 
-                // TODO: Edit movie
+                // Edit movie
                 String editID = request.getParameter("editID");
                 if (editID != null) {
                     int id = Integer.parseInt(editID);
@@ -132,8 +132,37 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO: Edit movie
-        processRequest(request, response);
+        final int MAXIMUM_RATING = 5;
+
+        String title = request.getParameter("title");
+        String movieURL = request.getParameter("movie-url");
+        String description = request.getParameter("description");
+        String release = request.getParameter("release");
+        String director = request.getParameter("director");
+        String thumnailURL = request.getParameter("thumnail-url");
+        // TODO: Update TAG code
+        String tag = request.getParameter("tag");
+        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tag);
+
+        // TODO: Validate all fields 
+//        if (true) {
+//            request.setAttribute("titleMsg", "Minimum 5 characters");
+//            request.setAttribute("movie", movie);
+//            request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
+//            return;
+//        }
+
+        String action = request.getParameter("action");
+        switch (action) {
+            case "add":
+                new MovieDAO().add(movie);
+                break;
+            case "edit":
+                new MovieDAO().update(movie);
+                break;
+        }
+
+        response.sendRedirect("/admin/movies");
     }
 
     /**

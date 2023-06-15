@@ -4,8 +4,6 @@
  */
 package dto;
 
-import java.time.LocalDate;
-
 /**
  *
  * @author Admin
@@ -17,15 +15,26 @@ public class MovieDTO {
     private String description;
     private String thumbnail;
     private String movie_url;
-    private LocalDate release;
+    private String release;
     private String director;
     private int rating;
     private String tag;
 
     public MovieDTO() {
     }
+    
+    public MovieDTO(String title, String description, String thumbnail, String movie_url, String release, String director, int rating, String tag) {
+        this.title = title;
+        this.description = description;
+        this.thumbnail = thumbnail;
+        this.movie_url = movie_url;
+        this.release = release;
+        this.director = director;
+        this.rating = rating;
+        this.tag = tag;
+    }
 
-    public MovieDTO(int ID, String title, String description, String thumbnail, String movie_url, LocalDate release, String director, int rating, String tag) {
+    public MovieDTO(int ID, String title, String description, String thumbnail, String movie_url, String release, String director, int rating, String tag) {
         this.ID = ID;
         this.title = title;
         this.description = description;
@@ -77,11 +86,11 @@ public class MovieDTO {
         this.movie_url = movie_url;
     }
 
-    public LocalDate getRelease() {
+    public String getRelease() {
         return release;
     }
 
-    public void setRelease(LocalDate release) {
+    public void setRelease(String release) {
         this.release = release;
     }
 

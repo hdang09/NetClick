@@ -40,7 +40,7 @@ public class MovieDAO {
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
                 ArrayList tags = new ArrayList();
-                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, LocalDate.MAX, director, rating, director);
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, director);
                 movies.add(movie);
             }
             return movies;
@@ -67,7 +67,7 @@ public class MovieDAO {
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
                 // ArrayList tags = new ArrayList();
-                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, LocalDate.MAX, director, rating, director);
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, director);
                 return movie;
             }
         } catch (SQLException ex) {
@@ -97,7 +97,7 @@ public class MovieDAO {
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
                 // ArrayList tags = new ArrayList();
-                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, LocalDate.MAX, director, rating, director);
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tag);
                 movies.add(movie);
             }
             return movies;
@@ -115,5 +115,13 @@ public class MovieDAO {
 
     public void delete(int id) {
         // TODO: Add delete function
+    }
+
+    public void add(MovieDTO movie) {
+        // TODO: Add this function
+    }
+
+    public void update(MovieDTO movie) {
+        // TODO: Add update function
     }
 }
