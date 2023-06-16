@@ -56,7 +56,7 @@
                   <div class="w-1/2">
                     <label for="cvv" class="block text-gray-800 font-semibold">CVV</label>
                     <input id="cvv" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                      placeholder="CVV">
+                      placeholder="CVV" maxlength="3">
                   </div>
                 </div>
                 <div>
