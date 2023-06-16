@@ -37,6 +37,14 @@
         <jsp-file>/register.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>momop</servlet-name>
+        <jsp-file>/momop.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>visap</servlet-name>
+        <jsp-file>/visap.jsp</jsp-file>
+    </servlet>
+    <servlet>
         <servlet-name>PaymentController</servlet-name>
         <servlet-class>controllers.PaymentController</servlet-class>
     </servlet>
@@ -83,6 +91,14 @@
     <servlet-mapping>
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>momop</servlet-name>
+        <url-pattern>/momo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>visap</servlet-name>
+        <url-pattern>/visa</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PaymentController</servlet-name>
