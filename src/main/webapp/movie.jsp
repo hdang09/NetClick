@@ -19,7 +19,7 @@
             <iframe
               width="960"
               height="620"
-              src= ${movie.movie_url}
+              src="${movie.movie_url}"
               title="${movie.title}"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

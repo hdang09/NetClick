@@ -8,7 +8,6 @@ import dao.MovieDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class SubscriptionPlanController extends HttpServlet {
+public class MovieController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +35,10 @@ public class SubscriptionPlanController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewMoviesController</title>");            
+            out.println("<title>Servlet PreviewController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewMoviesController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PreviewController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +56,9 @@ public class SubscriptionPlanController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("subscription-plan.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("movie", new MovieDAO().getById(id));
+        request.getRequestDispatcher("movie.jsp").forward(request, response);
     }
 
     /**

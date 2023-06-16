@@ -25,8 +25,8 @@
         <servlet-class>controllers.TagsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>MoviesController</servlet-name>
-        <servlet-class>controllers.MoviesController</servlet-class>
+        <servlet-name>MovieController</servlet-name>
+        <servlet-class>controllers.MovieController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewMoviesController</servlet-name>
@@ -73,8 +73,8 @@
         <url-pattern>/tags</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>MoviesController</servlet-name>
-        <url-pattern>/movies</url-pattern>
+        <servlet-name>MovieController</servlet-name>
+        <url-pattern>/movie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NewMoviesController</servlet-name>
@@ -92,10 +92,6 @@
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/a</url-pattern>
     </servlet-mapping>
-    <!--    <servlet-mapping>
-        <servlet-name>admin</servlet-name>
-        <url-pattern>/admin/users</url-pattern>
-    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/admin/*</url-pattern>

@@ -93,7 +93,7 @@ public class AdminController extends HttpServlet {
                     return;
                 }
 
-                // Pagination
+                // Movie Details
                 String idParam = request.getParameter("id");
                 if (idParam != null) {
                     int id = Integer.parseInt(idParam);
@@ -103,6 +103,7 @@ public class AdminController extends HttpServlet {
                     return;
                 }
 
+                // Pagination
                 List<MovieDTO> movies = new MovieDAO().getAll();
                 request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
                 String startPageParam = request.getParameter("page");
@@ -132,6 +133,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Movie form: add/ edit
         final int MAXIMUM_RATING = 5;
 
         String title = request.getParameter("title");
