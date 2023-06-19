@@ -26,7 +26,7 @@
           </div>
 
           <!-- form -->
-          <form action="AuthController" method="POST">
+          <form action="/AuthController" method="POST">
             <p class="ml-3 my-4 text-black">Please login to your account</p>
             <!-- Username-->
             <div class="relative flex items-center">
@@ -81,11 +81,11 @@
             </div>
             <!--Submit-->
             <div class="pt-1 pb-4 mb-auto text-center mt-">
-              <button
+              <input
+                type="submit"
                 class="my-3 inline-block w-full px-6 pb-2 pt-2.5 text-lg uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 text-white"
-              >
-                Log in
-              </button>
+                value="Log insdfa"
+              />
               <!--Forgot password-->
               <h1 class="flex items-center justify-center mt-3 text-gray-900 opacity-100 hover:opacity-50">
                 <a href="/forgot-pass">Forgot password?</a>
