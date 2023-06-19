@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +13,6 @@
       <!-- MAIN CONTENT -->
       <main class="ml-0 sm:ml-[15rem] p-6 border-r-2 flex-1">
         <%@ include file="components/navbar.jsp" %>
-
         <img
           src="https://collider.com/wp-content/uploads/the-avengers-movie-poster-banners-04.jpg"
           alt="Banner"

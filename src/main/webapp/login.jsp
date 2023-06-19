@@ -104,7 +104,7 @@
   </section>
 </body>
      <!-- footer -->
-<footer class="bg-white dark:bg-gray-900 m-auto mb-0 w-screen">
+<footer class="inline-block bg-white dark:bg-gray-900 m-auto mb-0 w-screen">
     <div class="container flex flex-col items-center justify-center p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
         <a href="#">
             <img class="w-auto h-7 pr-1" src="assets/favicon-removebg-preview.png" alt="">

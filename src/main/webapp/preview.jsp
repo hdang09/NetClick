@@ -10,9 +10,9 @@
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
-
       <!-- MAIN CONTENT -->
       <main class="ml-0 sm:ml-[15rem] p-6 w-full">
+        <%@ include file="components/navbar.jsp" %>
         <div class="flex rounded-lg">
           <!-- Left content -->
           <div class="w-[40rem] bg-slate-200 text-xl p-6">
@@ -68,7 +68,9 @@
             <c:forEach begin="1" end="7"> <%@ include file="components/movie.jsp" %> </c:forEach>
           </ul>
         </div>
+          
       </main>
     </div>
+
   </body>
 </html>
