@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import dao.MovieDAO;
+import dto.MovieDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -58,13 +60,24 @@ public class SubscriptionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        if (username != null) {
-            request.getRequestDispatcher("watch.jsp").forward(request, response);
+        String plan = request.getParameter("plan");
+        if (plan != null) {
+            request.getRequestDispatcher("subscription-plan.jsp").forward(request, response);
             return;
         }
-        request.getRequestDispatcher("subscription.jsp").forward(request, response);
+
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        String idMovie = request.getParameter("id");
+        if (username == null || idMovie == null) {
+            request.getRequestDispatcher("subscription.jsp").forward(request, response);
+            return;
+        }
+        
+        int id = Integer.parseInt(idMovie);
+        MovieDTO movie = new MovieDAO().getById(id);
+        request.setAttribute("movie", movie);
+        response.sendRedirect("/movie?id=" + id);
     }
 
     /**

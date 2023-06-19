@@ -34,7 +34,7 @@ public class PaymentController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PaymentController</title>");            
+            out.println("<title>Servlet PaymentController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet PaymentController at " + request.getContextPath() + "</h1>");
@@ -55,7 +55,18 @@ public class PaymentController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("payment.jsp").forward(request, response);
+        String payment = request.getParameter("payment");
+        if (payment.equals("visa")) {
+            request.getRequestDispatcher("visap.jsp").forward(request, response);
+            return;
+        }
+
+        if (payment.equals("momo")) {
+            request.getRequestDispatcher("momop.jsp").forward(request, response);
+            return;
+        }
+
+        response.sendRedirect("/subscription");
     }
 
     /**
@@ -69,7 +80,14 @@ public class PaymentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        // TODO: Validate form using isValid variable
+        boolean isValid = true;
+        if (isValid) {
+            response.sendRedirect("/movie?id=1");
+            return;
+        }
+        
+        response.sendRedirect("subscriptin.jsp");
     }
 
     /**

@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="assets/favicon.png">
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 
 <!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>

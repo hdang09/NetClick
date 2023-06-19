@@ -1,4 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,9 +11,9 @@
   <body>
     <div class="flex">
       <%@ include file="components/sidebar.jsp" %>
+
       <!-- MAIN CONTENT -->
       <main class="ml-0 sm:ml-[15rem] p-6 w-full">
-        <%@ include file="components/navbar.jsp" %>
         <div class="flex rounded-lg">
           <!-- Left content -->
           <div class="w-[40rem] bg-slate-200 text-xl p-6">
@@ -31,36 +32,36 @@
               </div>
             </div>
 
-            <!-- Buttons-->
-            <div class="mt-12 flex">
-              <a
-                href="/404.jsp"
-                class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md"
-                >+ Wishlist</a
-              >
-              <a
-                href="/subscription"
-                class="inline-flex justify-center items-center w-40 h-12 bg-slate-400 text-white rounded-md ml-4"
-                >> Watch</a
-              >
-            </div>
+                        <!-- Buttons-->
+                        <div class="mt-12 flex">
+                            <a
+                                href="/404.jsp"
+                                class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md"
+                                >+ Wishlist</a
+                            >
+                            <a
+                                href="/subscription"
+                                class="inline-flex justify-center items-center w-40 h-12 bg-slate-400 text-white rounded-md ml-4"
+                                >> Watch</a
+                            >
+                        </div>
 
-            <!-- Movie info -->
-            <div class="mt-12">
-              <p>Release date: ${movie.release}</p>
-              <p>Director: ${movie.director}</p>
-              <p>Tags:</p>
-            </div>
+                        <!-- Movie info -->
+                        <div class="mt-12">
+                            <p>Release date: ${movie.release}</p>
+                            <p>Director: ${movie.director}</p>
+                            <p>Tags:</p>
+                        </div>
 
-            <!-- Description -->
-            <p class="mt-12">${movie.description}</p>
-          </div>
+                        <!-- Description -->
+                        <p class="mt-12">${movie.description}</p>
+                    </div>
 
-          <!-- Right content -->
-          <div class="flex justify-center items-center flex-1">
-            <img src="${movie.thumbnail}" alt="Thumbnail" class="w-96" />
-          </div>
-        </div>
+                    <!-- Right content -->
+                    <div class="flex justify-center items-center flex-1">
+                        <img src="${movie.thumbnail}" alt="Thumbnail" class="w-96" />
+                    </div>
+                </div>
 
         <div class="mt-4">
           <h2 class="font-bold text-xl text-slate-400">SIMILAR</h2>
@@ -68,9 +69,7 @@
             <c:forEach begin="1" end="7"> <%@ include file="components/movie.jsp" %> </c:forEach>
           </ul>
         </div>
-          
       </main>
     </div>
-
   </body>
 </html>
