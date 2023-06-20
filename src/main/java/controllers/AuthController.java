@@ -59,9 +59,23 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    processRequest(request, response);
+        String username = request.getParameter("user");
+            String password = request.getParameter("pass");
+            String re_pass = request.getParameter("repass");
+            if(!password.equals(re_pass)){
+            response.sendRedirect("/login.jsp");
+            } else {
+            AccountDAO accountdao = new AccountDAO();
+            AccountDTO a = accountdao.checkAccountExist(username);
+            if (a == null) {
+            accountdao.register(username, password);
+            response.sendRedirect("/register.jsp");
+            } else {
+            response.sendRedirect("/login.jsp");
+            }
+    
 
-    }
+    }}
 
     /**
     * Handles the HTTP <code>POST</code> method.
@@ -74,18 +88,6 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-            PrintWriter out = response.getWriter();
-            String action = request.getParameter("action");
-            if (action != null && action.equals("login")) {
-            handleLogin(request, response);
-            } else if (action != null && action.equals("register")) {
-            handleRegister(request, response);
-            }
-            }
-            // LOGIN
-            private void handleLogin(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
             String username = request.getParameter("user");
             String password = request.getParameter("pass");
             AccountDAO accountdao = new AccountDAO();
@@ -93,11 +95,12 @@ public class AuthController extends HttpServlet {
                 if (user != null) {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("tendangnhap", username);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");
-                    dispatcher.forward(request, response);
+                    RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/index.jsp");
+                    dispatch.forward(request, response);
             } else {
                     request.setAttribute("mess", "Wrong user or password");
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                    RequestDispatcher dispatch= getServletContext().getRequestDispatcher("/login.jsp");
+                    dispatch.forward(request, response);
             }
     }
 

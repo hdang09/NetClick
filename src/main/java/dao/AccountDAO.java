@@ -8,6 +8,7 @@ import dto.AccountDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import utils.DBUtils;
 
 /**
@@ -25,7 +26,7 @@ public class AccountDAO {
             ps.setString(1, user);
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
+            while(rs.next()){
                      return new AccountDTO(
                                     rs.getInt(1),
                                     rs.getString(2),
@@ -34,7 +35,7 @@ public class AccountDAO {
                                     rs.getInt(5),
                                     rs.getInt(6));
             }
-    } catch (Exception e){
+    } catch (SQLException e){
         
     }
         return null;
