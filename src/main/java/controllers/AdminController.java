@@ -146,13 +146,30 @@ public class AdminController extends HttpServlet {
         String tag = request.getParameter("tag");
         MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tag);
 
-        // TODO: Validate all fields 
-//        if (true) {
-//            request.setAttribute("titleMsg", "Minimum 5 characters");
-//            request.setAttribute("movie", movie);
-//            request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
-//            return;
-//        }
+        boolean isValid = true;
+        // Validate title 
+        if (title.length() < 2) {
+            request.setAttribute("titleMsg", "Minimum 2 characters");
+            isValid = false;
+        }
+        
+        // Validate description 
+        if (description.length() < 2) {
+            request.setAttribute("descriptionMsg", "Minimum 2 characters");
+            isValid = false;
+        }
+        
+        // Validate director 
+        if (director.length() < 2) {
+            request.setAttribute("directorMsg", "Minimum 2 characters");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            request.setAttribute("movie", movie);
+            request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
+            return;
+        }
 
         String action = request.getParameter("action");
         switch (action) {
