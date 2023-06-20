@@ -51,6 +51,7 @@
                 type="text"
                 class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Username"
+                name="user"
               />
             </div>
 
@@ -75,7 +76,9 @@
 
               <input
                 type="password"
-                class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                name="pass"
+                class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 
+                focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Password"
               />
             </div>
@@ -84,8 +87,8 @@
               <input
                 type="submit"
                 class="my-3 inline-block w-full px-6 pb-2 pt-2.5 text-lg uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 text-white"
-                value="Log insdfa"
-              />
+                value="Log in"
+                /> <p class="text-red-400">${mess}</p>
               <!--Forgot password-->
               <h1 class="flex items-center justify-center mt-3 text-gray-900 opacity-100 hover:opacity-50">
                 <a href="/forgot-pass">Forgot password?</a>
@@ -109,14 +112,4 @@
       </div>
   </section>
 </body>
-     <!-- footer -->
-<footer class="bg-white dark:bg-gray-900 m-auto mb-0 w-screen">
-    <div class="container flex flex-col items-center justify-center p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
-        <a href="#">
-            <img class="w-auto h-7 pr-1" src="assets/favicon-removebg-preview.png" alt="">
-        </a>
-
-        <p class="items-center text-sm text-gray-600 dark:text-gray-300">© Copyright 2023. All Rights Reserved.</p>
-    </div>
-</footer>
 </html>
