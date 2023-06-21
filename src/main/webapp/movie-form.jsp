@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>JSP Page</title>
+    <title>Movie Form Page - NetClick</title>
     <%@ include file="../../components/imports.jsp" %>
   </head>
   <body>
@@ -71,7 +71,7 @@
                   />
                 </div>
 
-                <p class="mt-3 text-xs text-red-400">${titleMsg == null ? "" : titleMsg}</p>
+                <!--<p class="mt-3 text-xs text-red-400">${titleMsg == null ? "" : titleMsg}</p>-->
               </div>
 
               <!-- Description Input -->
@@ -84,7 +84,7 @@
                   class="block mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4 h-36 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                 >${movie.description}</textarea>
 
-                <p class="mt-3 text-xs text-red-400">${titleMsg == null ? "" : titleMsg}</p>
+                <p class="mt-3 text-xs text-red-400">${descriptionMsg == null ? "" : titleMsg}</p>
               </div>
 
               <div>
@@ -97,6 +97,8 @@
                     type="date"
                     class="block mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                   />
+                  
+                <p class="mt-3 text-xs text-red-400">${descriptionMsg == null ? "" : titleMsg}</p>
                 </div>
 
                 <!-- DIRECTOR Input -->
