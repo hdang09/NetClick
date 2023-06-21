@@ -81,7 +81,6 @@ public class AuthController extends HttpServlet {
                 RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/login.jsp");
                 dispatch.forward(request, response);
             }
-            
             AccountDAO accountdao = new AccountDAO();
             AccountDTO user = accountdao.login(username, password);
                 if (user != null) {
