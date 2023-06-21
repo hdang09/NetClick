@@ -59,23 +59,7 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String username = request.getParameter("user");
-            String password = request.getParameter("pass");
-            String re_pass = request.getParameter("repass");
-            if(!password.equals(re_pass)){
-            response.sendRedirect("/login.jsp");
-            } else {
-            AccountDAO accountdao = new AccountDAO();
-            AccountDTO a = accountdao.checkAccountExist(username);
-            if (a == null) {
-            accountdao.register(username, password);
-            response.sendRedirect("/register.jsp");
-            } else {
-            response.sendRedirect("/login.jsp");
-            }
-    
-
-    }}
+}
 
     /**
     * Handles the HTTP <code>POST</code> method.
@@ -88,8 +72,16 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+//        LOGIN
             String username = request.getParameter("user");
             String password = request.getParameter("pass");
+            
+            if (username.isEmpty() || password.isEmpty()) {
+                request.setAttribute("fill", "Please fill in all the fields");
+                RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/login.jsp");
+                dispatch.forward(request, response);
+            }
+            
             AccountDAO accountdao = new AccountDAO();
             AccountDTO user = accountdao.login(username, password);
                 if (user != null) {
@@ -103,29 +95,6 @@ public class AuthController extends HttpServlet {
                     dispatch.forward(request, response);
             }
     }
-
-
-    // REGISTER
-    private void handleRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
-            String username = request.getParameter("user");
-            String password = request.getParameter("pass");
-            String re_pass = request.getParameter("repass");
-            if(!password.equals(re_pass)){
-            response.sendRedirect("/login.jsp");
-            } else {
-            AccountDAO accountdao = new AccountDAO();
-            AccountDTO a = accountdao.checkAccountExist(username);
-            if (a == null) {
-            accountdao.register(username, password);
-            response.sendRedirect("/register.jsp");
-            } else {
-            response.sendRedirect("/login.jsp");
-            }
-    }
-    }
-
-
     /**
     * Returns a short description of the servlet.
     *
