@@ -55,7 +55,7 @@ public class AccountDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, username);
-            ps.setString(1, email);
+            ps.setString(2, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return new AccountDTO(
