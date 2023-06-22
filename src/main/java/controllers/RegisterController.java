@@ -90,15 +90,19 @@ public class RegisterController extends HttpServlet {
                 dispatch.forward(request, response);
                 } else {
                     AccountDAO accountdao = new AccountDAO();
-                    AccountDTO existingAccount = accountdao.checkAccountExist(username);
+                    AccountDTO existingAccount = accountdao.checkAccountExist(username, email);
                     if (existingAccount == null) {
                         accountdao.signup(username, email, password);
                         HttpSession session = request.getSession();
                         session.setAttribute("tendangnhap", username);
                         RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/login.jsp");
-                        dispatch.forward(request, response);    
+                        dispatch.forward(request, response);
                     } else {
-                        request.setAttribute("mess", "Username already exists");
+                        if (existingAccount.getUsername().equals(username)) {
+                            request.setAttribute("mess", "Username already exists");
+                        } else {
+                            request.setAttribute("mess", "Email already exists");
+                        }
                         RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/register.jsp");
                         dispatch.forward(request, response);
                 }

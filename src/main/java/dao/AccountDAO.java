@@ -28,11 +28,11 @@ public class AccountDAO {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                      return new AccountDTO(
-                                    rs.getString(1),
-                                    rs.getString(2),
-                                    rs.getString(3),
-                                    rs.getInt(4),
-                                    rs.getInt(5));
+                                    rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getInt("role"),
+                        rs.getInt("subscriptionID"));
             }
     } catch (SQLException e){
         
@@ -40,21 +40,22 @@ public class AccountDAO {
         return null;
 }
         
-        public AccountDTO checkAccountExist(String user) {
+        public AccountDTO checkAccountExist(String user, String email) {
         String sql = "select * from Account\n"
-                + "where [username] = ?\n";
+                + "where [username] = ?\n OR email = ?\n";
         try{
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);                      
             ps.setString(1, user);
+            ps.setString(2, email);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                      return new AccountDTO(
-                                    rs.getString(1),
-                                    rs.getString(2),
-                                    rs.getString(3),
-                                    rs.getInt(4),
-                                    rs.getInt(5));
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getInt("role"),
+                        rs.getInt("subscriptionID"));
             }
     } catch (SQLException e){
         
@@ -78,4 +79,3 @@ public class AccountDAO {
 
 }
     
-
