@@ -17,8 +17,8 @@
         <servlet-class>controllers.SubscriptionController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SubscriptionPlanController</servlet-name>
-        <servlet-class>controllers.SubscriptionPlanController</servlet-class>
+        <servlet-name>SubscriptionPlan</servlet-name>
+        <jsp-file>/subscription-plan.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>TagsController</servlet-name>
@@ -73,7 +73,7 @@
         <url-pattern>/subscription</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SubscriptionPlanController</servlet-name>
+        <servlet-name>SubscriptionPlan</servlet-name>
         <url-pattern>/subscription-plan</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

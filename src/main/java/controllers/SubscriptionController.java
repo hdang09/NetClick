@@ -62,7 +62,7 @@ public class SubscriptionController extends HttpServlet {
             throws ServletException, IOException {
         String plan = request.getParameter("plan");
         if (plan != null) {
-            request.getRequestDispatcher("subscription-plan.jsp").forward(request, response);
+            request.getRequestDispatcher("subscription-plan").forward(request, response);
             return;
         }
 

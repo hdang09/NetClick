@@ -41,6 +41,7 @@
         </div>
         <!-- End Back -->
         <h1 class="font-bold text-2xl">Subscription Page</h1>
+        <%@ include file="components/stepper.jsp" %>
         <div class="flex justify-center flex-col items-center">
           <span class="text-4xl font-semibold p-2 my-3">Pick the plan that best fits for you</span>
           <ul class="break-all">
@@ -69,7 +70,7 @@
             <span class="my-1">Resolution: 480p</span>
             <span class="my-1">Devices: Phone, Tablet</span>
             <a
-              href="/subscription-plan.jsp?plan=mobile"
+              href="/subscription?plan=mobile"
               class="flex items-center justify-center bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 t py-2 mt-12 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg h-11 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
               >2$</a
             >
