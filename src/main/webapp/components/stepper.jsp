@@ -1,5 +1,5 @@
 <div class="w-full flex">
-  <div class="flex w-[56rem] justify-between items-center mx-auto my-8">
+  <div class="flex w-[56rem] justify-between items-center mx-auto my-6">
     <c:choose>
       <c:when test="${requestScope['javax.servlet.forward.request_uri'] == '/subscription' && param.plan == null}">
         <!-- First step -->
