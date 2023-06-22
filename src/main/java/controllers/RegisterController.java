@@ -90,7 +90,7 @@ public class RegisterController extends HttpServlet {
                 dispatch.forward(request, response);
                 } else {
                     AccountDAO accountdao = new AccountDAO();
-                    AccountDTO existingAccount = accountdao.checkAccountExist(username);
+                    AccountDTO existingAccount = accountdao.checkAccountExist(username, email);
                     if (existingAccount == null) {
                         accountdao.signup(username, email, password);
                         HttpSession session = request.getSession();

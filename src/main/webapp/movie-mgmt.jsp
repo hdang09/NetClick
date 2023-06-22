@@ -19,7 +19,7 @@
                             <div class="flex items-center gap-x-3">
                                 <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Movies</h2>
 
-                                <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">160 movies</span>
+                                <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">${size} movies</span>
                             </div>
 
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">These companies have purchased in the last 12 months.</p>

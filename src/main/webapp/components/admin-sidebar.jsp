@@ -28,11 +28,11 @@
       <span class="ml-3 font-bold">Movie Management</span>
     </a>
     <a
-      href="/admin/users"
-      class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == '/admin/users' ? 'text-primary border-r-4 border-primary': 'text-gray-400'}"
+      href="/admin/accounts"
+      class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == '/admin/accounts' ? 'text-primary border-r-4 border-primary': 'text-gray-400'}"
     >
       <i class="fa-solid fa-film"></i>
-      <span class="ml-3 font-bold">User Management</span>
+      <span class="ml-3 font-bold">Accounts Management</span>
     </a>
   </div>
 

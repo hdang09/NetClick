@@ -9,26 +9,41 @@ package dto;
  * @author Admin
  */
 public class AccountDTO {
-    private String usename;
+    private int id;
+    private String username;
     private String email;
     private String password;
+    private boolean isBan;
     private int role;
     private int subscriptionID;
 
-    public AccountDTO(String usename, String email, String password, int role, int subscriptionID) {
-        this.usename = usename;
+    public AccountDTO() {
+    }
+
+    public AccountDTO(int id, String username, String email, String password, boolean isBan, int role, int subscriptionID) {
+        this.id = id;
+        this.username = username;
         this.email = email;
         this.password = password;
+        this.isBan = isBan;
         this.role = role;
         this.subscriptionID = subscriptionID;
     }
 
-    public String getUsename() {
-        return usename;
+    public int getId() {
+        return id;
     }
 
-    public void setUsename(String usename) {
-        this.usename = usename;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -45,6 +60,14 @@ public class AccountDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public boolean isIsBan() {
+        return isBan;
+    }
+
+    public void setIsBan(boolean isBan) {
+        this.isBan = isBan;
     }
 
     public int getRole() {

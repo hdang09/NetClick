@@ -4,7 +4,9 @@
  */
 package controllers;
 
+import dao.AccountDAO;
 import dao.MovieDAO;
+import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,32 +23,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AdminController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdminController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -59,19 +35,33 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        final String MOVIE_MANAGEMENT_PAGE = "/admin/movie-mgmt.jsp";
-        final String USER_MANAGEMENT_PAGE = "/admin/user-mgmt.jsp";
-        final String ADMIN_DASHBOARD = "/admin/dashboard.jsp";
+        final String DASHBOARD_PAGE = "/dashboard.jsp";
+        final String MOVIE_MANAGEMENT_PAGE = "/movie-mgmt.jsp";
+        final String USER_MANAGEMENT_PAGE = "/account-mgmt.jsp";
+        final String MOVIE_FORM_PAGE = "/movie-form.jsp";
+        final String MOVIE_DETAIL_PAGE = "/movie-detail.jsp";
+        
         final int MOVIES_EACH_PAGE = 5;
 
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
         switch (path) {
-            case "users":
-                request.getRequestDispatcher("/user-mgmt.jsp").forward(request, response);
+            case "accounts":
+                List<AccountDTO> accounts = new AccountDAO().getAll();
+//                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
+//                String startPageParam = request.getParameter("page");
+//                if (startPageParam != null) {
+//                    int startPage = Integer.parseInt(startPageParam);
+//                    movies = movies.subList((startPage - 1) * MOVIES_EACH_PAGE, startPage * MOVIES_EACH_PAGE);
+//                } else {
+//                    movies = movies.subList(0, MOVIES_EACH_PAGE);
+//                }
+                request.setAttribute("accounts", accounts);
+                request.setAttribute("size", accounts.size());
+                request.getRequestDispatcher(USER_MANAGEMENT_PAGE).forward(request, response);
                 break;
             case "add-movie":
-                request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
+                request.getRequestDispatcher(MOVIE_FORM_PAGE).forward(request, response);
                 break;
             case "movies":
                 // Delete movie
@@ -89,7 +79,7 @@ public class AdminController extends HttpServlet {
                     int id = Integer.parseInt(editID);
                     MovieDTO movie = new MovieDAO().getById(id);
                     request.setAttribute("movie", movie);
-                    request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
+                    request.getRequestDispatcher(MOVIE_FORM_PAGE).forward(request, response);
                     return;
                 }
 
@@ -99,12 +89,13 @@ public class AdminController extends HttpServlet {
                     int id = Integer.parseInt(idParam);
                     MovieDTO movie = new MovieDAO().getById(id);
                     request.setAttribute("movie", movie);
-                    request.getRequestDispatcher("/movie-detail.jsp").forward(request, response);
+                    request.getRequestDispatcher(MOVIE_DETAIL_PAGE).forward(request, response);
                     return;
                 }
 
                 // Pagination
                 List<MovieDTO> movies = new MovieDAO().getAll();
+                request.setAttribute("aize", movies.size());
                 request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
                 String startPageParam = request.getParameter("page");
                 if (startPageParam != null) {
@@ -114,10 +105,10 @@ public class AdminController extends HttpServlet {
                     movies = movies.subList(0, MOVIES_EACH_PAGE);
                 }
                 request.setAttribute("movies", movies);
-                request.getRequestDispatcher("/movie-mgmt.jsp").forward(request, response);
+                request.getRequestDispatcher(MOVIE_MANAGEMENT_PAGE).forward(request, response);
                 break;
             default:
-                request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
+                request.getRequestDispatcher(DASHBOARD_PAGE).forward(request, response);
         }
 
     }
@@ -135,7 +126,7 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         // Movie form: add/ edit
         final int MAXIMUM_RATING = 5;
-
+        
         String title = request.getParameter("title");
         String movieURL = request.getParameter("movie-url");
         String description = request.getParameter("description");
@@ -144,7 +135,6 @@ public class AdminController extends HttpServlet {
         String thumnailURL = request.getParameter("thumnail-url");
         // TODO: Update TAG code
         String tag = request.getParameter("tag");
-        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tag);
 
         boolean isValid = true;
         // Validate title 
@@ -165,6 +155,7 @@ public class AdminController extends HttpServlet {
             isValid = false;
         }
 
+        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tag);
         if (!isValid) {
             request.setAttribute("movie", movie);
             request.getRequestDispatcher("/movie-form.jsp").forward(request, response);

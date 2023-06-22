@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.DBUtils;
 
 /**
@@ -16,53 +20,61 @@ import utils.DBUtils;
  * @author Admin
  */
 public class AccountDAO {
-        public AccountDTO login(String user, String pass){
+
+    public AccountDTO login(String user, String pass) {
         String sql = "select * from Account\n"
                 + "where [username] = ? "
                 + "and password = ?";
-        try{
+        try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);                      
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, user);
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                     return new AccountDTO(
-                                    rs.getString(1),
-                                    rs.getString(2),
-                                    rs.getString(3),
-                                    rs.getInt(4),
-                                    rs.getInt(5));
+            if (rs.next()) {
+                return new AccountDTO(
+                        rs.getInt("userID"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getInt("is_ban") == 1,
+                        rs.getInt("role"),
+                        rs.getInt("subscriptionID")
+                );
             }
-    } catch (SQLException e){
-        
-    }
+        } catch (SQLException e) {
+
+        }
         return null;
-}
-        
-        public AccountDTO checkAccountExist(String user) {
+    }
+
+    public AccountDTO checkAccountExist(String username, String email) {
         String sql = "select * from Account\n"
-                + "where [username] = ?\n";
-        try{
+                + "where [username] = ? OR email = ?\n";
+        try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);                      
-            ps.setString(1, user);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                     return new AccountDTO(
-                                    rs.getString(1),
-                                    rs.getString(2),
-                                    rs.getString(3),
-                                    rs.getInt(4),
-                                    rs.getInt(5));
+            if (rs.next()) {
+                return new AccountDTO(
+                        rs.getInt("userID"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getInt("is_ban") == 1,
+                        rs.getInt("role"),
+                        rs.getInt("subscriptionID")
+                );
             }
-    } catch (SQLException e){
-        
-    }
+        } catch (SQLException e) {
+
+        }
         return null;
-}
-        
-        public void signup(String username, String email, String password) {
+    }
+
+    public void signup(String username, String email, String password) {
         String sql = "INSERT INTO Account (username, email, password, role, subscriptionID) VALUES (?, ?, ?, 0, 0)";
         try {
             Connection conn = DBUtils.getConnection();
@@ -74,8 +86,36 @@ public class AccountDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-}
-
-}
+    }
     
+    public List<AccountDTO> getAll() {
+        List<AccountDTO> accounts = new ArrayList<>();
 
+        String sql = "SELECT * FROM Account";
+            
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                AccountDTO movie = new AccountDTO(
+                        rs.getInt("userID"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getInt("is_ban") == 1,
+                        rs.getInt("role"),
+                        rs.getInt("subscriptionID")
+                );
+                accounts.add(movie);
+            }
+            return accounts;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        return null;
+    }
+
+}
