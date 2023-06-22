@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Register</title>
+    <title>Register - NetClick</title>
     <%@ include file="../../components/imports.jsp" %>
   </head>
   <body>

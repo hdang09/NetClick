@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>JSP Page</title>
+        <title>Admin Dashboard - NetClick</title>
         <%@ include file="../../components/imports.jsp" %>
     </head>
     <body onload="drawChart()">

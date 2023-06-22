@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Subscription Page - NetClick</title>
+    <title>Subscription - NetClick</title>
     <%@ include file="components/imports.jsp" %>
   </head>
   <body>
