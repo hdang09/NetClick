@@ -9,36 +9,26 @@ package dto;
  * @author Admin
  */
 public class AccountDTO {
-    private int userID;
-    private String username;
+    private String usename;
     private String email;
     private String password;
     private int role;
     private int subscriptionID;
 
-    public AccountDTO(int userID, String username, String email, String password, int role, int subscriptionID) {
-        this.userID = userID;
-        this.username = username;
+    public AccountDTO(String usename, String email, String password, int role, int subscriptionID) {
+        this.usename = usename;
         this.email = email;
         this.password = password;
         this.role = role;
         this.subscriptionID = subscriptionID;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getUsename() {
+        return usename;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsename(String usename) {
+        this.usename = usename;
     }
 
     public String getEmail() {

@@ -16,8 +16,6 @@ import utils.DBUtils;
  * @author Admin
  */
 public class AccountDAO {
-
-    private String sql;
         public AccountDTO login(String user, String pass){
         String sql = "select * from Account\n"
                 + "where [username] = ? "
@@ -30,12 +28,11 @@ public class AccountDAO {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                      return new AccountDTO(
-                                    rs.getInt(1),
+                                    rs.getString(1),
                                     rs.getString(2),
                                     rs.getString(3),
-                                    rs.getString(4),
-                                    rs.getInt(5),
-                                    rs.getInt(6));
+                                    rs.getInt(4),
+                                    rs.getInt(5));
             }
     } catch (SQLException e){
         
@@ -53,12 +50,11 @@ public class AccountDAO {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                      return new AccountDTO(
-                                    rs.getInt(1),
+                                    rs.getString(1),
                                     rs.getString(2),
                                     rs.getString(3),
-                                    rs.getString(4),
-                                    rs.getInt(5),
-                                    rs.getInt(6));
+                                    rs.getInt(4),
+                                    rs.getInt(5));
             }
     } catch (SQLException e){
         
@@ -67,17 +63,17 @@ public class AccountDAO {
 }
         
         public void signup(String username, String email, String password) {
-    String sql = "INSERT INTO Account (username, email, password, role, subscriptionID) VALUES (?, ?, ?, 0, 0)";
-    try {
-        Connection conn = DBUtils.getConnection();
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, username);
-        ps.setString(2, email);
-        ps.setString(3, password);
-        ps.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+        String sql = "INSERT INTO Account (username, email, password, role, subscriptionID) VALUES (?, ?, ?, 0, 0)";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 }
 
 }
