@@ -52,6 +52,7 @@ public class MovieDAO {
 
     public MovieDTO getById(int id) {
         String sql = "SELECT * FROM movie WHERE id = ?";
+        
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

@@ -26,6 +26,7 @@ import javax.servlet.http.HttpSession;
 public class AdminController extends HttpServlet {
 
     MovieDAO movieDAO = new MovieDAO();
+    AccountDAO accountDAO = new AccountDAO();
 
     final String DASHBOARD_PAGE = "/dashboard.jsp";
     final String MOVIE_MANAGEMENT_PAGE = "/movie-mgmt.jsp";
@@ -54,6 +55,26 @@ public class AdminController extends HttpServlet {
         
         switch (path) {
             case "accounts":
+                // Change status, role
+                String accountID = request.getParameter("accountID");
+                if (accountID != null) {
+                    int id = Integer.parseInt(accountID);
+                    String action = request.getParameter("action");
+                    
+                    switch (action) {
+                        case "change-status":
+                            accountDAO.changeStatus(id);
+                            break;
+                        case "change-role":
+                            accountDAO.changeRole(id);
+                            break;
+                    }
+                    
+                    response.sendRedirect("/admin/accounts");
+                    return;
+                }
+                    
+                // Pagination
                 List<AccountDTO> accounts = new AccountDAO().getAll();
 //                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
 //                String startPageParam = request.getParameter("page");
