@@ -58,16 +58,18 @@
   <!-- GENERAL -->
   <div class="mt-8">
     <h3 class="text-gray-300 font-bold text-sm uppercase">GENERAL</h3>
-    <% 
-            String user = (String)session.getAttribute("tendangnhap");
-            if (session != null) {
-                  out.print("Hi, " + user);
-                }
+      <br>     
+         <%
+        String user = (String) session.getAttribute("tendangnhap");
+        if (session != null) {
+        out.print("Hi, " + user);
+}
+
       %>
-      <br> 
-    <a href="/login" class="my-5 flex items-center text-lg  text-gray-400">
-      <i class="fa-solid fa-right-from-bracket"></i>
-      <span class="ml-3 font-bold">Log Out</span>
-    </a>
+<a href="/login" class="my-5 flex items-center text-lg  text-gray-400">
+  <i class="fa-solid fa-right-from-bracket"></i>
+  <span class="ml-3 font-bold">Log Out</span>
+</a>
+
   </div>
 </aside>
