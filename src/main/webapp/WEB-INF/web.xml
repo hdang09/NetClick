@@ -60,6 +60,10 @@
         <servlet-name>AuthController</servlet-name>
         <servlet-class>controllers.AuthController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FavoriteListController</servlet-name>
+        <servlet-class>controllers.FavoriteListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PreviewController</servlet-name>
         <url-pattern>/preview</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>AuthController</servlet-name>
         <url-pattern>/AuthController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FavoriteListController</servlet-name>
+        <url-pattern>/fav-list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

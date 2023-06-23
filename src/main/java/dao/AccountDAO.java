@@ -117,5 +117,64 @@ public class AccountDAO {
             
         return null;
     }
+    public AccountDTO getById(int id) {
+        String sql = "SELECT * FROM Account WHERE userID = ?";
+        
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String username = rs.getString("username");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                boolean isBan = rs.getInt("is_ban") == 1;
+                int role = rs.getInt("role");
+                int subscriptionID = rs.getInt("subscriptionID");
+                AccountDTO account = new AccountDTO(id, username, email, password, isBan, role, subscriptionID);
+                return account;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
+    public void changeStatus(int accountID) {
+        int currentStatus = getById(accountID).isIsBan() ? 1 : 0;
+        int switchStatus = currentStatus == 1 ? 0 : 1;
+        
+        String sql = "UPDATE Account SET is_ban = ? WHERE userID = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, switchStatus);
+            ps.setInt(2, accountID);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void changeRole( int accountID) {
+        int currentRole = getById(accountID).getRole();
+        int switchRole = currentRole == 1 ? 0 : 1;
+        
+        String sql = "UPDATE Account SET role = ? WHERE userID = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, switchRole);
+            ps.setInt(2, accountID);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

@@ -1,14 +1,13 @@
 /*
-* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-* Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controllers;
 
-import dao.AccountDAO;
+import dao.FavoriteListDAO;
 import dto.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class AuthController extends HttpServlet {
+public class FavoriteListController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,16 +37,16 @@ public class AuthController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AuthController</title>");
+            out.println("<title>Servlet FavoriteListController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AuthController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FavoriteListController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -59,6 +58,30 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Check if user login
+        HttpSession session = request.getSession();
+        AccountDTO account = (AccountDTO) session.getAttribute("account");
+        System.out.println(account);
+        if (account == null) {
+            request.getRequestDispatcher("404.jsp").forward(request, response);
+            return;
+        }
+        
+        // Render all movies in favorite list
+        FavoriteListDAO dao = new FavoriteListDAO();
+        String movieIDParam = request.getParameter("movieID");
+        if (movieIDParam == null) {
+            request.setAttribute("movies", dao.getAll(account.getId()));
+            request.getRequestDispatcher("fav-list.jsp").forward(request, response);
+            return;
+        }
+        
+        // Add movie to favorite list
+        int movieID = Integer.parseInt(movieIDParam);
+        dao.insert(account.getId(), movieID);
+        request.setAttribute("message", "Add to favorite list successfully!");
+//        response.sendRedirect("/preview?id=" + movieIDParam);
+        request.getRequestDispatcher("/preview?id=" + movieIDParam).forward(request, response);
     }
 
     /**
@@ -72,35 +95,7 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        LOGIN
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-
-        if (username.isEmpty() || password.isEmpty()) {
-            request.setAttribute("fill", "Please fill in all the fields");
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/login.jsp");
-            dispatch.forward(request, response);
-        }
-        AccountDAO accountdao = new AccountDAO();
-        AccountDTO user = accountdao.login(username, password);
-        if (user != null) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("tendangnhap", username);
-            session.setAttribute("account", user);
-            
-            // Role: admin
-            if (user.getRole() == 0) {
-                response.sendRedirect("/admin");
-                return;
-            }
-            
-            // Role: user
-            response.sendRedirect("/");
-        } else {
-            request.setAttribute("mess", "Wrong user or password");
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/login.jsp");
-            dispatch.forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

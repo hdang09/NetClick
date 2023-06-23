@@ -154,7 +154,7 @@
               </button>
             </div>
               
-              <input type="hidden" name="action" value="${param.editID != null ? 'edit' : 'add'}" />
+              <input type="hidden" name="action" value="${editID != null ? 'edit' : 'add'}" />
           </form>
         </section>
       </main>

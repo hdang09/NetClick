@@ -22,7 +22,7 @@
                                 <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">${size} accounts</span>
                             </div>
 
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">These companies have purchased in the last 12 months.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">These accounts have been registered.</p>
                         </div>
                     </div>
 
@@ -150,14 +150,14 @@
                                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                         <div class="flex items-center gap-x-6">
                                                             <a
-                                                                href="/admin/accounts"
+                                                                href="/admin/accounts?action=change-status&accountID=${account.id}"
                                                                 class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
                                                                 >
                                                                 Change status
                                                             </a>
 
                                                             <a
-                                                                href="/admin/accounts"
+                                                                href="/admin/accounts?action=change-role&accountID=${account.id}"
                                                                 class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
                                                                 >
                                                                 Change role
