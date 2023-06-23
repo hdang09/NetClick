@@ -9,19 +9,34 @@ import dao.MovieDAO;
 import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.DateUtils;
+import utils.ValidateUtils;
 
 /**
  *
  * @author Admin
  */
 public class AdminController extends HttpServlet {
+
+    MovieDAO movieDAO = new MovieDAO();
+
+    final String DASHBOARD_PAGE = "/dashboard.jsp";
+    final String MOVIE_MANAGEMENT_PAGE = "/movie-mgmt.jsp";
+    final String USER_MANAGEMENT_PAGE = "/account-mgmt.jsp";
+    final String MOVIE_FORM_PAGE = "/movie-form.jsp";
+    final String MOVIE_DETAIL_PAGE = "/movie-detail.jsp";
+
+    final int MOVIES_EACH_PAGE = 5;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,13 +50,6 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        final String DASHBOARD_PAGE = "/dashboard.jsp";
-        final String MOVIE_MANAGEMENT_PAGE = "/movie-mgmt.jsp";
-        final String USER_MANAGEMENT_PAGE = "/account-mgmt.jsp";
-        final String MOVIE_FORM_PAGE = "/movie-form.jsp";
-        final String MOVIE_DETAIL_PAGE = "/movie-detail.jsp";
-        
-        final int MOVIES_EACH_PAGE = 5;
 
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
@@ -61,6 +69,7 @@ public class AdminController extends HttpServlet {
                 request.getRequestDispatcher(USER_MANAGEMENT_PAGE).forward(request, response);
                 break;
             case "add-movie":
+                request.setAttribute("action", "Add");
                 request.getRequestDispatcher(MOVIE_FORM_PAGE).forward(request, response);
                 break;
             case "movies":
@@ -77,8 +86,9 @@ public class AdminController extends HttpServlet {
                 String editID = request.getParameter("editID");
                 if (editID != null) {
                     int id = Integer.parseInt(editID);
-                    MovieDTO movie = new MovieDAO().getById(id);
+                    MovieDTO movie = movieDAO.getById(id);
                     request.setAttribute("movie", movie);
+                    request.setAttribute("action", "Edit");
                     request.getRequestDispatcher(MOVIE_FORM_PAGE).forward(request, response);
                     return;
                 }
@@ -87,20 +97,23 @@ public class AdminController extends HttpServlet {
                 String idParam = request.getParameter("id");
                 if (idParam != null) {
                     int id = Integer.parseInt(idParam);
-                    MovieDTO movie = new MovieDAO().getById(id);
+                    MovieDTO movie = movieDAO.getById(id);
                     request.setAttribute("movie", movie);
                     request.getRequestDispatcher(MOVIE_DETAIL_PAGE).forward(request, response);
                     return;
                 }
 
                 // Pagination
-                List<MovieDTO> movies = new MovieDAO().getAll();
-                request.setAttribute("aize", movies.size());
-                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
+                List<MovieDTO> movies = movieDAO.getAll();
+                int size = movies.size();
+                request.setAttribute("size", size);
+                double pagination = (double) movies.size() / MOVIES_EACH_PAGE;
+                request.setAttribute("pagination", Math.ceil(pagination));
                 String startPageParam = request.getParameter("page");
                 if (startPageParam != null) {
                     int startPage = Integer.parseInt(startPageParam);
-                    movies = movies.subList((startPage - 1) * MOVIES_EACH_PAGE, startPage * MOVIES_EACH_PAGE);
+                    boolean isEndPagination = startPage == Math.ceil(pagination);
+                    movies = movies.subList((startPage - 1) * MOVIES_EACH_PAGE, isEndPagination ? size : startPage * MOVIES_EACH_PAGE);
                 } else {
                     movies = movies.subList(0, MOVIES_EACH_PAGE);
                 }
@@ -126,39 +139,61 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         // Movie form: add/ edit
         final int MAXIMUM_RATING = 5;
-        
+
+        ValidateUtils validator = new ValidateUtils();
+
         String title = request.getParameter("title");
         String movieURL = request.getParameter("movie-url");
         String description = request.getParameter("description");
-        String release = request.getParameter("release");
+        String releaseStr = request.getParameter("release");
+        Date release = new DateUtils().stringToDate(releaseStr);
         String director = request.getParameter("director");
-        String thumnailURL = request.getParameter("thumnail-url");
-        // TODO: Update TAG code
+        String thumnailURL = request.getParameter("thumbnail-url");
         String tag = request.getParameter("tag");
 
         boolean isValid = true;
         // Validate title 
-        if (title.length() < 2) {
-            request.setAttribute("titleMsg", "Minimum 2 characters");
-            isValid = false;
-        }
-        
-        // Validate description 
-        if (description.length() < 2) {
-            request.setAttribute("descriptionMsg", "Minimum 2 characters");
-            isValid = false;
-        }
-        
-        // Validate director 
-        if (director.length() < 2) {
-            request.setAttribute("directorMsg", "Minimum 2 characters");
+        if (title.trim().isEmpty()) {
+            request.setAttribute("titleMsg", "Title is required");
             isValid = false;
         }
 
+        // Validate description 
+        if (description.trim().isEmpty()) {
+            request.setAttribute("descriptionMsg", "Description is required");
+            isValid = false;
+        }
+
+        // Validate director 
+        if (director.trim().isEmpty()) {
+            request.setAttribute("directorMsg", "Director is required");
+            isValid = false;
+        }
+
+        // Validate thumbnail URL
+        if (!validator.isValidURL(thumnailURL)) {
+            request.setAttribute("thumbnailURLMsg", "This is not a valid URL");
+            isValid = false;
+        }
+
+        // Validate movie URL
+        if (!validator.isValidURL(movieURL)) {
+            request.setAttribute("movieURLMsg", "This is not a valid URL");
+            isValid = false;
+        }
+        
+        // Validate release date
+        if (release == null) {
+            request.setAttribute("releaseMsg", "Release date is required");
+            isValid = false;
+        }
+
+
         MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tag);
         if (!isValid) {
+            request.setAttribute("release", releaseStr);
             request.setAttribute("movie", movie);
-            request.getRequestDispatcher("/movie-form.jsp").forward(request, response);
+            request.getRequestDispatcher(MOVIE_FORM_PAGE).forward(request, response);
             return;
         }
 
@@ -166,13 +201,14 @@ public class AdminController extends HttpServlet {
         switch (action) {
             case "add":
                 new MovieDAO().add(movie);
+                response.sendRedirect("/admin/movies");
                 break;
             case "edit":
                 new MovieDAO().update(movie);
+                response.sendRedirect("/admin/movies?editID=" + request.getParameter("editID"));
                 break;
         }
 
-        response.sendRedirect("/admin/movies");
     }
 
     /**

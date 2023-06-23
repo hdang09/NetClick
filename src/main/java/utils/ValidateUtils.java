@@ -14,7 +14,7 @@ import java.net.URL;
  */
 public class ValidateUtils {
 
-    boolean isValidURL(String url) throws MalformedURLException, URISyntaxException {
+    public boolean isValidURL(String url) {
         try {
             new URL(url).toURI();
             return true;

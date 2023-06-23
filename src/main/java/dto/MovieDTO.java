@@ -4,6 +4,8 @@
  */
 package dto;
 
+import java.util.Date;
+
 /**
  *
  * @author Admin
@@ -15,7 +17,7 @@ public class MovieDTO {
     private String description;
     private String thumbnail;
     private String movie_url;
-    private String release;
+    private Date release;
     private String director;
     private int rating;
     private String tag;
@@ -23,7 +25,7 @@ public class MovieDTO {
     public MovieDTO() {
     }
     
-    public MovieDTO(String title, String description, String thumbnail, String movie_url, String release, String director, int rating, String tag) {
+    public MovieDTO(String title, String description, String thumbnail, String movie_url, Date release, String director, int rating, String tag) {
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
@@ -34,7 +36,7 @@ public class MovieDTO {
         this.tag = tag;
     }
 
-    public MovieDTO(int ID, String title, String description, String thumbnail, String movie_url, String release, String director, int rating, String tag) {
+    public MovieDTO(int ID, String title, String description, String thumbnail, String movie_url, Date release, String director, int rating, String tag) {
         this.ID = ID;
         this.title = title;
         this.description = description;
@@ -86,11 +88,11 @@ public class MovieDTO {
         this.movie_url = movie_url;
     }
 
-    public String getRelease() {
+    public Date getRelease() {
         return release;
     }
 
-    public void setRelease(String release) {
+    public void setRelease(Date release) {
         this.release = release;
     }
 
