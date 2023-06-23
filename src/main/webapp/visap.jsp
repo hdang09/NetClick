@@ -35,11 +35,17 @@
           <div class="w-full">
             <div class="max-w-md">
               <!-- login form -->
+                  <% if (request.getAttribute("error") != null) { %>
+                        <div class="error-message">
+                            <%= request.getAttribute("error") %>
+                        </div>
+                   <% } %>
               <form class="space-y-4">
                 <div>
                   <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
                   <input
                     id="cardNumber"
+                    name="visa"
                     type="text"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     placeholder="Number"
@@ -50,6 +56,7 @@
                     <label for="expiryDate" class="block text-gray-800 font-semibold">Expire Date</label>
                     <input
                       id="expiryDate"
+                      name="expiredate"
                       type="text"
                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                       placeholder="MM/YY"
@@ -60,6 +67,7 @@
                     <input
                       id="cvv"
                       type="text"
+                      name="cvv"
                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                       placeholder="CVV"
                       maxlength="3"
@@ -71,6 +79,7 @@
                   <input
                     id="cardHolder"
                     type="text"
+                    name="cholder"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     placeholder="Name card"
                   />
@@ -87,9 +96,7 @@
                   <button
                     type="submit"
                     class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md focus:outline-none hover:bg-blue-600 transition-colors"
-                  >
-                    Submit
-                  </button>
+                  >Submit</button>
                 </div>
               </form>
             </div>
