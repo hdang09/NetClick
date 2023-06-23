@@ -135,12 +135,19 @@ public class MovieDAO {
     }
 
     public void delete(int id) {
-        // TODO: Add delete function
+        String sql = "DELETE FROM Movie WHERE id = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void add(MovieDTO movie) {
-        ArrayList<String> tags = new ArrayList<>();
-
         String sql = "INSERT INTO Movie (title, description, thumbnail, movie_url, release, director, rating)\n" +
                         "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -160,10 +167,28 @@ public class MovieDAO {
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
-    public void update(MovieDTO movie) {
-        // TODO: Add update function
+    public void update(MovieDTO movie, int id) {
+        String sql = "UPDATE Movie " +
+                        "SET title = ?, description = ?, thumbnail = ?, movie_url = ?, release = ?, director = ? " +
+                        "WHERE id = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, movie.getTitle());
+            ps.setString(2, movie.getDescription());
+            ps.setString(3, movie.getThumbnail());
+            ps.setString(4, movie.getMovie_url());
+            java.util.Date releaseDate = movie.getRelease();
+            java.sql.Date sqlReleaseDate = new java.sql.Date(releaseDate.getTime());
+            ps.setDate(5, sqlReleaseDate);
+            ps.setString(6, movie.getDirector());
+            ps.setInt(7, id);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
