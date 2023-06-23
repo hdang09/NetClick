@@ -35,7 +35,7 @@
                         <!-- Buttons-->
                         <div class="mt-12 flex">
                             <a
-                                href="/404.jsp"
+                                href="/fav-list?movieID=${movie.ID}"
                                 class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md"
                                 >+ Wishlist</a
                             >
@@ -45,6 +45,7 @@
                                 >> Watch</a
                             >
                         </div>
+                        <p>${message}</p>
 
                         <!-- Movie info -->
                         <div class="mt-12">
