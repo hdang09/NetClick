@@ -35,12 +35,13 @@
           <div class="w-full">
             <div class="max-w-md">
               <!-- login form -->
-                  <% if (request.getAttribute("error") != null) { %>
+              <form action="/PaymentControlller" method="POST" class="space-y-4">
+                                    <% if (request.getAttribute("error") != null) { %>
                         <div class="error-message">
                             <%= request.getAttribute("error") %>
                         </div>
                    <% } %>
-              <form class="space-y-4">
+                   <p class="text-red-400">${errorfill}</p>
                 <div>
                   <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
                   <input
