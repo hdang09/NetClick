@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 
 <!DOCTYPE html>
 <html>
@@ -112,6 +112,6 @@
         <!-- Right content -->
         <img class="hidden bg-cover lg:block lg:w-3/5 object-cover" src="assets/bg.jpg" />
       </div>
-  </section>
+  </main>
 </body>
 </html>

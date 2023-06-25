@@ -61,7 +61,6 @@ public class FavoriteListController extends HttpServlet {
         // Check if user login
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
-        System.out.println(account);
         if (account == null) {
             request.getRequestDispatcher("404.jsp").forward(request, response);
             return;

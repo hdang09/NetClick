@@ -5,8 +5,11 @@
 package controllers;
 
 import dao.MovieDAO;
+import dao.ReviewDAO;
+import dto.AccountDTO;
+import dto.ReviewDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,32 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Admin
  */
 public class PreviewController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PreviewController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PreviewController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -56,8 +33,10 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // TODO: Opwimize this code
         int id = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("movie", new MovieDAO().getById(id));
+        request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(id));
         request.getRequestDispatcher("preview.jsp").forward(request, response);
     }
 
@@ -72,7 +51,48 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        final int MAX_RATING = 5;
+        ReviewDAO dao = new ReviewDAO();
+
+        String action = request.getParameter("action");
+        switch (action) {
+            case "comment":
+                // Check if user login
+                HttpSession session = request.getSession();
+                AccountDTO account = (AccountDTO) session.getAttribute("account");
+                if (account == null) {
+                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                    return;
+                }
+
+                // Get review info
+                int userID = account.getId();
+                String movieIDParam = request.getParameter("movieID");
+                int movieID = 0;
+                try {
+                    movieID = Integer.parseInt(movieIDParam);
+                } catch (Exception e) {
+                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                }
+                String comment = request.getParameter("comment");
+                ReviewDTO review = new ReviewDTO(movieID, userID, comment, MAX_RATING);
+
+                // Add commnent
+                // TODO: Opwimize this code
+                dao.addComment(review);
+                request.setAttribute("movie", new MovieDAO().getById(movieID));
+                request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(movieID));
+                request.getRequestDispatcher("preview.jsp").forward(request, response);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    public void dispatchToPreviewPage(int movieID) {
+        request.setAttribute("movie", new MovieDAO().getById(movieID));
+        request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(movieID));
+        request.getRequestDispatcher("preview.jsp").forward(request, response);
     }
 
     /**
