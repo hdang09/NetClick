@@ -33,11 +33,14 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO: Opwimize this code
-        int id = Integer.parseInt(request.getParameter("id"));
-        request.setAttribute("movie", new MovieDAO().getById(id));
-        request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(id));
-        request.getRequestDispatcher("preview.jsp").forward(request, response);
+        String movieIDParam = request.getParameter("movieID");
+        int movieID = 0;
+        try {
+            movieID = Integer.parseInt(movieIDParam);
+        } catch (NumberFormatException e) {
+            request.getRequestDispatcher("404.jsp").forward(request, response);
+        }
+        forwardToPreviewPage(movieID, request, response);
     }
 
     /**
@@ -71,25 +74,24 @@ public class PreviewController extends HttpServlet {
                 int movieID = 0;
                 try {
                     movieID = Integer.parseInt(movieIDParam);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     request.getRequestDispatcher("404.jsp").forward(request, response);
                 }
                 String comment = request.getParameter("comment");
                 ReviewDTO review = new ReviewDTO(movieID, userID, comment, MAX_RATING);
 
                 // Add commnent
-                // TODO: Opwimize this code
                 dao.addComment(review);
-                request.setAttribute("movie", new MovieDAO().getById(movieID));
-                request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(movieID));
-                request.getRequestDispatcher("preview.jsp").forward(request, response);
+                forwardToPreviewPage(movieID, request, response);
                 break;
+
             default:
-                throw new AssertionError();
+                request.getRequestDispatcher("404.jsp").forward(request, response);
         }
     }
 
-    public void dispatchToPreviewPage(int movieID) {
+    public void forwardToPreviewPage(int movieID, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setAttribute("movie", new MovieDAO().getById(movieID));
         request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(movieID));
         request.getRequestDispatcher("preview.jsp").forward(request, response);
