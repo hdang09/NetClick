@@ -84,7 +84,6 @@ public class AccountDAO {
             ps.setString(3, password);
             ps.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
     

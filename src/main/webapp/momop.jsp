@@ -35,11 +35,14 @@
         <div class="w-full">
           <div class="max-w-md">
             <!-- login form -->
-            <form class="space-y-4 pt-4" action="/payment" method="POST">
+            
+            <form class="space-y-4 pt-4" action="/PaymentControlller?action=momo" method="POST">
+                <p class="text-red-400">${errornum}</p>
               <div>
                 <input
                   id="input"
                   type="text"
+                  name="mnumber"
                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="Mobile number"
                 />

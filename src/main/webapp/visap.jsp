@@ -59,9 +59,9 @@
                     <input
                       id="expiryDate"
                       name="expiredate"
-                      type="text"
+                      type="date"
                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                      placeholder="MM/YY"
+                      placeholder="yyyy-MM-dd"
                     />
                   </div>
                   <div class="w-1/2">
