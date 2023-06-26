@@ -73,7 +73,7 @@ public class SubscriptionController extends HttpServlet {
             request.getRequestDispatcher("subscription.jsp").forward(request, response);
             return;
         }
-        
+
         int id = Integer.parseInt(idMovie);
         MovieDTO movie = new MovieDAO().getById(id);
         request.setAttribute("movie", movie);

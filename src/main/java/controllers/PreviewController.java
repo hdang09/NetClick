@@ -33,14 +33,14 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String movieIDParam = request.getParameter("movieID");
+        String movieIDParam = request.getParameter("id");
         int movieID = 0;
         try {
             movieID = Integer.parseInt(movieIDParam);
+            forwardToPreviewPage(movieID, request, response);
         } catch (NumberFormatException e) {
             request.getRequestDispatcher("404.jsp").forward(request, response);
         }
-        forwardToPreviewPage(movieID, request, response);
     }
 
     /**
@@ -70,7 +70,7 @@ public class PreviewController extends HttpServlet {
 
                 // Get review info
                 int userID = account.getId();
-                String movieIDParam = request.getParameter("movieID");
+                String movieIDParam = request.getParameter("id");
                 int movieID = 0;
                 try {
                     movieID = Integer.parseInt(movieIDParam);
