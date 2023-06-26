@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -98,10 +99,14 @@ public class PaymentControlller extends HttpServlet {
                     PaymentDAO paymentDAO = new PaymentDAO(); 
                     PaymentDTO check = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
 
-                    if (check != null) {
-//                      ongoing
+                    if (check == null) {
+                        paymentDAO.insert(saNum, expireDate, cvv, placeholderCard);
+                        RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/movie?id=1");
+                        dispatch.forward(request, response);
                     } else {
-//                       ongoing
+                        request.setAttribute("note", "EXIST");
+                        RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/subscription.jsp");
+                        dispatch.forward(request, response);
                     }
                 } catch (NumberFormatException | ParseException e) {
     }

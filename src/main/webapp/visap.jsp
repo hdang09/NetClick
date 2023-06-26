@@ -42,7 +42,8 @@
                         </div>
                    <% } %>
                    <p class="text-red-400">${errorfill}</p>
-                <div>
+                   <p class="text-red-400">${note}</p>
+                   <div>
                   <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
                   <input
                     id="cardNumber"

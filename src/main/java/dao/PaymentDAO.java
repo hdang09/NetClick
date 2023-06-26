@@ -36,7 +36,7 @@ public class PaymentDAO {
                     rs.getInt("id"),
                     rs.getInt("userID"),
                     rs.getInt("saNum"),
-                    rs.getDate("expire_visa_date"),
+                    rs.getDate("expireVisaDate"),
                     rs.getInt("cvv"),
                     rs.getString("placeholderCard"),
                     rs.getInt("momoNum"),
@@ -49,6 +49,20 @@ public class PaymentDAO {
 
         }
         return null;
+    }
+         public void insert(Integer visa, Date expiredate, Integer cvv, String cholder) {
+        String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv, placeholder_card, momo_num, start_date, subscriptionID)\n" +
+"VALUES (?, ?, ?, ?, 0, 0, 0);";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, visa);
+            ps.setDate(2, (java.sql.Date) expiredate);
+            ps.setInt(3, cvv);
+            ps.setString(4, cholder);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
     }
 }
    
