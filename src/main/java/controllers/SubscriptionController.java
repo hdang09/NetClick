@@ -61,7 +61,7 @@ public class SubscriptionController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String plan = request.getParameter("plan");
-        if (plan != null) {
+        if (!plan.equals("")) {
             request.getRequestDispatcher("subscription-plan").forward(request, response);
             return;
         }
