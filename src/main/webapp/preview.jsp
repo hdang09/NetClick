@@ -65,6 +65,32 @@
                 </div>
 
                 <div class="mt-4">
+                    <h2 class="font-bold text-xl text-slate-400">COMMENT AND RATING</h2>
+                    <form action="/preview?id${movie.ID}" method="POST">
+                        <label class="mr-2">Comment: </label>
+                        <input type="hidden" name="action" value="comment"/>
+                        <input type="hidden" name="movieID" value="${movie.ID}"/>
+                        <textarea name="comment" class="border w-96 h-32"></textarea>
+                        <input type="submit" value="Add comment" class="py-2 px-6 bg-primary text-white rounded-lg" />
+                    </form>
+
+                    <ul>
+                        <c:forEach var="review" items="${reviews}">
+                            <li class="p-2 border-b-2 border-slate-200">
+                                <div class="flex items-center">
+                                    <div class="flex items-center justify-center border w-8 h-8 rounded-full">
+                                        <i class="fa-solid fa-user text-lg"></i>
+                                    </div>
+                                    <h2 class="ml-2">${review.userID}</h2>
+                                </div>
+
+                                <p>${review.comment}</p>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+
+                <div class="mt-4">
                     <h2 class="font-bold text-xl text-slate-400">SIMILAR</h2>
                     <ul class="flex justify-between flex-wrap">
                         <c:forEach begin="1" end="7"> <%@ include file="components/movie.jsp" %> </c:forEach>
