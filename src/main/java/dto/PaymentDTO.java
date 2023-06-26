@@ -15,7 +15,7 @@ public class PaymentDTO {
     private int id;
     private int userID;
     private int saNum;
-    private Date expireVisaDate;
+    private Date expire_visa_date;
     private int cvv;
     private String placeholderCard;
     private int momoNum;
@@ -29,7 +29,7 @@ public class PaymentDTO {
         this.id = id;
         this.userID = userID;
         this.saNum = saNum;
-        this.expireVisaDate = expireVisaDate;
+        this.expire_visa_date = expireVisaDate;
         this.cvv = cvv;
         this.placeholderCard = placeholderCard;
         this.momoNum = momoNum;
@@ -64,11 +64,11 @@ public class PaymentDTO {
     }
     
     public Date getExpireVisaDate() {
-        return expireVisaDate;
+        return expire_visa_date;
     }
     
     public void setExpireVisaDate(Date expireVisaDate) {
-        this.expireVisaDate = expireVisaDate;
+        this.expire_visa_date = expireVisaDate;
     }
     
     public int getCvv() {
