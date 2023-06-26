@@ -61,7 +61,7 @@ public class SubscriptionController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String plan = request.getParameter("plan");
-        if (!plan.equals("")) {
+        if (plan != null) {
             request.getRequestDispatcher("subscription-plan").forward(request, response);
             return;
         }
@@ -73,7 +73,7 @@ public class SubscriptionController extends HttpServlet {
             request.getRequestDispatcher("subscription.jsp").forward(request, response);
             return;
         }
-        
+
         int id = Integer.parseInt(idMovie);
         MovieDTO movie = new MovieDAO().getById(id);
         request.setAttribute("movie", movie);
