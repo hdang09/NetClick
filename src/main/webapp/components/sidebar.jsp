@@ -16,7 +16,7 @@
       <i class="fa-solid fa-video"></i>
       <span class="ml-3 font-bold">New Movies</span>
     </a>
-    <a href="/fav-list" class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'].equals("/subscription") ? 'text-primary border-r-4 border-primary': 'text-gray-400'}">
+    <a href="/fav-list" class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'].equals("/fav-list") ? 'text-primary border-r-4 border-primary': 'text-gray-400'}">
       <i class="fa-solid fa-heart"></i>
       <span class="ml-3 font-bold">Favorite List</span>
     </a>
