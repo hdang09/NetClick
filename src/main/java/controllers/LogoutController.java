@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Quan
  */
-@WebServlet(name = "LogoutController", urlPatterns = {"/logou"})
+@WebServlet(name = "LogoutController", urlPatterns = {"/LogoutController"})
 public class LogoutController extends HttpServlet {
 
     /**
@@ -74,14 +74,13 @@ public class LogoutController extends HttpServlet {
             throws ServletException, IOException {
         String logout = request.getParameter("logout");
         if (logout != null && logout.equals("true")) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        response.sendRedirect("/login");
-}
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
     }
-
+    response.sendRedirect("/login.jsp");
+}
+}
     /**
      * Returns a short description of the servlet.
      *

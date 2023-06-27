@@ -96,44 +96,43 @@ public class PaymentControlller extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + "/movie?id=1");
                     } else {
                         request.setAttribute("errornum", "Phone number already exists");
-                        response.sendRedirect(request.getContextPath() + "/subscription.jsp");
+                        request.getRequestDispatcher("/subscription.jsp").forward(request, response);
                     }
                 } catch (NumberFormatException e) {
                 }
-            } 
+            }
             } else {
 //          VISA
             String saNumString = request.getParameter("visa");
-            String expire_visa_date = request.getParameter("expiredate");
+            String expireVisaDate = request.getParameter("expiredate");
             String cvvString = request.getParameter("cvv");
             String placeholderCard = request.getParameter("placeholderCard");
-                if (saNumString == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
-                        saNumString.isEmpty() || expire_visa_date.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
-                    request.setAttribute("errorfill", "Please fill all the fields");
-                    request.getRequestDispatcher("/visap.jsp").forward(request, response);
-                    return ;
-                } else {
-                    try {
-                        Integer saNum = Integer.parseInt(saNumString);
-                        Integer cvv = Integer.parseInt(cvvString);
 
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        Date expireDate = dateFormat.parse(expire_visa_date);
+            if (saNumString == null || expireVisaDate == null || cvvString == null || placeholderCard == null ||
+                    saNumString.isEmpty() || expireVisaDate.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
+                request.setAttribute("errorfill", "Please fill in all the fields");
+                request.getRequestDispatcher("/visap.jsp").forward(request, response);
+            } else {
+                try {
+                    Integer saNum = Integer.parseInt(saNumString);
+                    Integer cvv = Integer.parseInt(cvvString);
 
-                        // CHECK EXIST
-                        PaymentDAO paymentDAO = new PaymentDAO(); 
-                        PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date expireDate = dateFormat.parse(expireVisaDate);
 
-                        if (checkv == null) {
-                            paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard);
-                            response.sendRedirect(request.getContextPath() + "/movie?id=1");
-                        } else {
-                            request.setAttribute("note", "EXIST");
-                            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/visap.jsp");
-                            dispatch.forward(request, response);
-                        }
-                    } catch (NumberFormatException | ParseException e) {
-        }
+                    // CHECK EXIST
+                    PaymentDAO paymentDAO = new PaymentDAO();
+                    PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
+
+                    if (checkv == null) {
+                        paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard);
+                        response.sendRedirect(request.getContextPath() + "/movie?id=1");
+                    } else {
+                        request.setAttribute("note", "EXIST");
+                        request.getRequestDispatcher("/visap.jsp").forward(request, response);
+                    }
+                } catch (NumberFormatException | ParseException e) {    
+                }
 }
             }
 
