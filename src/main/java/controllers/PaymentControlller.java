@@ -91,21 +91,21 @@ public class PaymentControlller extends HttpServlet {
                 try {
                     Integer momo = Integer.parseInt(momoNumString);
                     PaymentDAO paymentDAO = new PaymentDAO();
-                    PaymentDTO checkm = paymentDAO.momoCheckExist(momo);
-                    if (checkm == null) {
+                    boolean isMomoExists = paymentDAO.isMomoExists(momo);
+                    if (isMomoExists) {
+                        request.setAttribute("errornum", "Phone number already exists");
+                        request.getRequestDispatcher("/momop.jsp").forward(request, response);
+                    } else {
                         paymentDAO.insertm(momo);
                         response.sendRedirect(request.getContextPath() + "/movie?id=1");
-                    } else {
-                        request.setAttribute("errornum", "Phone number already exists");
-                        request.getRequestDispatcher("/subscription.jsp").forward(request, response);
                     }
                 } catch (NumberFormatException e) {
-                }
-            } 
+            }
+        }
             } else {
 //          VISA
             String saNumString = request.getParameter("visa");
-            String expireVisaDate = request.getParameter("expiredate");
+            String expire_visa_date = request.getParameter("expiredate");
             String cvvString = request.getParameter("cvv");
             String placeholderCard = request.getParameter("placeholderCard");
                 if (saNumString == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
@@ -119,7 +119,9 @@ public class PaymentControlller extends HttpServlet {
                         Integer cvv = Integer.parseInt(cvvString);
 
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        Date expireDate = dateFormat.parse(expire_visa_date);
+                        java.util.Date utilExpireDate = dateFormat.parse(expire_visa_date);
+                        java.sql.Date expireDate = new java.sql.Date(utilExpireDate.getTime());
+
 
                     // CHECK EXIST
                     PaymentDAO paymentDAO = new PaymentDAO();

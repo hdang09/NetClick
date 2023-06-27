@@ -35,7 +35,7 @@
           <div class="w-full">
             <div class="max-w-md">
               <!-- login form -->
-              <form action="/PaymentControlller?action=visa" method="POST" class="space-y-4">
+              <form action="/PaymentControlller" method="POST" class="space-y-4">
                 <div class="error-message">${error}</div>
                 <p class="text-red-400">${errorfill}</p>
                 <p class="text-red-400">${note}</p>

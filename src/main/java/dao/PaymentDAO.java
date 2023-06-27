@@ -19,10 +19,8 @@ import utils.DateUtils;
  * @author Quan
  */
 public class PaymentDAO {
-
     DateUtils dateUtils = new DateUtils();
-    
-    //VISA
+//  VISA
     public PaymentDTO checkPaymentExist(Integer visa, Date expiredate, Integer cvv, String cholder) {
         String sql = "SELECT *\n"
                 + "FROM payment\n"
@@ -32,7 +30,7 @@ public class PaymentDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, visa);
-            ps.setDate(2, dateUtils.convertToSqlDate(expiredate));
+            ps.setDate(2, new java.sql.Date(expiredate.getTime()));
             ps.setInt(3, cvv);
             ps.setString(4, cholder);
             ResultSet rs = ps.executeQuery();
@@ -61,18 +59,16 @@ public class PaymentDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, visa);
-            ps.setDate(2, (java.sql.Date) expiredate);
+            ps.setDate(2, new java.sql.Date(expiredate.getTime()));
             ps.setInt(3, cvv);
             ps.setString(4, cholder);
             ps.executeUpdate();
         } catch (SQLException e) {
         }
     }
-//MOMO
+//  MOMO
         public void insertm(Integer momoNum) {
-        String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv,"
-                + " placeholder_card, momo_num, start_date, subscriptionID)\n"
-                + "VALUES (0, 0, 0, 0, ?, 0, 0)";
+        String sql = "INSERT INTO payment (momo_num) VALUES (?)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -82,32 +78,20 @@ public class PaymentDAO {
         }
     }
         
-        public PaymentDTO momoCheckExist(Integer momoNum) {
-            String sql = "SELECT *\n" +
-                    "FROM payment\n" +
-                    "WHERE momo_num = ?";
-            try {
-                Connection conn = DBUtils.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ps.setInt(1, momoNum);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    return new PaymentDTO(
-                            rs.getInt("id"),
-                            rs.getInt("userID"),
-                            rs.getInt("saNum"),
-                            rs.getDate("expire_visa_date"),
-                            rs.getInt("cvv"),
-                            rs.getString("placeholderCard"),
-                            rs.getInt("momoNum"),
-                            rs.getDate("startDate"),
-                            rs.getInt("subscriptionID")
-                    );
-                }
-            } catch (SQLException e) {
-            }
-            return null;
+        public boolean isMomoExists(Integer momo) {
+        String sql = "SELECT * FROM payment WHERE momo_num = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, momo);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+        }
+        return false;
 }
+
+
 
 }
 
