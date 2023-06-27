@@ -14,12 +14,15 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.DBUtils;
+import utils.DateUtils;
 
 /**
  *
  * @author Admin
  */
 public class MovieDAO {
+    
+    DateUtils dateUtils = new DateUtils();
 
     public ArrayList<MovieDTO> getAll() {
         ArrayList<MovieDTO> movies = new ArrayList<>();
@@ -158,9 +161,7 @@ public class MovieDAO {
             ps.setString(2, movie.getDescription());
             ps.setString(3, movie.getThumbnail());
             ps.setString(4, movie.getMovie_url());
-            java.util.Date releaseDate = movie.getRelease();
-            java.sql.Date sqlReleaseDate = new java.sql.Date(releaseDate.getTime());
-            ps.setDate(5, sqlReleaseDate);
+            ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
             ps.setString(6, movie.getDirector());
             ps.setInt(7, movie.getRating());
             ps.executeUpdate();
@@ -181,9 +182,7 @@ public class MovieDAO {
             ps.setString(2, movie.getDescription());
             ps.setString(3, movie.getThumbnail());
             ps.setString(4, movie.getMovie_url());
-            java.util.Date releaseDate = movie.getRelease();
-            java.sql.Date sqlReleaseDate = new java.sql.Date(releaseDate.getTime());
-            ps.setDate(5, sqlReleaseDate);
+            ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
             ps.setString(6, movie.getDirector());
             ps.setInt(7, id);
             ps.executeUpdate();

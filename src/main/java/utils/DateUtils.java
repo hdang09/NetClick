@@ -21,7 +21,7 @@ public class DateUtils {
     public String dateToString(Date date) {
         return dateFormat.format(date);
     }
-    
+
     public Date stringToDate(String dateString) {
         try {
             return dateFormat.parse(dateString);
@@ -29,5 +29,10 @@ public class DateUtils {
             Logger.getLogger(DateUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public java.sql.Date convertToSqlDate(java.util.Date javaDate) {
+        java.sql.Date sqlDate = new java.sql.Date(javaDate.getTime());
+        return sqlDate;
     }
 }
