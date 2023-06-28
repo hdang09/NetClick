@@ -58,11 +58,13 @@ public class FavoriteListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        final String LOGIN_PAGE = "/login";
+        
         // Check if user login
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
         if (account == null) {
-            request.getRequestDispatcher("404.jsp").forward(request, response);
+            response.sendRedirect(LOGIN_PAGE);
             return;
         }
         
