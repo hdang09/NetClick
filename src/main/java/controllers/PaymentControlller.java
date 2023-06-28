@@ -10,21 +10,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import utils.DateUtils;
 
 /**
  *
  * @author Quan
  */
-@WebServlet(name = "PaymentControlller", urlPatterns = {"/PaymentControlller"})
+@WebServlet(name = "PaymentControlller", urlPatterns = {"/Payment"})
 public class PaymentControlller extends HttpServlet {
 
     /**
@@ -105,39 +102,55 @@ public class PaymentControlller extends HttpServlet {
             } else {
 //          VISA
             String saNumString = request.getParameter("visa");
-            String expire_visa_date = request.getParameter("expiredate");
-            String cvvString = request.getParameter("cvv");
-            String placeholderCard = request.getParameter("placeholderCard");
-                if (saNumString == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
-                        saNumString.isEmpty() || expire_visa_date.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
-                    request.setAttribute("errorfill", "Please fill all the fields");
-                    request.getRequestDispatcher("/visap.jsp").forward(request, response);
-                    return ;
+        String expire_visa_date = request.getParameter("expiredate");
+        String cvvString = request.getParameter("cvv");
+        String placeholderCard = request.getParameter("placeholderCard");
+
+        if (saNumString == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
+                saNumString.isEmpty() || expire_visa_date.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
+            request.setAttribute("errorfill", "Please fill all the fields");
+            request.getRequestDispatcher("/visap.jsp").forward(request, response);
+            return;
+        } else {
+            // Validate Visa
+            if (!saNumString.matches("\\d+")) {
+                request.setAttribute("onlynum", "Please enter only numeric values for Visa");
+                request.getRequestDispatcher("/visap.jsp").forward(request, response);
+                return;
+            }
+
+            // Validate CVV
+            if (!cvvString.matches("\\d+")) {
+                request.setAttribute("onlynum", "Please enter only numeric values for CVV");
+                request.getRequestDispatcher("/visap.jsp").forward(request, response);
+                return;
+            }
+
+            try {
+                Integer saNum = Integer.parseInt(saNumString);
+                Integer cvv = Integer.parseInt(cvvString);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date utilExpireDate = dateFormat.parse(expire_visa_date);
+                java.sql.Date expireDate = new java.sql.Date(utilExpireDate.getTime());
+
+                // CHECK EXIST
+                PaymentDAO paymentDAO = new PaymentDAO();
+                PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
+
+                if (checkv == null) {
+                    paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard);
+                    response.sendRedirect(request.getContextPath() + "/movie?id=1");
                 } else {
-                    try {
-                        Integer saNum = Integer.parseInt(saNumString);
-                        Integer cvv = Integer.parseInt(cvvString);
-
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        java.util.Date utilExpireDate = dateFormat.parse(expire_visa_date);
-                        java.sql.Date expireDate = new java.sql.Date(utilExpireDate.getTime());
-
-
-                    // CHECK EXIST
-                    PaymentDAO paymentDAO = new PaymentDAO();
-                    PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
-
-                        if (checkv == null) {
-                            paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard);
-                            response.sendRedirect(request.getContextPath() + "/movie?id=1");
-                        } else {
-                            request.setAttribute("note", "EXIST");
-                            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/visap.jsp");
-                            dispatch.forward(request, response);
-                        }
-                    } catch (NumberFormatException | ParseException e) {
-        }
+                    request.setAttribute("note", "EXIST");
+                    RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/visap.jsp");
+                    dispatch.forward(request, response);
+                }
+            } catch (NumberFormatException | ParseException e) {
+        // Handle exception
+    }
 }
+
             }
 
         // TODO: Validate form using isValid variable
@@ -146,7 +159,7 @@ public class PaymentControlller extends HttpServlet {
 //                    response.sendRedirect("/movie?id=1");
 //                    return;
 //                }
-//                
+//                  
 //                response.sendRedirect("subscription.jsp");
     }
 

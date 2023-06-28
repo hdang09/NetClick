@@ -36,7 +36,7 @@
           <div class="max-w-md">
             <!-- login form -->
             <p class="text-red-400">${errornum}</p>
-            <form class="space-y-4 pt-4" action="/PaymentControlller?action=momo" method="POST">
+            <form class="space-y-4 pt-4" action="/Payment?action=momo" method="POST">
               <div>
                 <input
                   id="input"
