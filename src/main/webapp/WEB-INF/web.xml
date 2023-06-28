@@ -120,6 +120,9 @@
         <servlet-name>FavoriteListController</servlet-name>
         <url-pattern>/fav-list</url-pattern>
     </servlet-mapping>
+    
+
+
     <session-config>
         <session-timeout>
             30

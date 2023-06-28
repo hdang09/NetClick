@@ -59,6 +59,14 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("tendangnhap") == null) {
+            // Chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+        } else {
+            // Đã đăng nhập, cho phép truy cập vào trang khác
+            // TODO: Xử lý yêu cầu của trang khác
+        }
     }
 
     /**
