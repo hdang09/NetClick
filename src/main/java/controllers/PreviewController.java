@@ -55,6 +55,7 @@ public class PreviewController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         final int MAX_RATING = 5;
+        final String LOGIN_PAGE = "/login";
         ReviewDAO dao = new ReviewDAO();
 
         String action = request.getParameter("action");
@@ -64,7 +65,7 @@ public class PreviewController extends HttpServlet {
                 HttpSession session = request.getSession();
                 AccountDTO account = (AccountDTO) session.getAttribute("account");
                 if (account == null) {
-                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                    response.sendRedirect(LOGIN_PAGE);
                     return;
                 }
 
