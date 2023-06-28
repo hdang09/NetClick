@@ -106,26 +106,21 @@ public class PaymentControlller extends HttpServlet {
 }
             } else {
 //          VISA
-            String saNumString = request.getParameter("visa");
+            String saNum = request.getParameter("visa");
             String expire_visa_date = request.getParameter("expiredate");
             String cvvString = request.getParameter("cvv");
             String placeholderCard = request.getParameter("placeholderCard");
-            if (saNumString == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
-                    saNumString.isEmpty() || expire_visa_date.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
+            if (saNum == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
+                    saNum.isEmpty() || expire_visa_date.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
                     request.setAttribute("errorfill", "Please fill all the fields");
                     request.getRequestDispatcher("/visap.jsp").forward(request, response);
                     return;
-            } else {
-               if (saNumString == null || expire_visa_date == null || cvvString == null || placeholderCard == null ||
-                saNumString.isEmpty() || expire_visa_date.isEmpty() || cvvString.isEmpty() || placeholderCard.isEmpty()) {
-                request.setAttribute("errorfill", "Please fill in all the fields");
-                request.getRequestDispatcher("/visap.jsp").forward(request, response);
-                return;
-//                  Validate Visa
-                    } else if (!saNumString.matches("\\d+")) {
-                                request.setAttribute("validate", "Please enter only numeric values for Visa");
+//                   Validate Visa
+                    } else if (!saNum.matches("^4\\d{12,15}$")) {
+                        request.setAttribute("validate", "Please enter a 13 to 16-digit numeric value for Visa starting with 4");
                         request.getRequestDispatcher("/visap.jsp").forward(request, response);
                         return;
+
 //                  Validate CVV
                     } else if (!cvvString.matches("\\d+")) {
                         request.setAttribute("validate", "Please enter only numeric values for CVV");
@@ -137,13 +132,12 @@ public class PaymentControlller extends HttpServlet {
                         request.getRequestDispatcher("/visap.jsp").forward(request, response);
                         return;
                         }try {
-                            Integer saNum = Integer.parseInt(saNumString);
                             Integer cvv = Integer.parseInt(cvvString);
 
                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                             java.util.Date utilExpireDate = dateFormat.parse(expire_visa_date);
                             java.sql.Date expireDate = new java.sql.Date(utilExpireDate.getTime());
-
+                            
                             // CHECK EXIST
                             PaymentDAO paymentDAO = new PaymentDAO();
                             PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
@@ -169,8 +163,6 @@ public class PaymentControlller extends HttpServlet {
 //                }
 //                  
 //                response.sendRedirect("subscription.jsp");
-    }
-
     /**
      * Returns a short description of the servlet.
      *

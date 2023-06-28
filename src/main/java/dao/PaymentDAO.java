@@ -21,7 +21,7 @@ import utils.DateUtils;
 public class PaymentDAO {
     DateUtils dateUtils = new DateUtils();
 //  VISA
-    public PaymentDTO checkPaymentExist(Integer visa, Date expiredate, Integer cvv, String cholder) {
+    public PaymentDTO checkPaymentExist(String visa, Date expiredate, Integer cvv, String cholder) {
         String sql = "SELECT *\n"
                 + "FROM payment\n"
                 + "WHERE visa_num = ? AND expire_visa_date = ? AND cvv = ? AND placeholder_card = ?";
@@ -29,7 +29,7 @@ public class PaymentDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, visa);
+            ps.setString(1, visa);
             ps.setDate(2, new java.sql.Date(expiredate.getTime()));
             ps.setInt(3, cvv);
             ps.setString(4, cholder);
@@ -38,7 +38,7 @@ public class PaymentDAO {
                 return new PaymentDTO(
                         rs.getInt("id"),
                         rs.getInt("userID"),
-                        rs.getInt("saNum"),
+                        rs.getString("saNum"),
                         rs.getDate("expireVisaDate"),
                         rs.getInt("cvv"),
                         rs.getString("placeholderCard"),
@@ -52,13 +52,13 @@ public class PaymentDAO {
         }
         return null;
     }
-        public void insertv(Integer visa, Date expiredate, Integer cvv, String cholder) {
+        public void insertv(String visa, Date expiredate, Integer cvv, String cholder) {
         String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv, placeholder_card)\n" +
              "VALUES (?, ?, ?, ?)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, visa);
+            ps.setString(1, visa);
             ps.setDate(2, new java.sql.Date(expiredate.getTime()));
             ps.setInt(3, cvv);
             ps.setString(4, cholder);
