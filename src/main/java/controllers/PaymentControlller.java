@@ -81,24 +81,32 @@ public class PaymentControlller extends HttpServlet {
 //          MOMO
 
             String momoNumString = request.getParameter("mnumber");
-            if (momoNumString == null || momoNumString.isEmpty()) {
-                request.setAttribute("errornum", "Please fill your phone numbers");
+if (momoNumString == null || momoNumString.isEmpty()) {
+    request.setAttribute("errornum", "Please fill your phone numbers");
+    request.getRequestDispatcher("/momop.jsp").forward(request, response);
+} else {
+    // Kiểm tra chỉ nhập số cho trường "mnumber"
+    if (!momoNumString.matches("\\d+")) {
+        request.setAttribute("errornum", "Please enter only numeric");
+        request.getRequestDispatcher("/momop.jsp").forward(request, response);
+    } else {
+        try {
+            Integer momo = Integer.parseInt(momoNumString);
+            PaymentDAO paymentDAO = new PaymentDAO();
+            boolean isMomoExists = paymentDAO.isMomoExists(momo);
+            if (isMomoExists) {
+                request.setAttribute("errornum", "Phone number already exists");
                 request.getRequestDispatcher("/momop.jsp").forward(request, response);
             } else {
-                try {
-                    Integer momo = Integer.parseInt(momoNumString);
-                    PaymentDAO paymentDAO = new PaymentDAO();
-                    boolean isMomoExists = paymentDAO.isMomoExists(momo);
-                    if (isMomoExists) {
-                        request.setAttribute("errornum", "Phone number already exists");
-                        request.getRequestDispatcher("/momop.jsp").forward(request, response);
-                    } else {
-                        paymentDAO.insertm(momo);
-                        response.sendRedirect(request.getContextPath() + "/movie?id=1");
-                    }
-                } catch (NumberFormatException e) {
+                paymentDAO.insertm(momo);
+                response.sendRedirect(request.getContextPath() + "/movie?id=1");
             }
+        } catch (NumberFormatException e) {
+            // Xử lý ngoại lệ khi không thể chuyển đổi thành số
         }
+    }
+}
+
             } else {
 //          VISA
             String saNumString = request.getParameter("visa");
