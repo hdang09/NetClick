@@ -2,7 +2,7 @@
   <!-- LOGO -->
   <div class="text-primary">
     <i class="fa-solid fa-shekel-sign fa-2xl"></i>
-    <a href="/admin" class="text-red font-extrabold text-xl ml-2">NetClick</a>
+    <a href="/" class="text-red font-extrabold text-xl ml-2">NetClick</a>
   </div>
 
   <!-- MENU -->
