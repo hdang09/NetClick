@@ -15,7 +15,7 @@
     <main class="ml-0 sm:ml-[15rem] p-6">
       <!-- Title -->
       <div class="flex justify-center items-center mt-2">
-        <h1 class="text-8xl font-light mb-8 px-3">Set up your phone number</h1>
+        <h1 class="text-6xl md:text-8xl font-light mb-8 px-3">Set up your phone number</h1>
       </div>
 
       <!-- Stepper -->

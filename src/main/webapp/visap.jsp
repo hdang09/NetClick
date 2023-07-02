@@ -25,7 +25,7 @@
       <!-- End Back -->
       <div class="flex-grow">
         <div class="flex justify-center items-center mt-10 mb-0">
-          <h1 class="text-8xl font-light mb-8 px-3">Set up your credit</h1>
+          <h1 class="text-6xl md:text-8xl font-light mb-8 px-3">Set up your credit</h1>
         </div>
         <%@ include file="components/stepper.jsp" %>
         <div class="flex justify-center items-center mb-4">
@@ -41,14 +41,14 @@
                 <p class="text-red-400">${note}</p>
                 <p class="text-red-400">${validate}</p>
                 <div>
-                <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
-                <input
+                  <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
+                  <input
                     id="cardNumber"
                     name="visa"
                     type="number"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     placeholder="Number"
-                   />
+                  />
                 </div>
                 <div class="flex space-x-4">
                   <div class="w-1/2">

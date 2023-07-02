@@ -28,7 +28,7 @@
             </li>
           </ul>
         </div>
-        <div class="flex justify-center">
+        <div class="flex flex-col md:flex-row items-center justify-center">
           <%-- MOBILE --%>
           <div
             class="border-1 border border-black flex flex-col p-4 mx-10 my-8 rounded-md w-[200px] hover:border-0 hover:shadow-2xl"
