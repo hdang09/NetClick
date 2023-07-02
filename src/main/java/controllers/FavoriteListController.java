@@ -60,7 +60,7 @@ public class FavoriteListController extends HttpServlet {
             throws ServletException, IOException {
         final String LOGIN_PAGE = "/login";
         
-        // Check if user login
+        // Check if user has logined
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
         if (account == null) {

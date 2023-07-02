@@ -14,13 +14,14 @@ public class ReviewDTO {
     private int id;
     private int movieID;
     private int userID;
+    private String username;
     private String comment;
     private int rating;
     private Date dateReview;
 
     public ReviewDTO() {
     }
-
+    
     public ReviewDTO(int movieID, int userID, String comment, int rating) {
         this.movieID = movieID;
         this.userID = userID;
@@ -28,10 +29,19 @@ public class ReviewDTO {
         this.rating = rating;
     }
 
-    public ReviewDTO(int id, int movieID, int userID, String comment, int rating, Date dateReview) {
+    public ReviewDTO(int movieID, int userID, String username, String comment, int rating) {
+        this.movieID = movieID;
+        this.userID = userID;
+        this.username = username;
+        this.comment = comment;
+        this.rating = rating;
+    }
+
+    public ReviewDTO(int id, int movieID, int userID, String username, String comment, int rating, Date dateReview) {
         this.id = id;
         this.movieID = movieID;
         this.userID = userID;
+        this.username = username;
         this.comment = comment;
         this.rating = rating;
         this.dateReview = dateReview;
@@ -57,6 +67,14 @@ public class ReviewDTO {
         return userID;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     public void setUserID(int userID) {
         this.userID = userID;
     }

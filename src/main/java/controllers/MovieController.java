@@ -5,12 +5,14 @@
 package controllers;
 
 import dao.MovieDAO;
+import dto.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -56,6 +58,16 @@ public class MovieController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        final String LOGIN_PAGE = "/login";
+
+        // Check if user has logined
+        HttpSession session = request.getSession();
+        AccountDTO account = (AccountDTO) session.getAttribute("account");
+        if (account == null) {
+            response.sendRedirect(LOGIN_PAGE);
+            return;
+        }
+
         int id = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("movie", new MovieDAO().getById(id));
         request.getRequestDispatcher("movie.jsp").forward(request, response);
