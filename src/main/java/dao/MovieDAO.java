@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.DBUtils;
@@ -43,7 +44,7 @@ public class MovieDAO {
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
                 ArrayList tags = new ArrayList();
-                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, director);
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
                 movies.add(movie);
             }
             return movies;
@@ -70,8 +71,8 @@ public class MovieDAO {
                 Date release = rs.getDate("release");
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
-                // ArrayList tags = new ArrayList();
-                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, director);
+                 ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
                 return movie;
             }
         } catch (SQLException ex) {
@@ -100,7 +101,6 @@ public class MovieDAO {
                 Date release = rs.getDate("release");
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
-                // ArrayList tags = new ArrayList();
                 MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tag);
                 movies.add(movie);
             }
@@ -190,5 +190,67 @@ public class MovieDAO {
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public List<MovieDTO> getPopularMovies(int count) {
+        ArrayList<MovieDTO> movies = new ArrayList<>();
+        String sql = "SELECT TOP 2 * FROM Movie "
+                   + "ORDER BY watch_count DESC";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+//            ps.setInt(1, count);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String thumbnail = rs.getString("thumbnail");
+                String movieUrl = rs.getString("movie_url");
+                Date release = rs.getDate("release");
+                String director = rs.getString("director");
+                int rating = rs.getInt("rating");
+                ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public ArrayList<MovieDTO> getFavoriteList(int accountID) {
+        ArrayList<MovieDTO> movies = new ArrayList<>();
+
+        String sql = "SELECT * FROM Movie m, FavoriteList fl\n" + 
+                     "WHERE m.id = fl.movieID AND fl.accountID = ?";
+        
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, accountID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String thumbnail = rs.getString("thumbnail");
+                String movieUrl = rs.getString("movie_url");
+                Date release = rs.getDate("release");
+                String director = rs.getString("director");
+                int rating = rs.getInt("rating");
+                ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, director);
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

@@ -5,6 +5,7 @@
 package controllers;
 
 import dao.FavoriteListDAO;
+import dao.MovieDAO;
 import dto.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -69,17 +70,18 @@ public class FavoriteListController extends HttpServlet {
         }
         
         // Render all movies in favorite list
-        FavoriteListDAO dao = new FavoriteListDAO();
+        MovieDAO movieDAO = new MovieDAO();
         String movieIDParam = request.getParameter("movieID");
         if (movieIDParam == null) {
-            request.setAttribute("movies", dao.getAll(account.getId()));
+            request.setAttribute("movies", movieDAO.getFavoriteList(account.getId()));
             request.getRequestDispatcher("fav-list.jsp").forward(request, response);
             return;
         }
         
         // Add movie to favorite list
         int movieID = Integer.parseInt(movieIDParam);
-        dao.insert(account.getId(), movieID);
+        FavoriteListDAO fvDAO = new FavoriteListDAO();
+        fvDAO.insert(account.getId(), movieID);
         request.setAttribute("message", "Add to favorite list successfully!");
 //        response.sendRedirect("/preview?id=" + movieIDParam);
         request.getRequestDispatcher("/preview?id=" + movieIDParam).forward(request, response);

@@ -102,7 +102,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
-        <url-pattern>/a</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
@@ -120,8 +120,6 @@
         <servlet-name>FavoriteListController</servlet-name>
         <url-pattern>/fav-list</url-pattern>
     </servlet-mapping>
-    
-
 
     <session-config>
         <session-timeout>

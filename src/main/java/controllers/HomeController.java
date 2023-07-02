@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.MovieDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ public class HomeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");            
+            out.println("<title>Servlet HomeController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HomeController at " + request.getContextPath() + "</h1>");
@@ -55,7 +56,17 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("404.jsp").forward(request, response);
+        
+//        final int MAX_POPULAR_MOVIES = 2;
+//        try {
+//            request.setAttribute("abc", new MovieDAO().getPopularMovies(MAX_POPULAR_MOVIES));
+//            System.out.println(new MovieDAO().getPopularMovies(MAX_POPULAR_MOVIES));
+//            request.getRequestDispatcher("index.jsp").forward(request, response);
+//        } catch (IOException | ServletException e) {
+//            request.getRequestDispatcher("404.jsp").forward(request, response);
+//            request.setAttribute("err", "Please pull code from GitHub");
+//        }
     }
 
     /**
