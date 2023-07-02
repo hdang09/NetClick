@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>New Movies - NetClick</title>
+    <title>Search result for 'abcdef' - NetClick</title>
     <%@ include file="components/imports.jsp" %>
   </head>
 
@@ -13,7 +13,7 @@
       <%@ include file="components/sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
-      <main class="ml-0 sm:ml-[15rem] p-6 flex flex-1">
+      <main class="ml-0 sm:ml-[15rem] p-6">
         <div class="max-w-7xl mx-auto">
           <ul class="flex flex-wrap">
             <c:forEach var="movie" items="${movies}">
