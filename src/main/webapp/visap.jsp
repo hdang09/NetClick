@@ -35,19 +35,20 @@
           <div class="w-full">
             <div class="max-w-md">
               <!-- login form -->
-              <form action="/PaymentControlller" method="POST" class="space-y-4">
+              <form action="/Payment" method="POST" class="space-y-4">
                 <div class="error-message">${error}</div>
                 <p class="text-red-400">${errorfill}</p>
                 <p class="text-red-400">${note}</p>
+                <p class="text-red-400">${validate}</p>
                 <div>
-                  <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
-                  <input
+                <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
+                <input
                     id="cardNumber"
                     name="visa"
-                    type="text"
+                    type="number"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     placeholder="Number"
-                  />
+                   />
                 </div>
                 <div class="flex space-x-4">
                   <div class="w-1/2">

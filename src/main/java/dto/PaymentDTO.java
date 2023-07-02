@@ -14,7 +14,7 @@ import java.util.Date;
 public class PaymentDTO {
     private int id;
     private int userID;
-    private int saNum;
+    private String saNum;
     private Date expire_visa_date;
     private int cvv;
     private String placeholderCard;
@@ -25,7 +25,7 @@ public class PaymentDTO {
     public PaymentDTO() {
     }
     
-    public PaymentDTO(int id, int userID, int saNum, Date expireVisaDate, int cvv, String placeholderCard, int momoNum, Date startDate, int subscriptionID) {
+    public PaymentDTO(int id, int userID, String saNum, Date expireVisaDate, int cvv, String placeholderCard, int momoNum, Date startDate, int subscriptionID) {
         this.id = id;
         this.userID = userID;
         this.saNum = saNum;
@@ -55,11 +55,11 @@ public class PaymentDTO {
         this.userID = userID;
     }
     
-    public int getSaNum() {
+    public String getSaNum() {
         return saNum;
     }
     
-    public void setSaNum(int saNum) {
+    public void setSaNum(String saNum) {
         this.saNum = saNum;
     }
     
