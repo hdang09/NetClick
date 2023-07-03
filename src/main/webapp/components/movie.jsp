@@ -1,4 +1,4 @@
-<li class="group my-4 mx-2 w-40">
+<li class="group m-4 w-40">
     <div class="flex justify-center relative">
         <img
             src="${movie.thumbnail == null ? "https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" : movie.thumbnail}"
