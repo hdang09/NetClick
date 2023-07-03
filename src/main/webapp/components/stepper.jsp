@@ -15,7 +15,7 @@
 
         <!-- Second step -->
         <div class="flex justify-start md:justify-center w-72 my-3 md:my-6">
-          <button class="w-12 h-12 font-semibold text-lg rounded-full bg-slate-100">2</button>
+          <button class="w-12 h-12 font-semibold text-lg rounded-full bg-slate-100 text-black">2</button>
           <div class="ml-4">
             <h2 class="font-bold text-lg">Second step</h2>
             <p>Choose how to pay</p>
@@ -26,7 +26,7 @@
 
         <!-- Final step -->
         <div class="flex justify-start md:justify-center w-72 my-3 md:my-6">
-          <button class="w-12 h-12 font-semibold text-lg rounded-full bg-slate-100">3</button>
+          <button class="w-12 h-12 font-semibold text-lg rounded-full bg-slate-100 text-black">3</button>
           <div class="ml-4">
             <h2 class="font-bold text-lg">Final step</h2>
             <p>Payment Details</p>
@@ -61,7 +61,7 @@
 
         <!-- Final step -->
         <div class="flex justify-start md:justify-center w-72 my-3 md:my-6">
-          <button class="w-12 h-12 font-semibold text-lg rounded-full bg-slate-100">3</button>
+          <button class="w-12 h-12 font-semibold text-lg rounded-full bg-slate-100 text-black">3</button>
           <div class="ml-4">
             <h2 class="font-bold text-lg">Final step</h2>
             <p>Payment Details</p>

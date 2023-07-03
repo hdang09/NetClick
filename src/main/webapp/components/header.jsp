@@ -56,7 +56,7 @@
             <i class="fa-solid fa-user text-primary mr-2 text-2xl"></i>
             <span class="ml-1">@${tendangnhap}</span>
         </div>
-        <form action="/LogoutController" method="POST">
+        <form action="/LogoutController" method="POST" class="mb-0">
             <input type="hidden" name="logout" value="true" />
             <button type='submit' class="ml-4">
                 <i class="fa-solid fa-right-from-bracket ml-2 text-primary"></i>
