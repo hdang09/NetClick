@@ -8,7 +8,7 @@
     <%@ include file="../../components/imports.jsp" %>
   </head>
   <body>
-    <main class="h-screen flex items-center justify-center bg-slate-700">
+    <main class="h-screen flex items-center justify-center bg-slate-200">
       <div
         class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-6xl h-[42rem]"
       >
