@@ -7,7 +7,7 @@
 
   <!-- MENU -->
   <div class="mt-8">
-    <h3 class="text-gray-300 font-bold text-sm uppercase">MENU</h3>
+    <h3 class="text-gray-300 font-light text-sm uppercase">MENU</h3>
     <a href="/" class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == null ? 'text-primary border-r-4 border-primary': 'text-gray-400'}">
       <i class="fa-solid fa-house"></i>
       <span class="ml-3 font-bold">Home</span>

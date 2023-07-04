@@ -1,4 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
       <!-- Description -->
       <p class="text-center text-lg font-light pb-4">
         Enter your MoMo mobile number. Your number will also be used if you forget your password and for important
-        account messages. SMS fees may apply.
+        account messages.
       </p>
 
       <!-- Body -->
@@ -35,7 +36,7 @@
         <div class="w-full">
           <div class="max-w-md">
             <!-- login form -->
-            <p class="text-red-400">${errornum}</p>
+            <p class="text-red-400"><c:out value="${errornum}" /></p>
             <form class="space-y-4 pt-4" action="/Payment?action=momo" method="POST">
               <div>
                 <input
@@ -43,20 +44,24 @@
                   type="text"
                   name="mnumber"
                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                  placeholder="Mobile number"
+                  placeholder="Enter your phone number"
                 />
               </div>
-              <div class="flex text-left border-b-4">
+              <div class="flex text-left">
                 <div class="flex justify-center">
-                  <p>1＄/month <br />Mobile</p>
+                  <p>
+                    <c:choose>
+                      <c:when test="${param.plan == 'mobile'}">1＄/month <br />Mobile</c:when>
+                      <c:when test="${param.plan == 'basic'}">5＄/month <br />Basic</c:when>
+                      <c:when test="${param.plan == 'standard'}">10＄/month <br />Standard</c:when>
+                      <c:when test="${param.plan == 'premium'}">20＄/month <br />Premium</c:when>
+                    </c:choose>
+                  </p>
                 </div>
-                <button
-                  type="submit"
-                  class="ml-auto block font-semibold rounded-md focus:outline-none text-blue-400 hover:text-blue-600 transition-colors"
-                >
+                <button type="submit" class="ml-auto block font-semibold focus:outline-none text-blue-400 hover:text-blue-600 transition-colors">
                   <a href="/subscription.jsp"> Change </a>
                 </button>
-              </div>
+              </div>              
               <div class="flex text-left">
                 <button
                   type="submit"
@@ -69,6 +74,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>

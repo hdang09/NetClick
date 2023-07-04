@@ -74,7 +74,7 @@ public class PaymentControlller extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request,HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action != null && action.equals("momo")) {
@@ -86,7 +86,7 @@ public class PaymentControlller extends HttpServlet {
             } else {
                 // check numberic for "mnumber"
                 if (!momoNumString.matches("\\d{10}")) {
-                    request.setAttribute("errornum", "Please enter a 10-digit numeric value for Phone number");
+                    request.setAttribute("errornum", "Phone numbers must be a 10-digit");
                     request.getRequestDispatcher("/momop.jsp").forward(request, response);
                 } else {
                     try {
@@ -115,20 +115,19 @@ public class PaymentControlller extends HttpServlet {
                     request.setAttribute("errorfill", "Please fill all the fields");
                     request.getRequestDispatcher("/visap.jsp").forward(request, response);
                     return;
-//                   Validate Visa
-                    } else if (!saNum.matches("^4\\d{12,15}$")) {
-                        request.setAttribute("validate", "Please enter a 13 to 16-digit numeric value for Visa starting with 4");
+//                  Validate Visa
+                    } else if (!saNum.matches("^4\\d{15}$")) {
+                        request.setAttribute("validate", "Please enter 16-digit numers");
                         request.getRequestDispatcher("/visap.jsp").forward(request, response);
                         return;
-
 //                  Validate CVV
-                    } else if (!cvvString.matches("\\d+")) {
-                        request.setAttribute("validate", "Please enter only numeric values for CVV");
+                    } else if (!cvvString.matches("\\d{3}")) {
+                        request.setAttribute("validate", "Please enter at least 3-digit number for CVV");
                         request.getRequestDispatcher("/visap.jsp").forward(request, response);
                         return;
 //                  Validate Name
                     } else if (!placeholderCard.matches("[a-zA-Z]{2,}")) {
-                        request.setAttribute("validate", "Enter at least 2 alphabetical characters and must not contain numbers and special characters ");
+                        request.setAttribute("validate", "Enter at least 2 characters and must not contain numbers and special characters ");
                         request.getRequestDispatcher("/visap.jsp").forward(request, response);
                         return;
                         }try {
@@ -143,18 +142,16 @@ public class PaymentControlller extends HttpServlet {
                             PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
                             if (checkv == null) {
                                 paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard);
-                                response.sendRedirect(request.getContextPath() + "/movie?id=1");
+                                response.sendRedirect(request.getContextPath() + "");
                             } else {
                                 request.setAttribute("note", "EXIST");
                                 RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/visap.jsp");
                                 dispatch.forward(request, response);
                             }
                         } catch (NumberFormatException | ParseException e) {
+                        }
+        }
     }
-}
-
-            }
-
         // TODO: Validate form using isValid variable
 //                boolean isValid = true;
 //                if (isValid) {
