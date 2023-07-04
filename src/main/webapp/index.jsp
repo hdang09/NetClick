@@ -32,7 +32,7 @@
               <input type="hidden" name="logout" value="true" />
               <button
                 type="submit"
-                class="inline-block border-2 border-primary hover:bg-primary py-3 px-8 rounded-full"
+                class="inline-block border-2 border-primary hover:bg-primary py-3 px-8 rounded-full hover:text-white"
               >
                 <i class="fa-solid fa-right-to-bracket"></i>
                 <span class="ml-2 font-semibold">Sign in</span>
@@ -41,8 +41,8 @@
           </c:if>
 
           <c:if test="${tendangnhap != null}">
-            <a href="/new-movies" class="inline-block border-2 border-primary hover:bg-primary py-3 px-8 rounded-full">
-              <i class="fa-solid fa-play text-white"></i>
+            <a href="/new-movies" class="w-fit inline-block border-2 border-primary hover:bg-primary py-3 px-8 rounded-full hover:text-white">
+              <i class="fa-solid fa-play"></i>
               <span class="ml-2">Watch Now</span>
             </a>
           </c:if>

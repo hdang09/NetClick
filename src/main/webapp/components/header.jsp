@@ -30,7 +30,7 @@
     <%-- Input --%>
     <div class="relative">
         <i id="search-icon" class="px-2 fa-solid fa-magnifying-glass text-primary cursor-pointer hover:text-black dark:hover:text-white"></i>
-        <form action='/search' method='GET' class="drop-shadow my-2 right-0 z-10 items-center absolute hidden" id="search-box">
+        <form action='/search' method='GET' class="drop-shadow my-2 right-0 z-10 items-center absolute hidden mb-0" id="search-box">
             <input class="bg-slate-100 dark:bg-slate-800 h-10 rounded-lg pl-4 pr-9 outline-none" name='q' placeholder="I'm looking for..." />
             <button type="submit">
                 <i
@@ -43,7 +43,7 @@
 
     <%-- Account --%>
     <c:if test='${tendangnhap == null}'>
-        <form action="/LogoutController" method="POST">
+        <form action="/LogoutController" method="POST" class="mb-0">
             <input type="hidden" name="logout" value="true" />
             <button type='submit' class="ml-4">
                 <span class="hover:text-primary">Sign in</span>
