@@ -17,6 +17,10 @@
         <servlet-class>controllers.SubscriptionController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>controllers.SearchController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SubscriptionPlan</servlet-name>
         <jsp-file>/subscription-plan.jsp</jsp-file>
     </servlet>
@@ -73,6 +77,10 @@
         <url-pattern>/subscription</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SubscriptionPlan</servlet-name>
         <url-pattern>/subscription-plan</url-pattern>
     </servlet-mapping>
@@ -102,7 +110,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
-        <url-pattern>/a</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
@@ -120,8 +128,6 @@
         <servlet-name>FavoriteListController</servlet-name>
         <url-pattern>/fav-list</url-pattern>
     </servlet-mapping>
-    
-
 
     <session-config>
         <session-timeout>

@@ -1,10 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html class="h-full">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Payment</title>
-    <%@ include file="components/imports.jsp" %>
-  </head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Payment</title>
+        <%@ include file="components/imports.jsp" %>
+    </head>
 
   <body>
     <%@ include file="components/sidebar.jsp" %>
@@ -40,7 +40,6 @@
                 <p class="text-red-400">${errorfill}</p>
                 <p class="text-red-400">${note}</p>
                 <p class="text-red-400">${validate}</p>
-               
                 <div>
                 <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
                 <input

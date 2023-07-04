@@ -54,14 +54,13 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        final int MAX_RATING = 5;
         final String LOGIN_PAGE = "/login";
         ReviewDAO dao = new ReviewDAO();
 
         String action = request.getParameter("action");
         switch (action) {
             case "comment":
-                // Check if user login
+                // Check if user has logined
                 HttpSession session = request.getSession();
                 AccountDTO account = (AccountDTO) session.getAttribute("account");
                 if (account == null) {
@@ -71,6 +70,7 @@ public class PreviewController extends HttpServlet {
 
                 // Get review info
                 int userID = account.getId();
+                
                 String movieIDParam = request.getParameter("id");
                 int movieID = 0;
                 try {
@@ -78,8 +78,23 @@ public class PreviewController extends HttpServlet {
                 } catch (NumberFormatException e) {
                     request.getRequestDispatcher("404.jsp").forward(request, response);
                 }
+                
                 String comment = request.getParameter("comment");
-                ReviewDTO review = new ReviewDTO(movieID, userID, comment, MAX_RATING);
+                
+                String ratingParam = request.getParameter("rating");
+                if (ratingParam == null) {
+                    request.setAttribute("ratingError", "Please rate this movie");
+                    forwardToPreviewPage(movieID, request, response);
+                    return;
+                }
+                int rating = 0;
+                try {
+                    rating = Integer.parseInt(ratingParam);
+                } catch (NumberFormatException e) {
+                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                }
+                
+                ReviewDTO review = new ReviewDTO(movieID, userID, comment, rating);
 
                 // Add commnent
                 dao.addComment(review);

@@ -5,18 +5,20 @@
 package controllers;
 
 import dao.MovieDAO;
+import dto.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-public class HomeController extends HttpServlet {
+public class SearchController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +37,10 @@ public class HomeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");
+            out.println("<title>Servlet PreviewController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomeController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PreviewController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,17 +58,10 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("404.jsp").forward(request, response);
-        
-//        final int MAX_POPULAR_MOVIES = 2;
-//        try {
-//            request.setAttribute("abc", new MovieDAO().getPopularMovies(MAX_POPULAR_MOVIES));
-//            System.out.println(new MovieDAO().getPopularMovies(MAX_POPULAR_MOVIES));
-//            request.getRequestDispatcher("index.jsp").forward(request, response);
-//        } catch (IOException | ServletException e) {
-//            request.getRequestDispatcher("404.jsp").forward(request, response);
-//            request.setAttribute("err", "Please pull code from GitHub");
-//        }
+        String query = request.getParameter("q");
+        request.setAttribute("query", query);
+        request.setAttribute("movies", new MovieDAO().search(query));
+        request.getRequestDispatcher("search.jsp").forward(request, response);
     }
 
     /**

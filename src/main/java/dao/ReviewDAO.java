@@ -24,7 +24,9 @@ public class ReviewDAO {
     
     public ArrayList<ReviewDTO> getReviewByMovieID(int movieID) {
         ArrayList<ReviewDTO> reviews = new ArrayList<>();
-        String sql = "SELECT * FROM Review WHERE movieID = ?";
+        String sql = "SELECT * FROM Review r, Account a "
+                   + "WHERE r.movieID = ? AND r.userID = a.userID "
+                   + "ORDER BY ID DESC";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -34,10 +36,11 @@ public class ReviewDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 int userID = rs.getInt("userID");
+                String username = rs.getString("username");
                 String comment = rs.getString("comment");
                 int rating = rs.getInt("rating");
                 Date timeComment = rs.getDate("date_review");
-                ReviewDTO review = new ReviewDTO(id, movieID, userID, comment, rating, timeComment);
+                ReviewDTO review = new ReviewDTO(id, movieID, userID, username, comment, rating, timeComment);
                 reviews.add(review);
             }
             return reviews;

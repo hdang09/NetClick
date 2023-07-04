@@ -9,20 +9,20 @@
     <%@ include file="components/imports.jsp" %>
   </head>
 
-  <body class="flex flex-col h-full">
-    <%@ include file="components/sidebar.jsp" %>
+  <body class="bg-white dark:bg-gray-900">
+    <%@ include file="components/header.jsp" %>
 
     <!-- Main content -->
-    <main class="ml-0 sm:ml-[15rem] p-6">
+    <main class="text-black dark:text-white p-6 max-w-7xl mx-auto">
       <!-- Title -->
       <div class="flex justify-center items-center mt-2">
-        <h1 class="text-8xl font-light mb-8 px-3">Set up your phone number</h1>
+        <h1 class="text-6xl md:text-7xl font-light mb-8 px-3">Set up your phone number</h1>
       </div>
 
       <!-- Stepper -->
       <%@ include file="components/stepper.jsp" %>
       <div class="flex justify-center items-center mb-8">
-        <img src="assets/momoreal.png" alt="" class="h-24" />
+          <img src="assets/momoreal.png" alt="MoMo" class="w-24 h-24" />
       </div>
 
       <!-- Description -->
@@ -74,6 +74,6 @@
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </body>
 </html>

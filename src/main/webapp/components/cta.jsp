@@ -1,72 +1,45 @@
+<%@page import="dto.AccountDTO"%>
+<%@page import="dao.MovieDAO"%>
+<%@page import="dto.MovieDTO"%>
+<%@page import="java.util.List"%>
+
+
 <!-- RATE MOVIES -->
-<aside class="hidden 2xl:flex flex-col w-80 p-6">
+<% 
+    List<MovieDTO> popularMovies = new MovieDAO().getPopularMovies(2);
+    request.setAttribute("popularMovies", popularMovies);
+%>
+<aside class="hidden 2xl:flex flex-col w-80 p-6 h-screen">
   <input class="w-full h-12 bg-gray-100 rounded-full p-6" placeholder="Search" />
   <div>
     <h2 class="text-gray-400 font-semibold py-4">Popular Movies</h2>
     <ul>
-      <li class="h-24 flex mb-3">
-        <img
-          src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-          alt="Popular Movie"
-          class="w-16 mr-3"
-        />
-        <div>
-          <h3 class="font-bold">Love Again</h3>
-          <p>Action, Horror</p>
-          <div class="my-3">
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1"></i>
-          </div>
-        </div>
-      </li>
-      <li class="h-24 flex mb-3">
-        <img
-          src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-          alt="Popular Movie"
-          class="w-16 mr-3"
-        />
-        <div>
-          <h3 class="font-bold">Love Again</h3>
-          <p>Action, Horror</p>
-          <div class="my-3">
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-            <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-          </div>
-        </div>
-      </li>
+        <c:forEach var="movie" items="${popularMovies}">
+          <c:set var="movie" value="${movie}" scope="request" />
+          <%@ include file="./movie-2.jsp" %>
+        </c:forEach>
     </ul>
   </div>
 
   <!-- WATCHLISTS -->
+  <% 
+    // AccountDTO account = (AccountDTO) session.getAttribute("account");
+    List<MovieDTO> favoriteMovies = new MovieDAO().getFavoriteList(1).subList(0, 3);
+    request.setAttribute("favoriteMovies", favoriteMovies);
+%>
   <div>
-    <h2 class="text-gray-400 font-semibold py-4">Watchlists</h2>
+    <h2 class="text-gray-400 font-semibold py-4">Favorite List</h2>
     <ul>
-      <c:forEach begin="1" end="3">
-        <li class="h-24 flex mb-3">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BODc0ZDM3MjgtNDA5ZC00MWUwLWJmM2ItMjBmM2YzMjBmNzRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
-            alt="Popular Movie"
-            class="w-16 mr-3"
-          />
-          <div>
-            <h3 class="font-bold">Love Again</h3>
-            <p>Action, Horror</p>
-            <div class="my-3">
-              <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-              <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-              <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-              <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>
-              <i class="fa-solid fa-star text-xl mx-1"></i>
-            </div>
-          </div>
-        </li>
-      </c:forEach>
+      <c:if test="${favoriteMovies == null}">
+         <p>Please login to add your favorite movie<p>
+      </c:if>
+         
+      <c:if test="${favoriteMovies != null}">
+         <c:forEach var="movie" items="${favoriteMovies}">
+            <c:set var="movie" value="${movie}" scope="request" />
+            <%@ include file="./movie-2.jsp" %>
+        </c:forEach>
+      </c:if>
     </ul>
   </div>
 </aside>

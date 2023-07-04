@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>${movie.title} - NetClick</title>
+        <title>Search result for '${query}' - NetClick</title>
         <%@ include file="components/imports.jsp" %>
     </head>
 
@@ -18,19 +18,14 @@
             <div class="pt-12 pb-24 text-center max-w-7xl mx-auto">
                 <p class="text-primary mb-4">Online Streaming</p>
 
-                <h2 class="font-bold text-4xl mb-12">${movie.title}</h2>
+                <h2 class="font-bold text-4xl mb-12">Search result for '<span class="text-primary">${query}</span>'</h2>
 
-                <div class="flex justify-center items-center mt-[20px]">
-                    <iframe
-                        width="960"
-                        height="620"
-                        src="${movie.movie_url}"
-                        title="${movie.title}"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        ></iframe>
-                </div>
+                <ul class="flex flex-wrap">
+                    <c:forEach var="movie" items="${movies}">
+                        <c:set var="movie" value="${movie}" scope="request" />
+                        <jsp:include page="components/movie.jsp" />
+                    </c:forEach>
+                </ul>
             </div>
         </main>
 
