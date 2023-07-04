@@ -108,8 +108,10 @@ public class PreviewController extends HttpServlet {
 
     public void forwardToPreviewPage(int movieID, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("movie", new MovieDAO().getById(movieID));
+        MovieDAO movieDAO = new MovieDAO();
+        request.setAttribute("movie", movieDAO.getById(movieID));
         request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(movieID));
+        request.setAttribute("related", movieDAO.getRelatedByTag(movieID));
         request.getRequestDispatcher("preview.jsp").forward(request, response);
     }
 

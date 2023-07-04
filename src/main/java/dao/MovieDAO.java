@@ -112,8 +112,40 @@ public class MovieDAO {
         return null;
     }
 
-    public ArrayList<MovieDTO> getRelatedByTag(int id, String tag) {
-        // TODO: Add this function
+    public ArrayList<MovieDTO> getRelatedByTag(int movieId) {
+        ArrayList<MovieDTO> movies = new ArrayList<>();
+
+        String sql = "select * from MovieTag mt, Movie m " +
+                     "WHERE MT.movie_id = M.id  " +
+                     "AND mt.tag_id = ( " +
+                     "	SELECT tag_id FROM MovieTag mt WHERE mt.movie_id = ? " +
+                     ") " +
+                     "AND m.id <> ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, movieId);
+            ps.setInt(2, movieId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String thumbnail = rs.getString("thumbnail");
+                String movieUrl = rs.getString("movie_url");
+                Date release = rs.getDate("release");
+                String director = rs.getString("director");
+                int rating = rs.getInt("rating");
+                ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return null;
     }
 
