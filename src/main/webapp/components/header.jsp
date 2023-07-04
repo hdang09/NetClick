@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <header class="max-w-7xl mx-auto h-24 flex justify-between items-center dark:text-white px-4">
   <%-- Logo --%>
   <a href="/" class="flex items-center">
-    <img src="../assets/favicon.ico" alt="Logo" class="w-10 mr-4" />
+      <img src="https://i.imgur.com/VDWjEqQ.png" alt="Logo" class="w-10 mr-4" />
     <h1 class="text-2xl font-bold">Net<span class="text-primary">Click</span></h1>
   </a>
 

@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="https://i.imgur.com/VDWjEqQ.png" />
 
 <!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -70,3 +70,6 @@
     font-family: 'Inter', sans-serif;
   }
 </style>
+
+<!-- Animate on scroll (AOS) -->
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />

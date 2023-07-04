@@ -31,8 +31,8 @@
 
           <!-- Form -->
           <form action="signup" method="POST" class="mt-6">
-              <p class="text-red-400">${mess}</p>
-              <p class="text-red-400">${notmat}</p>
+            <p class="text-red-400">${mess}</p>
+            <p class="text-red-400">${notmat}</p>
             <!-- Username-->
             <div class="relative flex items-center">
               <span class="absolute">
@@ -145,9 +145,10 @@
             <div class="pt-1 pb-4 mb-auto text-center mt-">
               <button
                 type="submit"
-                class="my-3 inline-block w-full px-6 pb-2 pt-2.5 text-lg uppercase transition-colors duration-300 transform bg-primary
-                rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 text-white"
-                >Register</button>
+                class="my-3 inline-block w-full px-6 pb-2 pt-2.5 text-lg uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 text-white"
+              >
+                Register
+              </button>
             </div>
             <!--Login-->
             <div class="flex items-center justify-between pb-6">
@@ -155,7 +156,8 @@
               <button
                 type="button"
                 class="inline-block border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium tracking-wide text-gray-600 hover:text-white capitalize transition-colors duration-300 transform bg-white rounded-lg hover:bg-primary focus:outline-none focus:ring focus:ring-white focus:ring-opacity-50"
-              ><a href="/login">Login</a>
+              >
+                <a href="/login">Login</a>
               </button>
             </div>
           </form>
