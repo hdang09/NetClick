@@ -9,13 +9,13 @@
         <%@ include file="components/imports.jsp" %>
     </head>
 
-    <body class="bg-white dark:bg-gray-900">
+    <body class="bg-white dark:bg-gray-900 text-black dark:text-white">
         <!-- HEADER -->
         <%@ include file="components/header.jsp" %>
 
         <!-- MAIN CONTENT -->
-        <main class="text-white">
-            <section class="dark:text-white">
+        <main>
+            <section>
                 <div class="pt-12 pb-24 text-center max-w-7xl mx-auto">
                     <p class="text-primary mb-4">Online Streaming</p>
 

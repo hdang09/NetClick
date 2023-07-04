@@ -25,19 +25,19 @@
   <%-- Actions --%>
   <div class="flex items-center relative">
     <%-- Theme switcher --%>
-    <i id="theme" class="fa-solid fa-sun text-primary hover:text-black dark:hover:text-white px-2 cursor-pointer"></i>
+    <i id="theme" title="Switch theme" class="fa-solid fa-sun text-primary hover:text-black dark:hover:text-white px-2 cursor-pointer"></i>
     
     <%-- Input --%>
     <div class="relative">
-        <i id="search-icon" class="px-2 fa-solid fa-magnifying-glass text-primary cursor-pointer hover:text-black dark:hover:text-white"></i>
+        <i id="search-icon" title="Search" class="px-2 fa-solid fa-magnifying-glass text-primary cursor-pointer hover:text-black dark:hover:text-white"></i>
         <form action='/search' method='GET' class="drop-shadow my-2 right-0 z-10 items-center absolute hidden mb-0" id="search-box">
             <input class="bg-slate-100 dark:bg-slate-800 h-10 rounded-lg pl-4 pr-9 outline-none" name='q' placeholder="I'm looking for..." />
             <button type="submit">
                 <i
-                class="fa-solid fa-magnifying-glass absolute text-primary top-[0.75rem] right-0 px-4 cursor-pointer hover:text-white z-100"
-                ></i>
+                    class="fa-solid fa-magnifying-glass absolute text-primary top-[0.75rem] right-0 px-4 cursor-pointer hover:text-white z-100"
+                >
+                </i>
             </button>
-            
         </form>
     </div>
 
@@ -60,7 +60,7 @@
         <form action="/LogoutController" method="POST" class="mb-0">
             <input type="hidden" name="logout" value="true" />
             <button type='submit' class="ml-4">
-                <i class="fa-solid fa-right-from-bracket ml-2 text-primary"></i>
+                <i class="fa-solid fa-right-from-bracket ml-2 text-primary" title="Sign out"></i>
             </button>
         </form>
     </c:if>
