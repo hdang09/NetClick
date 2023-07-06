@@ -43,7 +43,7 @@
                   id="input"
                   type="text"
                   name="mnumber"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                  class="dark:bg-slate-800 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -75,5 +75,9 @@
         </div>
       </div>
     </div>
+    
+   <script type="text/javascript">
+      <%@include file="assets/header-script.js" %>
+   </script>
   </body>
 </html>

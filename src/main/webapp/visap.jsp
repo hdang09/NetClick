@@ -6,10 +6,10 @@
         <%@ include file="components/imports.jsp" %>
     </head>
 
-  <body>
-    <%@ include file="components/sidebar.jsp" %>
+  <body class="bg-white dark:bg-gray-900 text-black dark:text-white ">
+    <%@ include file="components/header.jsp" %>
     <!-- body -->
-    <main class="ml-0 sm:ml-[15rem] p-6">
+    <main class="p-6 max-w-7xl mx-auto">
       <!-- Back -->
       <div class="flex justify-between items-center">
         <a
@@ -41,45 +41,45 @@
                 <p class="text-red-400">${note}</p>
                 <p class="text-red-400">${validate}</p>
                 <div>
-                <label for="cardNumber" class="block text-gray-800 font-semibold">Card Number</label>
+                <label for="cardNumber" class="block font-semibold">Card Number</label>
                 <input
                     id="cardNumber"
                     name="visa"
                     type="number"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                    class="dark:bg-slate-800 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     placeholder="Number"
                    />
                 </div>
                 <div class="flex space-x-4">
                   <div class="w-1/2">
-                    <label for="expiryDate" class="block text-gray-800 font-semibold">Expire Date</label>
+                    <label for="expiryDate" class="block font-semibold">Expire Date</label>
                     <input
                       id="expiryDate"
                       name="expiredate"
                       type="date"
-                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                      class="dark:bg-slate-800 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                       placeholder="yyyy-MM-dd"
                     />
                   </div>
                   <div class="w-1/2">
-                    <label for="cvv" class="block text-gray-800 font-semibold">CVV</label>
+                    <label for="cvv" class="block font-semibold">CVV</label>
                     <input
                       id="cvv"
                       type="text"
                       name="cvv"
-                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                      class="dark:bg-slate-800 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                       placeholder="CVV"
                       maxlength="3"
                     />
                   </div>
                 </div>
                 <div>
-                  <label for="cardHolder" class="block text-gray-800 font-semibold">Name</label>
+                  <label for="cardHolder" class="block font-semibold">Name</label>
                   <input
                     id="cardHolder"
                     type="text"
                     name="placeholderCard"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                    class="dark:bg-slate-800 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     placeholder="Name card"
                   />
                 </div>
@@ -88,9 +88,9 @@
                     <input
                       id="saveCard"
                       type="checkbox"
-                      class="text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
+                      class="dark:bg-slate-800 text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
                     />
-                    <label for="saveCard" class="ml-2 block text-gray-800">Save information</label>
+                    <label for="saveCard" class="ml-2 block">Save information</label>
                   </div>
                   <button
                     type="submit"
@@ -105,5 +105,9 @@
         </div>
       </div>
     </main>
+                
+   <script type="text/javascript">
+      <%@include file="assets/header-script.js" %>
+   </script>
   </body>
 </html>

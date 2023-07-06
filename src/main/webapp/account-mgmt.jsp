@@ -198,6 +198,7 @@
             </div>
           </div>
 
+          <%--
           <div class="flex items-center justify-between mt-6">
             <a
               href="#"
@@ -269,6 +270,7 @@
               </svg>
             </a>
           </div>
+          --%>
         </section>
       </main>
     </div>
