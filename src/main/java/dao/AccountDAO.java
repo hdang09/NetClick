@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.DBUtils;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -21,32 +22,32 @@ import utils.DBUtils;
  */
 public class AccountDAO {
 
-    public AccountDTO login(String user, String pass) {
-        String sql = "select * from Account\n"
-                + "where [username] = ? "
-                + "and password = ?";
-        try {
-            Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, user);
-            ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+public AccountDTO login(String user, String pass) {
+    String sql = "SELECT * FROM Account WHERE [username] = ?";
+    try {
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, user);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            String hashedPassword = rs.getString("password");
+            if (BCrypt.checkpw(pass, hashedPassword)) {
                 return new AccountDTO(
                         rs.getInt("userID"),
                         rs.getString("username"),
                         rs.getString("email"),
-                        rs.getString("password"),
+                        pass, // Trả về mật khẩu gốc
                         rs.getInt("is_ban") == 1,
                         rs.getInt("role"),
                         rs.getInt("subscriptionID")
                 );
             }
-        } catch (SQLException e) {
-
         }
-        return null;
+    } catch (SQLException e) {
+        // Xử lý exception
     }
+    return null;
+}
 
     public AccountDTO checkAccountExist(String username, String email) {
         String sql = "select * from Account\n"
@@ -75,15 +76,17 @@ public class AccountDAO {
     }
 
     public void signup(String username, String email, String password) {
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         String sql = "INSERT INTO Account (username, email, password, is_ban, role) VALUES (?, ?, ?, 0, 1)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, email);
-            ps.setString(3, password);
+            ps.setString(3, hashedPassword);
             ps.executeUpdate();
         } catch (SQLException e) {
+            // Xử lý exception
         }
     }
     
