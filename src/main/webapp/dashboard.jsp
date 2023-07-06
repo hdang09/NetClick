@@ -19,28 +19,28 @@
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
                             <i class="fa-solid fa-sack-dollar fa-2xl m-[10px]"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold">${totalIncome} $</span><br />
+                                <span class="text-xl font-bold" thanhf-animation>${totalIncome} $</span><br />
                                 <span class="text-xl">Total Income</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
                             <i class="fa-solid fa-user fa-2xl m-[10px]"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold">${totalUser}</span><br />
+                                <span class="text-xl font-bol na" thanhf-animation>${totalUser}</span><br />
                                 <span class="text-xl">Total users</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
                             <i class="fa-solid fa-user-slash fa-2xl m-[10px]"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold">${totalBannedUser}</span><br />
+                                <span class="text-xl font-bold na" thanhf-animation>${totalBannedUser}</span><br />
                                 <span class="text-xl">Banned users</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
                             <i class="fa-solid fa-video fa-2xl m-[10px]"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold">${totalMovie}</span><br />
+                                <span class="text-xl font-bold na" thanhf-animation>${totalMovie}</span><br />
                                 <span class="text-xl">Total movies</span>
                             </div>
                         </div>
@@ -152,6 +152,22 @@
                     item.selected = "selected"
                 }
             })
+        </script>
+        <script>
+            document.querySelectorAll('*').forEach(item => {
+                if (item.getAttribute('thanhf-animation') != null) {
+                    let saveValue = item.innerText.match(/[0-9]*/)[0];
+                    let intSave = 0;
+                    item.innerText = intSave;
+                    let setIntervala = setInterval(() => {
+                        item.innerText = intSave++
+                        if (intSave == saveValue) {
+                            clearInterval(setIntervala);
+                        }
+                    }, 1/saveValue * 1000)
+                }
+            })
+
         </script>
     </body>
 </html>
