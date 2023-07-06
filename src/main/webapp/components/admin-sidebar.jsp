@@ -1,4 +1,4 @@
-<aside class="hidden sm:block min-w-[17rem] h-screen border-r-2 pl-8 pt-4 fixed">
+<aside class="hidden sm:block min-w-[17rem] h-screen pl-8 pt-4 fixed bg-white dark:bg-slate-800">
   <!-- LOGO -->
   <div class="text-primary">
     <i class="fa-solid fa-shekel-sign fa-2xl"></i>
@@ -31,7 +31,7 @@
       href="/admin/accounts"
       class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == '/admin/accounts' ? 'text-primary border-r-4 border-primary': 'text-gray-400'}"
     >
-      <i class="fa-regular fa-user"></i>
+      <i class="fa-solid fa-user-group"></i>
       <span class="ml-3 font-bold">Manage Accounts</span>
     </a>
   </div>
@@ -39,6 +39,10 @@
   <!-- GENERAL -->
   <div class="mt-8">
     <h3 class="text-gray-300 font-bold text-sm uppercase">GENERAL</h3>
+    <div id="theme" class="my-5 flex items-center text-lg text-gray-400 cursor-pointer">
+      <i class="fa-solid fa-cloud-sun"></i>
+      <span class="ml-3 font-bold">Switch Theme</span>
+    </div>
     <a href="/login" class="my-5 flex items-center text-lg text-gray-400">
       <i class="fa-solid fa-right-from-bracket"></i>
       <span class="ml-3 font-bold">Log Out</span>

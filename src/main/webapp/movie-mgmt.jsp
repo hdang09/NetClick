@@ -7,7 +7,8 @@
         <title>Movie Management - NetClick</title>
         <%@ include file="../../components/imports.jsp" %>
     </head>
-    <body>
+    
+    <body class="bg-slate-100 dark:bg-slate-900 text-black dark:text-white">
         <div class="flex">
             <%@ include file="../../components/admin-sidebar.jsp" %>
 
@@ -56,6 +57,7 @@
                                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Rating</th>
 
                                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Tags</th>
+                                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"></th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -148,5 +150,27 @@
                 </section>
             </main>
         </div>
+                            
+    <!-- Toggle theme -->
+    <script type="text/javascript">
+        const html = document.documentElement;
+        const darkMode =
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        html.classList.toggle('dark', darkMode);
+        localStorage.theme = darkMode ? 'dark' : 'light';
+  
+        document.getElementById('theme').onclick = () => {
+          const isDark = localStorage.theme === 'dark';
+          html.classList.toggle('dark', !isDark);
+          localStorage.theme = isDark ? 'light' : 'dark';
+        };
+      </script>
+
+      <!-- Chart.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+      <script>
+          <%@include file="assets/dashboard-script.js" %>
+      </script>
     </body>
 </html>
