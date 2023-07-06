@@ -12,7 +12,7 @@
             <%@ include file="../../components/admin-sidebar.jsp" %>
 
             <!-- MAIN CONTENT -->
-            <main class="ml-0 sm:ml-[18rem] p-6 border-r-2 flex-1">
+            <main class="ml-0 sm:ml-[17rem] p-6 border-r-2 flex-1">
                 <section class="container px-4 mx-auto">
                     <div class="sm:flex sm:items-center sm:justify-between">
                         <div>

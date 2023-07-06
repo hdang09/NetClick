@@ -75,7 +75,7 @@ public class AccountDAO {
     }
 
     public void signup(String username, String email, String password) {
-        String sql = "INSERT INTO Account (username, email, password, role, subscriptionID) VALUES (?, ?, ?, 0, 0)";
+        String sql = "INSERT INTO Account (username, email, password, is_ban, role) VALUES (?, ?, ?, 0, 1)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

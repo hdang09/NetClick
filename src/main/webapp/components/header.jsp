@@ -14,7 +14,7 @@
         <a href="/">Home</a>
       </li>
       <li class="${requestScope['javax.servlet.forward.request_uri'].equals("/new-movies") ? 'text-primary': 'dark:text-white'}">
-        <a href="/new-movies">New Movies</a>
+        <a href="/new-movies">All Movies</a>
       </li>
       <li class="${requestScope['javax.servlet.forward.request_uri'].equals("/fav-list") ? 'text-primary': 'dark:text-white'}">
         <a href="/fav-list">Favorite List</a>

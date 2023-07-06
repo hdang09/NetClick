@@ -6,9 +6,13 @@ package controllers;
 
 import dao.AccountDAO;
 import dao.MovieDAO;
+import dao.PaymentDAO;
+import dao.SubscriptionDAO;
 import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -18,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.DateUtils;
 import utils.ValidateUtils;
 import javax.servlet.http.HttpSession;
+import org.json.JSONArray;
 
 /**
  *
@@ -27,6 +32,8 @@ public class AdminController extends HttpServlet {
 
     MovieDAO movieDAO = new MovieDAO();
     AccountDAO accountDAO = new AccountDAO();
+    PaymentDAO paymentDAO = new PaymentDAO();
+    SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
 
     final String DASHBOARD_PAGE = "/dashboard.jsp";
     final String MOVIE_MANAGEMENT_PAGE = "/movie-mgmt.jsp";
@@ -52,7 +59,7 @@ public class AdminController extends HttpServlet {
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
         HttpSession session = request.getSession();
-        
+
         switch (path) {
             case "accounts":
                 // Change status, role
@@ -60,7 +67,7 @@ public class AdminController extends HttpServlet {
                 if (accountID != null) {
                     int id = Integer.parseInt(accountID);
                     String action = request.getParameter("action");
-                    
+
                     switch (action) {
                         case "change-status":
                             accountDAO.changeStatus(id);
@@ -69,11 +76,11 @@ public class AdminController extends HttpServlet {
                             accountDAO.changeRole(id);
                             break;
                     }
-                    
+
                     response.sendRedirect("/admin/accounts");
                     return;
                 }
-                    
+
                 // Pagination
                 List<AccountDTO> accounts = new AccountDAO().getAll();
 //                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
@@ -143,6 +150,42 @@ public class AdminController extends HttpServlet {
                 request.getRequestDispatcher(MOVIE_MANAGEMENT_PAGE).forward(request, response);
                 break;
             default:
+                // DOUGHNUT
+                ArrayList<ArrayList<String>> result_subscription = subscriptionDAO.getPaymentSubscription();
+                int[] subscriptionData = result_subscription.get(1).stream().mapToInt(Integer::parseInt).toArray();
+                request.setAttribute("subscriptionData", new JSONArray(subscriptionData));
+
+                // BAR CHART
+                // Most watch (default filter)
+                ArrayList<ArrayList<String>> result = movieDAO.getMostFiveWatchedMovie();
+                String[] films = result.get(0).toArray(new String[0]);
+                double[] data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
+                String label = "Watch count"; // query from database
+
+                // Filter
+                String filter = request.getParameter("filter");
+                if (filter != null) {
+                    switch (filter) {
+                        // Most rating
+                        case "most-rating":
+                            result = movieDAO.getMostFiveRatingMovie();
+                            films = result.get(0).toArray(new String[0]);
+                            data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
+                            label = "Rated count"; // query from database
+                            break;
+                        // Most comment
+                        case "most-comment":
+                            result = movieDAO.getMostFiveCommentMovie();
+                            films = result.get(0).toArray(new String[0]);
+                            data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
+                            label = "Comment count"; // query from database
+                            break;
+                    }
+                }
+
+                request.setAttribute("movies", new JSONArray(films));
+                request.setAttribute("data", new JSONArray(data));
+                request.setAttribute("label", label);
                 request.getRequestDispatcher(DASHBOARD_PAGE).forward(request, response);
         }
 
@@ -230,7 +273,7 @@ public class AdminController extends HttpServlet {
                 new MovieDAO().update(movie, id);
                 break;
         }
-        
+
         response.sendRedirect("/admin/movies");
 
     }

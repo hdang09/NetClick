@@ -270,8 +270,11 @@
                 <div class="w-96 mx-auto px-6">
                     <h2 class="font-bold text-xl text-slate-400 mb-4">SIMILAR</h2>
                     <ul class="flex justify-between flex-wrap">
-                        <c:forEach begin="1" end="7"> <%@ include file="components/movie-2.jsp" %> </c:forEach>
-                        </ul>
+                        <c:forEach var="movie" items="${related}">
+                            <c:set var="movie" value="${movie}" scope="request" />
+                            <jsp:include page="components/movie-2.jsp" />
+                        </c:forEach>
+                    </ul>
                     </div>
                 </div>
             </main>
