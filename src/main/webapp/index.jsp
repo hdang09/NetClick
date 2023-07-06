@@ -21,7 +21,7 @@
                 <div class="flex flex-col flex-1 justify-center" data-aos="fade-right">
                     <p class="text-primary mb-6 text-2xl font-bold">NetClick</p>
 
-                    <h1 class="font-extrabold text-5xl mb-12 lg:max-w-2xl">
+                    <h1 class="font-extrabold text-5xl mb-12">
                         Explore
                         <span class="bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text" id="app"
                               >unlimited movies</span
