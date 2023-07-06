@@ -173,10 +173,10 @@ public class MovieDAO {
     }
 
     public ArrayList<ArrayList<String>> getMostFiveRatingMovie() {
-        ArrayList<String> ratings = new ArrayList<>();
+        ArrayList<String> rating_counts = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
 
-        String sql = "SELECT TOP 5 title, rating FROM Movie ORDER BY rating DESC";
+        String sql = "SELECT TOP 5 movie.title, review.review_count FROM Movie AS movie INNER JOIN (SELECT review.movieID, AVG(Cast(review.rating as Float)) as review_count FROM Review AS review GROUP BY review.movieID) AS review ON movie.id = review.movieID ORDER BY review.review_count DESC";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -185,13 +185,13 @@ public class MovieDAO {
             while (rs.next()) {
                 String title = rs.getString("title");
                 titles.add(title);
-                String rating = rs.getString("rating");
-                ratings.add(rating);
+                String rating = rs.getString("review_count");
+                rating_counts.add(rating);
             }
 
             ArrayList<ArrayList<String>> result = new ArrayList<>();
             result.add(titles);
-            result.add(ratings);
+            result.add(rating_counts);
             return result;
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,8 +228,8 @@ public class MovieDAO {
         return null;
     }
 
-    public ArrayList<ArrayList<String>> getMostFiveReviewMovie() {
-        ArrayList<String> reviews_counts = new ArrayList<>();
+    public ArrayList<ArrayList<String>> getMostFiveCommentMovie() {
+        ArrayList<String> comment_counts = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
 
         String sql = "SELECT TOP 5 movie.title, review.review_count FROM Movie AS movie INNER JOIN (SELECT review.movieID, COUNT(*) AS review_count FROM Review AS review GROUP BY review.movieID) AS review ON movie.id = review.movieID ORDER BY review.review_count DESC";
@@ -242,12 +242,12 @@ public class MovieDAO {
                 String title = rs.getString("title");
                 titles.add(title);
                 String review_count = rs.getString("review_count");
-                reviews_counts.add(review_count);
+                comment_counts.add(review_count);
             }
 
             ArrayList<ArrayList<String>> result = new ArrayList<>();
             result.add(titles);
-            result.add(reviews_counts);
+            result.add(comment_counts);
             return result;
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);

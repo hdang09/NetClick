@@ -170,7 +170,7 @@ public class AdminController extends HttpServlet {
                             break;
                         // Most comment
                         case "most-comment":
-                            result = movieDAO.getMostFiveReviewMovie();
+                            result = movieDAO.getMostFiveCommentMovie();
                             films = result.get(0).toArray(new String[0]);
                             data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
                             label = "Comment count"; // query from database
