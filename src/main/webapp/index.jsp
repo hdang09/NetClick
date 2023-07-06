@@ -25,8 +25,8 @@
                         Explore
                         <span class="bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text" id="app"
                               >unlimited movies</span
-                        ><br><br>
-                        anywhere, anytime
+                        ><br>
+                        <span class="block mt-4">anywhere, anytime</span>
                     </h1>
 
                     <c:if test="${tendangnhap == null}">
