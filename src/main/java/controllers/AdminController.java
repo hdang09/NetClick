@@ -7,6 +7,7 @@ package controllers;
 import dao.AccountDAO;
 import dao.MovieDAO;
 import dao.PaymentDAO;
+import dao.SubscriptionDAO;
 import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class AdminController extends HttpServlet {
     MovieDAO movieDAO = new MovieDAO();
     AccountDAO accountDAO = new AccountDAO();
     PaymentDAO paymentDAO = new PaymentDAO();
+    SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
 
     final String DASHBOARD_PAGE = "/dashboard.jsp";
     final String MOVIE_MANAGEMENT_PAGE = "/movie-mgmt.jsp";
@@ -149,7 +151,7 @@ public class AdminController extends HttpServlet {
                 break;
             default:
                 // DOUGHNUT
-                ArrayList<ArrayList<String>> result_subscription = movieDAO.getPaymentSubscription();
+                ArrayList<ArrayList<String>> result_subscription = subscriptionDAO.getPaymentSubscription();
                 int[] subscriptionData = result_subscription.get(1).stream().mapToInt(Integer::parseInt).toArray();
                 request.setAttribute("subscriptionData", new JSONArray(subscriptionData));
 
