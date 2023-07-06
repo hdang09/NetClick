@@ -17,31 +17,31 @@
                     <h1 class="font-bold text-2xl">Dashboard</h1>
                     <div class="flex justify-center">
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <i class="fa-solid fa-sack-dollar fa-2xl m-[10px]"></i>
+                            <i class="fa-solid fa-sack-dollar fa-2xl m-[10px] text-lime-500"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold" thanhf-animation>${totalIncome} $</span><br />
-                                <span class="text-xl">Total Income</span>
+                                <span class="text-xl font-bold text-lime-500" thanhf-animation>${totalIncome} $</span><br />
+                                <span class="text-xl text-lime-500">Total Income</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <i class="fa-solid fa-user fa-2xl m-[10px]"></i>
+                            <i class="fa-solid fa-user fa-2xl m-[10px] text-cyan-500"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bol na" thanhf-animation>${totalUser}</span><br />
-                                <span class="text-xl">Total users</span>
+                                <span class="text-xl font-bol text-cyan-500" thanhf-animation>${totalUser}</span><br />
+                                <span class="text-xl text-cyan-500">Total users</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <i class="fa-solid fa-user-slash fa-2xl m-[10px]"></i>
+                            <i class="fa-solid fa-user-slash fa-2xl m-[10px] text-red-500"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold na" thanhf-animation>${totalBannedUser}</span><br />
-                                <span class="text-xl">Banned users</span>
+                                <span class="text-xl font-bold text-red-500" thanhf-animation>${totalBannedUser}</span><br />
+                                <span class="text-xl text-red-500">Banned users</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <i class="fa-solid fa-video fa-2xl m-[10px]"></i>
+                            <i class="fa-solid fa-video fa-2xl m-[10px] text-pink-500"></i>
                             <div class="m-20px">
-                                <span class="text-xl font-bold na" thanhf-animation>${totalMovie}</span><br />
-                                <span class="text-xl">Total movies</span>
+                                <span class="text-xl font-bold text-pink-500" thanhf-animation>${totalMovie}</span><br />
+                                <span class="text-xl text-pink-500">Total movies</span>
                             </div>
                         </div>
                     </div>
