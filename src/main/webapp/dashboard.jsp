@@ -164,7 +164,7 @@
                         if (intSave > saveValue) {
                             clearInterval(setIntervala);
                         }
-                    }, 1/saveValue * 1000)
+                    }, (1 / (saveValue + (intSave * 10))) * 5000)
                 }
             })
 
