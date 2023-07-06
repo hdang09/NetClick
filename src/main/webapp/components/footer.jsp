@@ -71,7 +71,7 @@
 
     <div class="flex items-center justify-between">
       <a href="/" class="flex items-center">
-        <img src="../assets/favicon.ico" alt="Logo" class="w-10 mr-4" />
+        <img src="https://i.imgur.com/VDWjEqQ.png" alt="Logo" class="w-10 mr-4" />
         <h1 class="text-2xl font-bold text-black dark:text-white">Net<span class="text-primary">Click</span></h1>
       </a>
 

@@ -115,10 +115,11 @@ public class MovieDAO {
     public ArrayList<MovieDTO> getRelatedByTag(int movieId) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
-        String sql = "select * from MovieTag mt, Movie m " +
-                     "WHERE MT.movie_id = M.id  " +
-                     "AND mt.tag_id = ( " +
-                     "	SELECT tag_id FROM MovieTag mt WHERE mt.movie_id = ? " +
+        String sql = "SELECT * FROM MovieTag mt " +
+                     "INNER JOIN Movie m  " +
+                     "ON mt.movie_id = m.id   " +
+                     "WHERE mt.tag_id = (  " +
+                     "      SELECT tag_id FROM MovieTag WHERE movie_id = ? " +
                      ") " +
                      "AND m.id <> ?";
         try {
@@ -226,12 +227,12 @@ public class MovieDAO {
 
     public List<MovieDTO> getPopularMovies(int count) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
-        String sql = "SELECT TOP 2 * FROM Movie "
+        String sql = "SELECT TOP (?) * FROM Movie "
                 + "ORDER BY watch_count DESC";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-//            ps.setInt(1, count);
+            ps.setInt(1, count);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -245,6 +246,70 @@ public class MovieDAO {
                 int rating = rs.getInt("rating");
                 ArrayList tags = new ArrayList();
                 MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public List<MovieDTO> getNewMovies(int count) {
+        ArrayList<MovieDTO> movies = new ArrayList<>();
+        String sql = "SELECT TOP (?) * FROM Movie " +
+                     "ORDER BY release DESC";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, count);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String thumbnail = rs.getString("thumbnail");
+                String movieUrl = rs.getString("movie_url");
+                Date release = rs.getDate("release");
+                String director = rs.getString("director");
+                int rating = rs.getInt("rating");
+                ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public List<MovieDTO> getTopRatedMovies(int count) {
+        ArrayList<MovieDTO> movies = new ArrayList<>();
+        String sql = "SELECT TOP (?) movieID, title, thumbnail, movie_url, release, director, watch_count, AVG(r.rating) as rating " +
+                    "FROM Review r " +
+                    "INNER JOIN Movie m " +
+                    "ON r.movieID = m.id " +
+                    "GROUP BY movieID, title, thumbnail, movie_url, release, director, watch_count " +
+                    "ORDER BY rating DESC";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, count);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("movieID");
+                String title = rs.getString("title");
+//                String description = rs.getString("description");
+                String thumbnail = rs.getString("thumbnail");
+                String movieUrl = rs.getString("movie_url");
+                Date release = rs.getDate("release");
+                String director = rs.getString("director");
+                int rating = rs.getInt("rating");
+                ArrayList tags = new ArrayList();
+                MovieDTO movie = new MovieDTO(id, title, "", thumbnail, movieUrl, release, director, rating, tags.toString());
                 movies.add(movie);
             }
             return movies;

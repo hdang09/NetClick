@@ -1,8 +1,8 @@
-<aside class="hidden sm:block min-w-[18rem] h-screen border-r-2 pl-8 pt-4 fixed">
+<aside class="hidden sm:block min-w-[17rem] h-screen border-r-2 pl-8 pt-4 fixed">
   <!-- LOGO -->
   <div class="text-primary">
     <i class="fa-solid fa-shekel-sign fa-2xl"></i>
-    <a href="/" class="text-red font-extrabold text-xl ml-2">NetClick</a>
+    <a href="/admin" class="text-red font-extrabold text-xl ml-2">NetClick</a>
   </div>
 
   <!-- MENU -->
@@ -25,14 +25,14 @@
       class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == '/admin/movies' ? 'text-primary border-r-4 border-primary': 'text-gray-400'}"
     >
       <i class="fa-solid fa-film"></i>
-      <span class="ml-3 font-bold">Movie Management</span>
+      <span class="ml-3 font-bold">Manage Movies</span>
     </a>
     <a
       href="/admin/accounts"
       class="my-5 flex items-center text-lg ${requestScope['javax.servlet.forward.request_uri'] == '/admin/accounts' ? 'text-primary border-r-4 border-primary': 'text-gray-400'}"
     >
-      <i class="fa-solid fa-film"></i>
-      <span class="ml-3 font-bold">Account Management</span>
+      <i class="fa-regular fa-user"></i>
+      <span class="ml-3 font-bold">Manage Accounts</span>
     </a>
   </div>
 

@@ -1,5 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="dao.MovieDAO" %>
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
       <%@ include file="../../components/admin-sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
-      <main class="ml-0 sm:ml-[18rem] p-6 border-r-2 flex-1 bg-gray-100 min-h-screen">
+      <main class="ml-0 sm:ml-[17rem] p-6 border-r-2 flex-1 bg-gray-100 min-h-screen">
         <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-12">
           <h1 class="font-bold text-2xl">${action} Movie</h1>
 
@@ -25,7 +24,9 @@
                 <label for="title" class="block text-sm text-gray-500 dark:text-gray-300">Title</label>
 
                 <div class="relative flex items-center mt-2">
-                  <i class="fa-solid fa-heading absolute w-6 h-6 m-3 flex items-center justify-center text-gray-400 dark:text-gray-500"></i>
+                  <i
+                    class="fa-solid fa-heading absolute w-6 h-6 m-3 flex items-center justify-center text-gray-400 dark:text-gray-500"
+                  ></i>
 
                   <input
                     name="title"
@@ -44,8 +45,10 @@
                 <label for="movie-url" class="block text-sm text-gray-500 dark:text-gray-300">Movie URL</label>
 
                 <div class="flex items-center mt-2">
-                  <i class="fa-solid fa-film absolute w-6 h-6 m-3 flex items-center justify-center text-gray-400 dark:text-gray-500"></i>
-                  
+                  <i
+                    class="fa-solid fa-film absolute w-6 h-6 m-3 flex items-center justify-center text-gray-400 dark:text-gray-500"
+                  ></i>
+
                   <input
                     name="movie-url"
                     type="text"
@@ -66,37 +69,45 @@
                   name="description"
                   placeholder="Lorem ipsum..."
                   class="block mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4 h-36 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-                >${movie.description}</textarea>
+                >
+                    ${movie.description}</textarea
+                >
 
                 <p class="mt-3 text-xs text-red-400">${descriptionMsg == null ? "" : descriptionMsg}</p>
               </div>
 
               <div>
                 <!-- Tag Input -->
-              <div>
-                <label for="tag" class="block text-sm text-gray-500 dark:text-gray-300">Tag</label>
+                <div>
+                  <label for="tag" class="block text-sm text-gray-500 dark:text-gray-300">Tag</label>
 
-                <div class="relative flex items-center mt-2">
-                  <!--<i class="fa-solid fa-tag absolute w-6 h-6 m-3 text-gray-400 dark:text-gray-500 flex items-center justify-center"></i>-->
+                  <div class="relative flex items-center mt-2">
+                    <!--<i class="fa-solid fa-tag absolute w-6 h-6 m-3 text-gray-400 dark:text-gray-500 flex items-center justify-center"></i>-->
 
-                  <select name="tag" id="tag" class="block w-full rounded-l-none rtl:rounded-l-lg rtl:rounded-r-none placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300">
+                    <select
+                      name="tag"
+                      id="tag"
+                      class="block w-full rounded-l-none rtl:rounded-l-lg rtl:rounded-r-none placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                    >
                       <c:set var="dao" value="<%= new dao.MovieDAO() %>" />
 
                       <c:forEach var="tag" items="${dao.getAllTag()}">
-                          <option value="${tag}">${tag}</option>
+                        <option value="${tag}">${tag}</option>
                       </c:forEach>
-                  </select>
-                </div>
+                    </select>
+                  </div>
 
-                <!--<p class="mt-3 text-xs text-red-400">${tagMsg == null ? "" : tagMsg}</p>-->
-              </div>
+                  <!--<p class="mt-3 text-xs text-red-400">${tagMsg == null ? "" : tagMsg}</p>-->
+                </div>
 
                 <!-- DIRECTOR Input -->
                 <div class="mt-6">
                   <label for="director" class="block text-sm text-gray-500 dark:text-gray-300">Director</label>
 
                   <div class="relative flex items-center mt-2">
-                    <i class="fa-regular fa-user absolute w-6 h-6 m-3 text-gray-400 dark:text-gray-500 flex items-center justify-center"></i>
+                    <i
+                      class="fa-regular fa-user absolute w-6 h-6 m-3 text-gray-400 dark:text-gray-500 flex items-center justify-center"
+                    ></i>
 
                     <input
                       name="director"
@@ -116,8 +127,10 @@
                 <label for="thubmnail-url" class="block text-sm text-gray-500 dark:text-gray-300">Thumbnail URL</label>
 
                 <div class="flex items-center mt-2">
-                  <i class="fa-regular fa-image absolute w-6 h-6 m-3 text-gray-400 dark:text-gray-500 flex items-center justify-center"></i>
-                  
+                  <i
+                    class="fa-regular fa-image absolute w-6 h-6 m-3 text-gray-400 dark:text-gray-500 flex items-center justify-center"
+                  ></i>
+
                   <input
                     name="thumbnail-url"
                     type="text"
@@ -131,19 +144,19 @@
               </div>
 
               <!-- RELEASE DATE Input -->
-                <div>
-                  <label for="release" class="block text-sm text-gray-500 dark:text-gray-300">Release Date</label>
+              <div>
+                <label for="release" class="block text-sm text-gray-500 dark:text-gray-300">Release Date</label>
 
-                  <input
-                    name="release"
-                    type="date"
-                    value="${release}"
-                    max="<%= java.time.LocalDate.now() %>"
-                    class="block mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-                  />
-                  
-                    <p class="mt-3 text-xs text-red-400">${releaseMsg == null ? "" : releaseMsg}</p>
-                </div>
+                <input
+                  name="release"
+                  type="date"
+                  value="${release}"
+                  max="<%= java.time.LocalDate.now() %>"
+                  class="block mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                />
+
+                <p class="mt-3 text-xs text-red-400">${releaseMsg == null ? "" : releaseMsg}</p>
+              </div>
             </div>
 
             <div class="flex justify-end mt-6">
@@ -153,8 +166,8 @@
                 Save
               </button>
             </div>
-              
-              <input type="hidden" name="action" value="${editID != null ? 'edit' : 'add'}" />
+
+            <input type="hidden" name="action" value="${editID != null ? 'edit' : 'add'}" />
           </form>
         </section>
       </main>

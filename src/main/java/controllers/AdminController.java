@@ -9,6 +9,7 @@ import dao.MovieDAO;
 import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.DateUtils;
 import utils.ValidateUtils;
 import javax.servlet.http.HttpSession;
+import org.json.JSONArray;
 
 /**
  *
@@ -52,7 +54,7 @@ public class AdminController extends HttpServlet {
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
         HttpSession session = request.getSession();
-        
+
         switch (path) {
             case "accounts":
                 // Change status, role
@@ -60,7 +62,7 @@ public class AdminController extends HttpServlet {
                 if (accountID != null) {
                     int id = Integer.parseInt(accountID);
                     String action = request.getParameter("action");
-                    
+
                     switch (action) {
                         case "change-status":
                             accountDAO.changeStatus(id);
@@ -69,11 +71,11 @@ public class AdminController extends HttpServlet {
                             accountDAO.changeRole(id);
                             break;
                     }
-                    
+
                     response.sendRedirect("/admin/accounts");
                     return;
                 }
-                    
+
                 // Pagination
                 List<AccountDTO> accounts = new AccountDAO().getAll();
 //                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
@@ -142,7 +144,39 @@ public class AdminController extends HttpServlet {
                 request.setAttribute("movies", movies);
                 request.getRequestDispatcher(MOVIE_MANAGEMENT_PAGE).forward(request, response);
                 break;
-            default:
+            default: 
+                // DOUGHNUT
+                int[] subscriptionData = new int[]{300, 50, 100, 200}; // query from database
+                request.setAttribute("subscriptionData", new JSONArray(subscriptionData));
+
+                // BAR CHART
+                // Most watch (default filter)
+                String[] films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
+                double[] data = new double[]{756784, 794658, 168786, 897648, 325876}; // query from database
+                String label = "Watch count"; // query from database
+
+                // Filter
+                String filter = request.getParameter("filter");
+                if (filter != null) {
+                    switch (filter) {
+                        // Most rated
+                        case "most-rating":
+                            films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
+                            data = new double[]{4.2, 4.7, 3.8, 2.9, 5}; // query from database
+                            label = "Rated count"; // query from database
+                            break;
+                        // Most rated
+                        case "most-comment":
+                            films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
+                            data = new double[]{75, 79, 16, 89, 32}; // query from database
+                            label = "Comment count"; // query from database
+                            break;
+                    }
+                }
+
+                request.setAttribute("movies", new JSONArray(films));
+                request.setAttribute("data", new JSONArray(data));
+                request.setAttribute("label", label);
                 request.getRequestDispatcher(DASHBOARD_PAGE).forward(request, response);
         }
 
@@ -230,7 +264,7 @@ public class AdminController extends HttpServlet {
                 new MovieDAO().update(movie, id);
                 break;
         }
-        
+
         response.sendRedirect("/admin/movies");
 
     }

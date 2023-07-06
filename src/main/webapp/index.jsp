@@ -1,4 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="dao.MovieDAO"%> <%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -41,7 +43,10 @@
           </c:if>
 
           <c:if test="${tendangnhap != null}">
-            <a href="/new-movies" class="w-fit inline-block border-2 border-primary hover:bg-primary py-3 px-8 rounded-full hover:text-white">
+            <a
+              href="/new-movies"
+              class="w-fit inline-block border-2 border-primary hover:bg-primary py-3 px-8 rounded-full hover:text-white"
+            >
               <i class="fa-solid fa-play"></i>
               <span class="ml-2">Watch Now</span>
             </a>
@@ -57,15 +62,18 @@
         />
       </section>
 
-      <%-- Recommended Movies --%>
+      <%-- Popular Movies --%>
       <section class="dark:text-white">
         <div class="py-24 max-w-7xl mx-auto" data-aos="flip-up">
           <p class="text-primary mb-4">Online Streaming</p>
 
-          <h2 class="font-bold text-4xl mb-12">Recommended Movies</h2>
+          <h2 class="font-bold text-4xl mb-12">Popular Movies</h2>
 
           <ul class="flex justify-between flex-wrap">
-            <c:forEach begin="1" end="6"> <%@ include file="components/movie.jsp" %> </c:forEach>
+            <c:forEach var="movie" items="<%= new MovieDAO().getPopularMovies(6) %>">
+              <c:set var="movie" value="${movie}" scope="request" />
+              <jsp:include page="components/movie.jsp" />
+            </c:forEach>
           </ul>
         </div>
       </section>
@@ -78,10 +86,11 @@
 
             <h2 class="font-bold text-4xl mb-12">New Movies</h2>
 
+            <%--
             <ul class="flex max-w-2xl items-center justify-center flex-wrap mb-12 mx-auto">
               <li>
                 <button class="py-4 px-6 mx-4 my-2 uppercase bg-white rounded dark:bg-slate-800 font-semibold">
-                  ALL
+                  All
                 </button>
               </li>
               <li>
@@ -115,10 +124,14 @@
                 </button>
               </li>
             </ul>
+            --%>
           </div>
 
           <ul class="flex justify-center flex-wrap" data-aos="fade-up">
-            <c:forEach begin="1" end="12"> <%@ include file="components/movie.jsp" %> </c:forEach>
+            <c:forEach var="movie" items="<%= new MovieDAO().getNewMovies(12) %>">
+              <c:set var="movie" value="${movie}" scope="request" />
+              <jsp:include page="components/movie.jsp" />
+            </c:forEach>
           </ul>
         </div>
       </section>
@@ -131,7 +144,10 @@
           <h2 class="font-bold text-4xl mb-12">Top Rated Movies</h2>
 
           <ul class="flex justify-between flex-wrap">
-            <c:forEach begin="1" end="6"> <%@ include file="components/movie.jsp" %> </c:forEach>
+            <c:forEach var="movie" items="<%= new MovieDAO().getTopRatedMovies(6) %>">
+              <c:set var="movie" value="${movie}" scope="request" />
+              <jsp:include page="components/movie.jsp" />
+            </c:forEach>
           </ul>
         </div>
       </section>

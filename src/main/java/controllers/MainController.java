@@ -4,49 +4,44 @@
  */
 package controllers;
 
-import dao.MovieDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Admin
- */
-public class HomeController extends HttpServlet {
+public class MainController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private static final String ERROR = "error.jsp";
+    private static final String ADMIN = "/admin";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("HDang");
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HomeController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        String url = ERROR;
+        try {
+            String action = request.getParameter("action");
+            switch (action) {
+                case "changeStatus":
+                case "changeRole":
+                    url = ADMIN;
+                    break;
+                default:
+                    HttpSession session = request.getSession();
+                    session.setAttribute("ERROE_MESSAGE", "function is not avaiable!");
+                    break;
+            }
+        } catch (Exception e) {
+            log("Error at MainController:" + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -58,11 +53,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        final int MAX_POPULAR_MOVIES = 6;
-        HttpSession session = request.getSession();
-
-        session.setAttribute("popular", new MovieDAO().getPopularMovies(MAX_POPULAR_MOVIES));
-//        request.getRequestDispatcher("index.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

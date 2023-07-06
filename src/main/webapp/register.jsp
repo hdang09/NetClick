@@ -13,14 +13,14 @@
         class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-6xl h-[42rem]"
       >
         <!-- Left content -->
-        <img class="hidden bg-cover lg:block lg:w-3/5 object-cover" src="assets/bg.jpg" />
+        <img class="hidden bg-cover lg:block lg:w-3/5 object-cover" src="https://i.imgur.com/eFFk4i8.jpg" />
 
         <!-- Right content -->
 
         <div class="w-full py-12 px-8 lg:w-2/5">
           <!--Logo-->
           <div class="flex items-center">
-            <a class="mx-auto" href="/"><img src="assets/favicon.ico" alt="Logo" class="h-16" /></a>
+            <a class="mx-auto" href="/"><img src="https://i.imgur.com/VDWjEqQ.png" alt="Logo" class="h-16" /></a>
           </div>
           <div class="sticky w-full flex justify-center items-center mt-2 text-3xl">
             <h1 class="block text-black font-light mb-2 mt-10 px-3">Welcome to</h1>
