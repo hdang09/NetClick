@@ -161,7 +161,7 @@
                     item.innerText = intSave;
                     let setIntervala = setInterval(() => {
                         item.innerText = intSave++
-                        if (intSave == saveValue) {
+                        if (intSave > saveValue) {
                             clearInterval(setIntervala);
                         }
                     }, 1/saveValue * 1000)
