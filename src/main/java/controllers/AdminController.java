@@ -159,13 +159,13 @@ public class AdminController extends HttpServlet {
                 String filter = request.getParameter("filter");
                 if (filter != null) {
                     switch (filter) {
-                        // Most rated
+                        // Most rating
                         case "most-rating":
                             films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
                             data = new double[]{4.2, 4.7, 3.8, 2.9, 5}; // query from database
                             label = "Rated count"; // query from database
                             break;
-                        // Most rated
+                        // Most comment
                         case "most-comment":
                             films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
                             data = new double[]{75, 79, 16, 89, 32}; // query from database
