@@ -4,13 +4,14 @@
  */
 package dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Admin
  */
-public class MovieDTO {
+public class MovieDTO implements Serializable {
 
     private int ID;
     private String title;

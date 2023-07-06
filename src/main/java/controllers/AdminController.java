@@ -183,9 +183,18 @@ public class AdminController extends HttpServlet {
                     }
                 }
 
+                int totalUser = subscriptionDAO.getTotalUser();
+                int totalBannedUser = subscriptionDAO.getTotalBannedUser();
+                int totalMovie = subscriptionDAO.getTotalMovie();
+                int totalIncome = subscriptionDAO.getTotalInCome();
+
                 request.setAttribute("movies", new JSONArray(films));
                 request.setAttribute("data", new JSONArray(data));
                 request.setAttribute("label", label);
+                request.setAttribute("totalUser", totalUser);
+                request.setAttribute("totalBannedUser", totalBannedUser);
+                request.setAttribute("totalMovie", totalMovie);
+                request.setAttribute("totalIncome", totalIncome);
                 request.getRequestDispatcher(DASHBOARD_PAGE).forward(request, response);
         }
 
