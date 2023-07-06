@@ -9,6 +9,7 @@ import dao.MovieDAO;
 import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -144,15 +145,16 @@ public class AdminController extends HttpServlet {
                 request.setAttribute("movies", movies);
                 request.getRequestDispatcher(MOVIE_MANAGEMENT_PAGE).forward(request, response);
                 break;
-            default: 
+            default:
                 // DOUGHNUT
                 int[] subscriptionData = new int[]{300, 50, 100, 200}; // query from database
                 request.setAttribute("subscriptionData", new JSONArray(subscriptionData));
 
                 // BAR CHART
                 // Most watch (default filter)
-                String[] films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
-                double[] data = new double[]{756784, 794658, 168786, 897648, 325876}; // query from database
+                ArrayList<ArrayList<String>> result = movieDAO.getMostFiveWatchedMovie();
+                String[] films = result.get(0).toArray(new String[0]);
+                double[] data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
                 String label = "Watch count"; // query from database
 
                 // Filter
@@ -161,14 +163,16 @@ public class AdminController extends HttpServlet {
                     switch (filter) {
                         // Most rating
                         case "most-rating":
-                            films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
-                            data = new double[]{4.2, 4.7, 3.8, 2.9, 5}; // query from database
+                            result = movieDAO.getMostFiveRatingMovie();
+                            films = result.get(0).toArray(new String[0]);
+                            data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
                             label = "Rated count"; // query from database
                             break;
                         // Most comment
                         case "most-comment":
-                            films = new String[]{"Die Hard With A Vengeance", "Mad Max: Fury Road", "The Raid: Redemption", "The Texas Chain Saw Massacre", "Indiana Jones And The Raiders Of The Lost Ark"}; // query from database
-                            data = new double[]{75, 79, 16, 89, 32}; // query from database
+                            result = movieDAO.getMostFiveReviewMovie();
+                            films = result.get(0).toArray(new String[0]);
+                            data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
                             label = "Comment count"; // query from database
                             break;
                     }
