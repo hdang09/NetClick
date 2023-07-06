@@ -18,28 +18,29 @@
           <div class="flex justify-around">
             <div class="py-4 px-6 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md">
               <i class="fa-solid fa-sack-dollar fa-2xl m-[10px] text-lime-500"></i>
-              <div class="m-20px">
-                <span class="text-xl font-bold text-lime-500" thanhf-animation>${totalIncome} $</span><br />
+              <div>
+                <span class="text-xl font-bold text-lime-500" thanhf-animation>${totalIncome}</span>
+                <span class="text-xl font-bold text-lime-500">$</span><br />
                 <span class="text-xl text-lime-500">Total Income</span>
               </div>
             </div>
             <div class="py-4 px-6 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md">
               <i class="fa-solid fa-user fa-2xl m-[10px] text-cyan-500"></i>
-              <div class="m-20px">
+              <div>
                 <span class="text-xl font-bold text-cyan-500" thanhf-animation>${totalUser}</span><br />
                 <span class="text-xl text-cyan-500">Total users</span>
               </div>
             </div>
             <div class="py-4 px-6 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md">
               <i class="fa-solid fa-user-slash fa-2xl m-[10px] text-red-500"></i>
-              <div class="m-20px">
+              <div>
                 <span class="text-xl font-bold text-red-500" thanhf-animation>${totalBannedUser}</span><br />
                 <span class="text-xl text-red-500">Banned users</span>
               </div>
             </div>
             <div class="py-4 px-6 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md">
               <i class="fa-solid fa-video fa-2xl m-[10px] text-pink-500"></i>
-              <div class="m-20px">
+              <div>
                 <span class="text-xl font-bold text-pink-500" thanhf-animation>${totalMovie}</span><br />
                 <span class="text-xl text-pink-500">Total movies</span>
               </div>
