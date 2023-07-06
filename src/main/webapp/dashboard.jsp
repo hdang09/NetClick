@@ -17,28 +17,28 @@
                     <h1 class="font-bold text-2xl">Dashboard</h1>
                     <div class="flex justify-center">
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <img src="/asset/bg.jpg" alt="" class="rounded-full bg-red-600 w-[50px] h-[50px] m-[10px]" />
+                            <i class="fa-solid fa-sack-dollar fa-2xl m-[10px]"></i>
                             <div class="m-20px">
                                 <span class="text-xl font-bold">15.000 $</span><br />
                                 <span class="text-xl">Total Income</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <img src="/asset/bg.jpg" alt="" class="rounded-full bg-red-600 w-[50px] h-[50px] m-[10px]" />
+                            <i class="fa-solid fa-user fa-2xl m-[10px]"></i>
                             <div class="m-20px">
                                 <span class="text-xl font-bold">48</span><br />
                                 <span class="text-xl">Total users</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <img src="/asset/bg.jpg" alt="" class="rounded-full bg-red-600 w-[50px] h-[50px] m-[10px]" />
+                            <i class="fa-solid fa-user-slash fa-2xl m-[10px]"></i>
                             <div class="m-20px">
                                 <span class="text-xl font-bold">2</span><br />
                                 <span class="text-xl">Banned users</span>
                             </div>
                         </div>
                         <div class="shadow-lg drop-shadow-xl p-4 flex items-center mx-8 rounded-lg">
-                            <img src="/asset/bg.jpg" alt="" class="rounded-full bg-red-600 w-[50px] h-[50px] m-[10px]" />
+                            <i class="fa-solid fa-video fa-2xl m-[10px]"></i>
                             <div class="m-20px">
                                 <span class="text-xl font-bold">160$</span><br />
                                 <span class="text-xl">Total movies</span>
