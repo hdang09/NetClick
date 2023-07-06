@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.DBUtils;
 import utils.DateUtils;
 
@@ -19,8 +22,11 @@ import utils.DateUtils;
  * @author Quan
  */
 public class PaymentDAO {
+
     DateUtils dateUtils = new DateUtils();
+
 //  VISA
+
     public PaymentDTO checkPaymentExist(String visa, Date expiredate, Integer cvv, String cholder) {
         String sql = "SELECT *\n"
                 + "FROM payment\n"
@@ -52,9 +58,10 @@ public class PaymentDAO {
         }
         return null;
     }
-        public void insertv(String visa, Date expiredate, Integer cvv, String cholder) {
-        String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv, placeholder_card)\n" +
-             "VALUES (?, ?, ?, ?)";
+
+    public void insertv(String visa, Date expiredate, Integer cvv, String cholder) {
+        String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv, placeholder_card)\n"
+                + "VALUES (?, ?, ?, ?)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -67,7 +74,8 @@ public class PaymentDAO {
         }
     }
 //  MOMO
-        public void insertm(Integer momoNum) {
+
+    public void insertm(Integer momoNum) {
         String sql = "INSERT INTO payment (momo_num) VALUES (?)";
         try {
             Connection conn = DBUtils.getConnection();
@@ -77,8 +85,8 @@ public class PaymentDAO {
         } catch (SQLException e) {
         }
     }
-        
-        public boolean isMomoExists(Integer momo) {
+
+    public boolean isMomoExists(Integer momo) {
         String sql = "SELECT * FROM payment WHERE momo_num = ?";
         try {
             Connection conn = DBUtils.getConnection();
@@ -89,9 +97,6 @@ public class PaymentDAO {
         } catch (SQLException e) {
         }
         return false;
-}
-
-
+    }
 
 }
-

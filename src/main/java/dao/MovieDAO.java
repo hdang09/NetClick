@@ -404,6 +404,34 @@ public class MovieDAO {
         return null;
     }
 
+    public ArrayList<ArrayList<String>> getPaymentSubscription() {
+        ArrayList<String> subscription_counts = new ArrayList<>();
+        ArrayList<String> titles = new ArrayList<>();
+
+        String sql = "SELECT payment.subscriptionID, COUNT(payment.subscriptionID) as count FROM Payment as payment GROUP BY payment.subscriptionID";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String title = rs.getString("subscriptionID");
+                titles.add(title);
+                String review_count = rs.getString("count");
+                subscription_counts.add(review_count);
+            }
+
+            ArrayList<ArrayList<String>> result = new ArrayList<>();
+            result.add(titles);
+            result.add(subscription_counts);
+            return result;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
     public ArrayList<MovieDTO> getFavoriteList(int accountID) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
