@@ -198,6 +198,9 @@
                     .typeString('high quality movies')
                     .pauseFor(2000)
                     .deleteAll()
+                    .typeString('high speed movies')
+                    .pauseFor(2000)
+                    .deleteAll()
                     .start();
         </script>
     </body>
