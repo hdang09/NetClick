@@ -197,8 +197,8 @@
                     .deleteAll()
                     .typeString('high quality movies')
                     .pauseFor(2000)
-                    .deleteAll()
-                    .typeString('high speed movies')
+                    .deleteChars(14)
+                    .typeString('speed movies')
                     .pauseFor(2000)
                     .deleteAll()
                     .start();
