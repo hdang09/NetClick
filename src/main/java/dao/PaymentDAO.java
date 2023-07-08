@@ -36,7 +36,7 @@ public class PaymentDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, visa);
-            ps.setDate(2, new java.sql.Date(expiredate.getTime()));
+            ps.setDate(2, dateUtils.convertToSqlDate(expiredate));
             ps.setInt(3, cvv);
             ps.setString(4, cholder);
             ResultSet rs = ps.executeQuery();
@@ -66,10 +66,10 @@ public class PaymentDAO {
         Connection conn = DBUtils.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, visa);
-        ps.setDate(2, new java.sql.Date(expiredate.getTime()));
+        ps.setDate(2, dateUtils.convertToSqlDate(expiredate));
         ps.setInt(3, cvv);
         ps.setString(4, cholder);
-        ps.setDate(5, new java.sql.Date(startDate.getTime()));
+        ps.setDate(5, dateUtils.convertToSqlDate(startDate));
         ps.executeUpdate();
     } catch (SQLException e) {
         // Handle exception
@@ -82,7 +82,7 @@ public class PaymentDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, momoNum);
-            ps.setDate(2, new java.sql.Date(startDate.getTime()));
+            ps.setDate(2, dateUtils.convertToSqlDate(startDate));
             ps.executeUpdate();
         } catch (SQLException e) {
             // Handle exception
