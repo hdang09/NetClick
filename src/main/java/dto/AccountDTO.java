@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dto;
 
-/**
- *
- * @author Admin
- */
 public class AccountDTO {
     private int id;
     private String username;
@@ -86,4 +78,8 @@ public class AccountDTO {
         this.subscriptionID = subscriptionID;
     }
     
+    // Thêm phương thức getUserID() để có thể sử dụng userID
+    public int getUserID() {
+        return id;
+    }
 }
