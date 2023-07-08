@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,23 +82,23 @@ public class PaymentControlller extends HttpServlet {
 //          MOMO
             String momoNumString = request.getParameter("mnumber");
             if (momoNumString == null || momoNumString.isEmpty()) {
-                request.setAttribute("errornum", "Please fill your phone numbers");
+                request.setAttribute("errornum", "Please fill in your phone number");
                 request.getRequestDispatcher("/momop.jsp").forward(request, response);
             } else {
-                // check numberic for "mnumber"
+                // Check numeric for "mnumber"
                 if (!momoNumString.matches("\\d{10}")) {
-                    request.setAttribute("errornum", "Phone numbers must be a 10-digit");
+                    request.setAttribute("errornum", "Please enter a 10-digit number for phone number");
                     request.getRequestDispatcher("/momop.jsp").forward(request, response);
                 } else {
                     try {
-                        Integer momo = Integer.parseInt(momoNumString);
+                        Integer momoNum = Integer.parseInt(momoNumString);
                         PaymentDAO paymentDAO = new PaymentDAO();
-                        boolean isMomoExists = paymentDAO.isMomoExists(momo);
+                        boolean isMomoExists = paymentDAO.isMomoExists(momoNum);
                         if (isMomoExists) {
                             request.setAttribute("errornum", "Phone number already exists");
                             request.getRequestDispatcher("/momop.jsp").forward(request, response);
                         } else {
-                            paymentDAO.insertm(momo);
+                            paymentDAO.insertm(momoNum, new Date());
                             response.sendRedirect(request.getContextPath() + "/movie?id=1");
                         }
                     } catch (NumberFormatException e) {
@@ -141,7 +142,7 @@ public class PaymentControlller extends HttpServlet {
                             PaymentDAO paymentDAO = new PaymentDAO();
                             PaymentDTO checkv = paymentDAO.checkPaymentExist(saNum, expireDate, cvv, placeholderCard);
                             if (checkv == null) {
-                                paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard);
+                                paymentDAO.insertv(saNum, expireDate, cvv, placeholderCard, new Date());
                                 response.sendRedirect(request.getContextPath() + "");
                             } else {
                                 request.setAttribute("note", "EXIST");

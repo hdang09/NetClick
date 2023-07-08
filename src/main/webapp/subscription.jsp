@@ -67,7 +67,7 @@
                 </div>
                 <%-- STANDARD --%>
                 <div
-                    class="border-1 border border-black dark:border-white flex flex-col p-4 mx-10 my-8 rounded-md w-64 hover:border-0 hover:shadow-2xl dark:hover:bg-slate-800"
+                    c lass="border-1 border border-black dark:border-white flex flex-col p-4 mx-10 my-8 rounded-md w-64 hover:border-0 hover:shadow-2xl dark:hover:bg-slate-800"
                     >
                     <i
                         class="fa-solid fa-tv object-cover h-12 w-12 rounded-full bg-orange-500 my-2 flex items-center justify-center fa-xl text-white"

@@ -59,34 +59,36 @@ public class PaymentDAO {
         return null;
     }
 
-    public void insertv(String visa, Date expiredate, Integer cvv, String cholder) {
-        String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv, placeholder_card)\n"
-                + "VALUES (?, ?, ?, ?)";
-        try {
-            Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, visa);
-            ps.setDate(2, new java.sql.Date(expiredate.getTime()));
-            ps.setInt(3, cvv);
-            ps.setString(4, cholder);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-        }
+    public void insertv(String visa, Date expiredate, Integer cvv, String cholder, Date startDate) {
+    String sql = "INSERT INTO payment (visa_num, expire_visa_date, cvv, placeholder_card, start_date)\n"
+            + "VALUES (?, ?, ?, ?, ?)";
+    try {
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, visa);
+        ps.setDate(2, new java.sql.Date(expiredate.getTime()));
+        ps.setInt(3, cvv);
+        ps.setString(4, cholder);
+        ps.setDate(5, new java.sql.Date(startDate.getTime()));
+        ps.executeUpdate();
+    } catch (SQLException e) {
+        // Handle exception
     }
+}
 //  MOMO
-
-    public void insertm(Integer momoNum) {
-        String sql = "INSERT INTO payment (momo_num) VALUES (?)";
+    public void insertm(Integer momoNum, Date startDate) {
+        String sql = "INSERT INTO payment (momo_num, start_date) VALUES (?, ?)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, momoNum);
+            ps.setDate(2, new java.sql.Date(startDate.getTime()));
             ps.executeUpdate();
         } catch (SQLException e) {
+            // Handle exception
         }
     }
-
-    public boolean isMomoExists(Integer momo) {
+   public boolean isMomoExists(Integer momo) {
         String sql = "SELECT * FROM payment WHERE momo_num = ?";
         try {
             Connection conn = DBUtils.getConnection();
