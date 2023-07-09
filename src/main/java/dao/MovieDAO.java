@@ -33,8 +33,7 @@ public class MovieDAO {
                 + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
                 + "FROM Review "
                 + "GROUP BY Review.movieID "
-                + ") AS ratingQuery ON ratingQuery.movieID = Movie.id "
-                + "WHERE Movie.id = ?";
+                + ") AS ratingQuery ON ratingQuery.movieID = Movie.id";
 
         String tagSql = "SELECT * FROM Tag "
                 + "INNER JOIN MovieTag ON MovieTag.tag_id = Tag.id "
