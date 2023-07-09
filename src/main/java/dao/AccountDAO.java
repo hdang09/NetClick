@@ -22,32 +22,36 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class AccountDAO {
 
-public AccountDTO login(String user, String pass) {
-    String sql = "SELECT * FROM Account WHERE [username] = ?";
-    try {
-        Connection conn = DBUtils.getConnection();
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, user);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            String hashedPassword = rs.getString("password");
-            if (BCrypt.checkpw(pass, hashedPassword)) {
-                return new AccountDTO(
-                        rs.getInt("userID"),
-                        rs.getString("username"),
-                        rs.getString("email"),
-                        pass, // Trả về mật khẩu gốc
-                        rs.getInt("is_ban") == 1,
-                        rs.getInt("role"),
-                        rs.getInt("subscriptionID")
-                );
+    public AccountDTO login(String user, String pass) {
+        String sql = "SELECT * FROM Account WHERE [username] = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                try { // Check if checkpw() throws exeption
+                    if (BCrypt.checkpw(pass, hashedPassword)) {
+                        return new AccountDTO(
+                                rs.getInt("userID"),
+                                rs.getString("username"),
+                                rs.getString("email"),
+                                pass, // Trả về mật khẩu gốc
+                                rs.getInt("is_ban") == 1,
+                                rs.getInt("role"),
+                                rs.getInt("subscriptionID")
+                        );
+                    }
+                } catch (Exception e) {
+                    return null;
+                }
             }
+        } catch (SQLException e) {
+            // Xử lý exception
         }
-    } catch (SQLException e) {
-        // Xử lý exception
+        return null;
     }
-    return null;
-}
 
     public AccountDTO checkAccountExist(String username, String email) {
         String sql = "select * from Account\n"
@@ -89,12 +93,12 @@ public AccountDTO login(String user, String pass) {
             // Xử lý exception
         }
     }
-    
+
     public List<AccountDTO> getAll() {
         List<AccountDTO> accounts = new ArrayList<>();
 
         String sql = "SELECT * FROM Account";
-            
+
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -116,12 +120,13 @@ public AccountDTO login(String user, String pass) {
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+
         return null;
     }
+
     public AccountDTO getById(int id) {
         String sql = "SELECT * FROM Account WHERE userID = ?";
-        
+
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -143,12 +148,11 @@ public AccountDTO login(String user, String pass) {
         }
         return null;
     }
-    
-    
+
     public void changeStatus(int accountID) {
         int currentStatus = getById(accountID).isIsBan() ? 1 : 0;
         int switchStatus = currentStatus == 1 ? 0 : 1;
-        
+
         String sql = "UPDATE Account SET is_ban = ? WHERE userID = ?";
         try {
             Connection conn = DBUtils.getConnection();
@@ -161,11 +165,11 @@ public AccountDTO login(String user, String pass) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void changeRole( int accountID) {
+
+    public void changeRole(int accountID) {
         int currentRole = getById(accountID).getRole();
         int switchRole = currentRole == 1 ? 0 : 1;
-        
+
         String sql = "UPDATE Account SET role = ? WHERE userID = ?";
         try {
             Connection conn = DBUtils.getConnection();
@@ -178,5 +182,5 @@ public AccountDTO login(String user, String pass) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
 }

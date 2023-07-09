@@ -26,7 +26,7 @@
     </servlet>
     <servlet>
         <servlet-name>SubscriptionPlan</servlet-name>
-        <jsp-file>/subscription-plan.jsp</jsp-file>
+        <servlet-class>controllers.SubscriptionPlanController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TagsController</servlet-name>
@@ -39,6 +39,10 @@
     <servlet>
         <servlet-name>NewMoviesController</servlet-name>
         <servlet-class>controllers.NewMoviesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <jsp-file>/404.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>register</servlet-name>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>PreviewController</servlet-name>
         <url-pattern>/preview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/404</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>login</servlet-name>

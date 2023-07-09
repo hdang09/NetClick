@@ -57,7 +57,7 @@
               >+ Favorite List</a
             >
             <a
-              href="/subscription"
+              href="/subscription?movieID=${movie.ID}"
               class="inline-flex justify-center items-center w-40 h-12 bg-slate-400 text-white rounded-md ml-4"
               >> Watch</a
             >

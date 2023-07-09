@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="flex justify-content flex-col items-center">
-                <a href="/visa?plan=<%= request.getParameter("plan")%>" class="flex items-center bg-slate-100 dark:bg-slate-800 transition-opacity duration-500 hover:bg-opacity-10 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
+                <a href="/visa" class="flex items-center bg-slate-100 dark:bg-slate-800 transition-opacity duration-500 hover:bg-opacity-10 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
                     <span class="text-2xl">Credit Card</span>
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
@@ -59,7 +59,7 @@
                         />
                     <span class="text-4xl" style="margin-left: 250px">></span>
                 </a>
-                <a href="/momo?plan=<%= request.getParameter("plan")%>" class="flex items-center bg-slate-100 dark:bg-slate-800 transition-opacity duration-500 hover:bg-opacity-10 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
+                    <a href="/momo" class="flex items-center bg-slate-100 dark:bg-slate-800 transition-opacity duration-500 hover:bg-opacity-10 p-5 my-6 shadow-lg rounded-lg w-[500px] h-[50px]">
                     <span class="text-2xl">Digital Wallet</span>
                     <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="" class="w-[25px] h-[25px]" />
                     <img

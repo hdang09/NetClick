@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import dao.MovieDAO;
+import dao.PaymentDAO;
 import dto.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class MovieController extends HttpServlet {
+public class SubscriptionPlanController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,12 +37,13 @@ public class MovieController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PreviewController</title>");            
+            out.println("<title>Servlet SubscriptionController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PreviewController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SubscriptionController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+
         }
     }
 
@@ -60,26 +61,32 @@ public class MovieController extends HttpServlet {
             throws ServletException, IOException {
         
         final String LOGIN_PAGE = "/login";
+        final String SUBSCRIPTION_PLAN_PAGE = "subscription-plan.jsp";
         final String ERROR_PAGE = "/404";
 
-        // Check if user has logined
+        // Check if user has logined or not
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
         if (account == null) {
-            response.sendRedirect(LOGIN_PAGE);
+            request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
             return;
         }
         
-        // Get id param
-        String idParam = request.getParameter("id");
-        if (idParam == null) {
+        // Handle if param is null
+        String plan = request.getParameter("plan");
+        String movieIDParam = request.getParameter("id");
+        if (plan == null || movieIDParam == null) {
             request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
             return;
         }
         
-        int id = Integer.parseInt(idParam);
-        request.setAttribute("movie", new MovieDAO().getById(id));
-        request.getRequestDispatcher("movie.jsp").forward(request, response);
+        // Handle subscription ID:
+        int subscriptionID = Integer.parseInt(plan);
+        int accountID = account.getId();
+        new PaymentDAO().insertSubscriptionID(accountID, subscriptionID);
+        
+        session.setAttribute("movieID", movieIDParam);
+        request.getRequestDispatcher(SUBSCRIPTION_PLAN_PAGE).forward(request, response);
     }
 
     /**
