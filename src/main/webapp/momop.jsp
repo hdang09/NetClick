@@ -38,6 +38,7 @@
             <!-- login form -->
             <p class="text-red-400"><c:out value="${errornum}" /></p>
             <form class="space-y-4 pt-4" action="/Payment?action=momo" method="POST">
+              <input type="hidden" name="subscriptionID" value="${param.subscriptionID}" />
               <div>
                 <input
                   id="input"
@@ -64,10 +65,9 @@
               </div>              
               <div class="flex text-left">
                 <button
-                  type="submit"
+                  type="submit" value="Submit"
                   class="ml-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-md focus:outline-none hover:bg-blue-600 transition-colors"
-                >
-                  Submit
+                >Submit
                 </button>
               </div>
             </form>

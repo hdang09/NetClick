@@ -48,37 +48,39 @@ public class PaymentDAO {
         return null;
     }
 
-    public void insertv(int userID, String visa, Date expireDate, int cvv, String placeholderCard, Date startDate) {
-        String sql = "INSERT INTO payment (userID, visa_num, expire_visa_date, cvv, placeholder_card, start_date)\n"
-                + "VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, userID);
-            ps.setString(2, visa);
-            ps.setDate(3, dateUtils.convertToSqlDate(expireDate));
-            ps.setInt(4, cvv);
-            ps.setString(5, placeholderCard);
-            ps.setDate(6, dateUtils.convertToSqlDate(startDate));
-            ps.executeUpdate();
-        } catch (SQLException e) {
-        }
+    public void insertv(int userID, String visa, Date expireDate, int cvv, String placeholderCard, Date startDate, int subscriptionID) {
+    String sql = "INSERT INTO payment (userID, visa_num, expire_visa_date, cvv, placeholder_card, start_date, subscriptionID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    try {
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userID);
+        ps.setString(2, visa);
+        ps.setDate(3, dateUtils.convertToSqlDate(expireDate));
+        ps.setInt(4, cvv);
+        ps.setString(5, placeholderCard);
+        ps.setDate(6, dateUtils.convertToSqlDate(startDate));
+        ps.setInt(7, subscriptionID);
+        ps.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
 
     // MOMO
-    public void insertm(int userID, int momoNum, Date startDate) {
-        String sql = "INSERT INTO payment (userID, momo_num, start_date) VALUES (?, ?, ?)";
-        try {
-            Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, userID);
-            ps.setInt(2, momoNum);
-            ps.setDate(3, dateUtils.convertToSqlDate(startDate));
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void insertm(int userID, int momoNum, Date startDate, int subscriptionID) {
+    String sql = "INSERT INTO payment (userID, momo_num, start_date, subscriptionID) VALUES (?, ?, ?, ?)";
+    try {
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userID);
+        ps.setInt(2, momoNum);
+        ps.setDate(3, dateUtils.convertToSqlDate(startDate));
+        ps.setInt(4, subscriptionID);
+        ps.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
 
     public boolean isMomoExists(int momoNum) {
         String sql = "SELECT * FROM payment WHERE momo_num = ?";
