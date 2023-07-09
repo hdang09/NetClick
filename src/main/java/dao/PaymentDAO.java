@@ -152,6 +152,7 @@ public class PaymentDAO {
 
     public boolean isChooseSubscriptionPlan(int accountID) {
         PaymentDTO payment = getPaymentByUserID(accountID);
+        if (payment == null) return false;
         return payment.getSubscriptionID() != 0;
     }
 

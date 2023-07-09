@@ -68,6 +68,9 @@ public class SubscriptionController extends HttpServlet {
         final String ERROR_PAGE = "404";
         final String MOVIE_PAGE = "/movie";
         
+        PaymentDAO paymentDAO = new PaymentDAO();
+        MovieDAO movieDAO = new MovieDAO();
+        
         // Check if user has logined or not
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
@@ -78,14 +81,14 @@ public class SubscriptionController extends HttpServlet {
         
         // Check if user has choose subscription plan
         int accountID = account.getId();
-        boolean isChooseSubscriptionPlan = new PaymentDAO().isChooseSubscriptionPlan(accountID);
+        boolean isChooseSubscriptionPlan = paymentDAO.isChooseSubscriptionPlan(accountID);
         if (isChooseSubscriptionPlan) {
             response.sendRedirect(SUBSCRIPTION_PLAN_PAGE);
             return;
         }
         
         // Check if user has purchased subscription
-        boolean isPurchased = new PaymentDAO().isPurchased(accountID);
+        boolean isPurchased = paymentDAO.isPurchased(accountID);
         if (!isPurchased) {
             request.getRequestDispatcher(SUBSCRIPTION_PAGE).forward(request, response);
             return;
@@ -100,7 +103,7 @@ public class SubscriptionController extends HttpServlet {
         
         // Move to movie page
         int id = Integer.parseInt(movieIDParam);
-        MovieDTO movie = new MovieDAO().getById(id);
+        MovieDTO movie = movieDAO.getById(id);
         request.setAttribute("movie", movie);
         response.sendRedirect(MOVIE_PAGE + "?id=" + id);
     }
