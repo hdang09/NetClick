@@ -68,7 +68,13 @@
           <div class="mt-12">
             <p>Release date: ${movie.release}</p>
             <p>Director: ${movie.director}</p>
-            <p>Tags:</p>
+            <span>Tags: </span>
+            <c:forEach var="tag" items="${movie.tag.substring(1, movie.tag.length() - 1)}" varStatus="loop">
+                <c:if test="${loop.index != movie.tag.length() - 1 && loop.index != 0}">
+                    <span>,</span>
+                </c:if>
+                <a href="/tags?tag=${tag.trim().toLowerCase()}" class=" text-sky-400 hover:text-sky-700">${tag}</a>
+            </c:forEach>
           </div>
 
           <!-- Description -->
@@ -165,5 +171,5 @@
     <script type="text/javascript">
       <%@include file="assets/header-script.js" %>
     </script>
-  </body>
+  /<body>
 </html>

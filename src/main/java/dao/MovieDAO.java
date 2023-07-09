@@ -29,22 +29,34 @@ public class MovieDAO {
     public ArrayList<MovieDTO> getAll() {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
-        String sql = "SELECT * FROM movie";
+        String movieSql = "SELECT * FROM Movie";
+        String tagSql = "SELECT * FROM Tag INNER JOIN MovieTag ON MovieTag.tag_id = Tag.id WHERE MovieTag.movie_id = ?";
+
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            PreparedStatement moviePs = conn.prepareStatement(movieSql);
+            ResultSet movieRs = moviePs.executeQuery();
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String title = rs.getString("title");
-                String description = rs.getString("description");
-                String thumbnail = rs.getString("thumbnail");
-                String movieUrl = rs.getString("movie_url");
-                Date release = rs.getDate("release");
-                String director = rs.getString("director");
-                int rating = rs.getInt("rating");
-                ArrayList tags = new ArrayList();
+            while (movieRs.next()) {
+                int id = movieRs.getInt("id");
+                String title = movieRs.getString("title");
+                String description = movieRs.getString("description");
+                String thumbnail = movieRs.getString("thumbnail");
+                String movieUrl = movieRs.getString("movie_url");
+                Date release = movieRs.getDate("release");
+                String director = movieRs.getString("director");
+                int rating = movieRs.getInt("rating");
+
+                PreparedStatement tagPs = conn.prepareStatement(tagSql);
+                tagPs.setInt(1, id);
+                ResultSet tagResult = tagPs.executeQuery();
+
+                ArrayList<String> tags = new ArrayList<>();
+                while (tagResult.next()) {
+                    String tag = tagResult.getString("tag_name");
+                    tags.add(tag);
+                }
+
                 MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
                 movies.add(movie);
             }
@@ -56,7 +68,10 @@ public class MovieDAO {
     }
 
     public MovieDTO getById(int id) {
-        String sql = "SELECT * FROM movie WHERE id = ?";
+        String sql = "SELECT * FROM Movie "
+                + "INNER JOIN MovieTag ON Movie.id = MovieTag.movie_id "
+                + "INNER JOIN Tag ON Tag.id = MovieTag.tag_id "
+                + "WHERE Movie.id = ?";
 
         try {
             Connection conn = DBUtils.getConnection();
@@ -72,7 +87,13 @@ public class MovieDAO {
                 Date release = rs.getDate("release");
                 String director = rs.getString("director");
                 int rating = rs.getInt("rating");
-                ArrayList tags = new ArrayList();
+
+                ArrayList<String> tags = new ArrayList<>();
+                do {
+                    String tag = rs.getString("tag_name");
+                    tags.add(tag);
+                } while (rs.next());
+
                 MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
                 return movie;
             }
