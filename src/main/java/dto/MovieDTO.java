@@ -20,13 +20,13 @@ public class MovieDTO implements Serializable {
     private String movie_url;
     private Date release;
     private String director;
-    private int rating;
+    private float rating;
     private String tag;
 
     public MovieDTO() {
     }
-    
-    public MovieDTO(String title, String description, String thumbnail, String movie_url, Date release, String director, int rating, String tag) {
+
+    public MovieDTO(String title, String description, String thumbnail, String movie_url, Date release, String director, float rating, String tag) {
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
@@ -37,7 +37,7 @@ public class MovieDTO implements Serializable {
         this.tag = tag;
     }
 
-    public MovieDTO(int ID, String title, String description, String thumbnail, String movie_url, Date release, String director, int rating, String tag) {
+    public MovieDTO(int ID, String title, String description, String thumbnail, String movie_url, Date release, String director, float rating, String tag) {
         this.ID = ID;
         this.title = title;
         this.description = description;
@@ -105,11 +105,11 @@ public class MovieDTO implements Serializable {
         this.director = director;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

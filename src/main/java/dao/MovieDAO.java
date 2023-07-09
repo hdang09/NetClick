@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,8 +28,17 @@ public class MovieDAO {
     public ArrayList<MovieDTO> getAll() {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
-        String movieSql = "SELECT * FROM Movie";
-        String tagSql = "SELECT * FROM Tag INNER JOIN MovieTag ON MovieTag.tag_id = Tag.id WHERE MovieTag.movie_id = ?";
+        String movieSql = "SELECT * FROM Movie "
+                + "INNER JOIN ( "
+                + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
+                + "FROM Review "
+                + "GROUP BY Review.movieID "
+                + ") AS ratingQuery ON ratingQuery.movieID = Movie.id "
+                + "WHERE Movie.id = ?";
+
+        String tagSql = "SELECT * FROM Tag "
+                + "INNER JOIN MovieTag ON MovieTag.tag_id = Tag.id "
+                + "WHERE MovieTag.movie_id = ?";
 
         try {
             Connection conn = DBUtils.getConnection();
@@ -45,7 +53,7 @@ public class MovieDAO {
                 String movieUrl = movieRs.getString("movie_url");
                 Date release = movieRs.getDate("release");
                 String director = movieRs.getString("director");
-                int rating = movieRs.getInt("rating");
+                float rating = movieRs.getFloat("average_rating");
 
                 PreparedStatement tagPs = conn.prepareStatement(tagSql);
                 tagPs.setInt(1, id);
@@ -69,6 +77,11 @@ public class MovieDAO {
 
     public MovieDTO getById(int id) {
         String sql = "SELECT * FROM Movie "
+                + "INNER JOIN ( "
+                + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
+                + "FROM Review "
+                + "GROUP BY Review.movieID "
+                + ") AS ratingQuery ON ratingQuery.movieID = Movie.id "
                 + "INNER JOIN MovieTag ON Movie.id = MovieTag.movie_id "
                 + "INNER JOIN Tag ON Tag.id = MovieTag.tag_id "
                 + "WHERE Movie.id = ?";
@@ -86,7 +99,7 @@ public class MovieDAO {
                 String movieUrl = rs.getString("movie_url");
                 Date release = rs.getDate("release");
                 String director = rs.getString("director");
-                int rating = rs.getInt("rating");
+                float rating = Math.round(rs.getFloat("average_rating") * 10) / 10f;
 
                 ArrayList<String> tags = new ArrayList<>();
                 do {
@@ -302,7 +315,7 @@ public class MovieDAO {
             ps.setString(4, movie.getMovie_url());
             ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
             ps.setString(6, movie.getDirector());
-            ps.setInt(7, movie.getRating());
+//            ps.setFloat(7, movie.getRating());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
