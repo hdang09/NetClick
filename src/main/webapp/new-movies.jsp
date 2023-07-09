@@ -17,7 +17,7 @@
         <main>
             <section>
                 <div class="pt-12 pb-24 text-center max-w-7xl mx-auto">
-                    <p class="text-primary mb-4">Online Streaming</p>
+                    <p class="text-primary mb-4">NetClick</p>
 
                     <h2 class="font-bold text-4xl mb-12">All New Movies</h2>
 

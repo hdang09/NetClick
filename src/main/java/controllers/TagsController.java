@@ -59,7 +59,6 @@ public class TagsController extends HttpServlet {
             throws ServletException, IOException {
         String tag = request.getParameter("tag");
         request.setAttribute("movies", new MovieDAO().getByTag(tag));
-        System.out.println(new MovieDAO().getByTag(tag));
         request.getRequestDispatcher("tags.jsp").forward(request, response);
     }
 
