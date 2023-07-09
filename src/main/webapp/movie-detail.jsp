@@ -55,10 +55,10 @@
                     </div>
                   </div>
 
-                  <!-- Buttons-->
+                  <!-- TODO: Fix this -->
                   <div class="mt-12 flex">
                     <a
-                      href="/404.jsp"
+                      href="/404"
                       class="inline-flex justify-center items-center w-40 h-12 border border-white text-white rounded-md"
                       >+ Wishlist</a
                     >

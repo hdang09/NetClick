@@ -89,25 +89,6 @@ public class PaymentControlller extends HttpServlet {
         int userID = account.getId();
         String action = request.getParameter("action");
         
-        String plan = request.getParameter("plan");
-        int subscriptionID = 0;
-
-        if (plan != null) {
-            switch (plan) {
-                case "mobile":
-                    subscriptionID = 1;
-                    break;
-                case "basic":
-                    subscriptionID = 2;
-                    break;
-                case "standard":
-                    subscriptionID = 3;
-                    break;
-                case "premium":
-                    subscriptionID = 4;
-                    break;
-            }
-        }
         
         if (action != null && action.equals("momo")) {
             // MOMO payment
@@ -132,7 +113,7 @@ public class PaymentControlller extends HttpServlet {
                             request.getRequestDispatcher("/momop.jsp").forward(request, response);
                             return;
                         } else {
-                            paymentDAO.insertm(userID, momoNum, new Date(), subscriptionID);
+                            paymentDAO.insertm(userID, momoNum, new Date());
                             response.sendRedirect(request.getContextPath() + "/movie?id=1");
                             return;
                         }
@@ -172,7 +153,7 @@ public class PaymentControlller extends HttpServlet {
                 PaymentDAO paymentDAO = new PaymentDAO();
                 PaymentDTO checkv = paymentDAO.checkPaymentExist(userID, saNum, expireDate, cvv, placeholderCard);
                     if (checkv == null) {
-                        paymentDAO.insertv(userID, saNum, expireDate, cvv, placeholderCard, new Date(), subscriptionID);
+                        paymentDAO.insertv(userID, saNum, expireDate, cvv, placeholderCard, new Date());
                         response.sendRedirect(request.getContextPath() + "/movie?id=1");
                         return;
                     } else {

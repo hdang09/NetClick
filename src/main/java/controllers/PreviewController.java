@@ -33,13 +33,15 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        final String ERROR_PAGE = "/404";
+
         String movieIDParam = request.getParameter("id");
         int movieID = 0;
         try {
             movieID = Integer.parseInt(movieIDParam);
             forwardToPreviewPage(movieID, request, response);
         } catch (NumberFormatException e) {
-            request.getRequestDispatcher("404.jsp").forward(request, response);
+            request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
         }
     }
 
@@ -55,6 +57,7 @@ public class PreviewController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         final String LOGIN_PAGE = "/login";
+        final String ERROR_PAGE = "/404";
         ReviewDAO dao = new ReviewDAO();
 
         String action = request.getParameter("action");
@@ -76,11 +79,10 @@ public class PreviewController extends HttpServlet {
                 try {
                     movieID = Integer.parseInt(movieIDParam);
                 } catch (NumberFormatException e) {
-                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                    request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
                 }
                 
-                String comment = request.getParameter("comment");
-                
+                // Handle rating
                 String ratingParam = request.getParameter("rating");
                 if (ratingParam == null) {
                     request.setAttribute("ratingError", "Please rate this movie");
@@ -91,9 +93,10 @@ public class PreviewController extends HttpServlet {
                 try {
                     rating = Integer.parseInt(ratingParam);
                 } catch (NumberFormatException e) {
-                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                    request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
                 }
                 
+                String comment = request.getParameter("comment");
                 ReviewDTO review = new ReviewDTO(movieID, userID, comment, rating);
 
                 // Add commnent
@@ -102,7 +105,7 @@ public class PreviewController extends HttpServlet {
                 break;
 
             default:
-                request.getRequestDispatcher("404.jsp").forward(request, response);
+                request.getRequestDispatcher("404").forward(request, response);
         }
     }
 

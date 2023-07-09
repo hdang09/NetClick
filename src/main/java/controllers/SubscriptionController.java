@@ -5,11 +5,12 @@
 package controllers;
 
 import dao.MovieDAO;
+import dao.PaymentDAO;
+import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,24 +61,48 @@ public class SubscriptionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String plan = request.getParameter("plan");
-        if (plan != null) {
-            request.getRequestDispatcher("subscription-plan").forward(request, response);
-            return;
-        }
-
+        
+        final String LOGIN_PAGE = "/login";
+        final String SUBSCRIPTION_PAGE = "subscription.jsp";
+        final String SUBSCRIPTION_PLAN_PAGE = "subscription-plan.jsp";
+        final String ERROR_PAGE = "404";
+        final String MOVIE_PAGE = "/movie";
+        
+        // Check if user has logined or not
         HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        String idMovie = request.getParameter("id");
-        if (username == null || idMovie == null) {
-            request.getRequestDispatcher("subscription.jsp").forward(request, response);
+        AccountDTO account = (AccountDTO) session.getAttribute("account");
+        if (account == null) {
+            request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
             return;
         }
-
-        int id = Integer.parseInt(idMovie);
+        
+        // Check if user has choose subscription plan
+        int accountID = account.getId();
+        boolean isChooseSubscriptionPlan = new PaymentDAO().isChooseSubscriptionPlan(accountID);
+        if (isChooseSubscriptionPlan) {
+            response.sendRedirect(SUBSCRIPTION_PLAN_PAGE);
+            return;
+        }
+        
+        // Check if user has purchased subscription
+        boolean isPurchased = new PaymentDAO().isPurchased(accountID);
+        if (!isPurchased) {
+            request.getRequestDispatcher(SUBSCRIPTION_PAGE).forward(request, response);
+            return;
+        }
+        
+        // Handle id param not exists
+        String movieIDParam = request.getParameter("movieID");
+        if (movieIDParam == null) {
+            request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
+            return;
+        }
+        
+        // Move to movie page
+        int id = Integer.parseInt(movieIDParam);
         MovieDTO movie = new MovieDAO().getById(id);
         request.setAttribute("movie", movie);
-        response.sendRedirect("/movie?id=" + id);
+        response.sendRedirect(MOVIE_PAGE + "?id=" + id);
     }
 
     /**

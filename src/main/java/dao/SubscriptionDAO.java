@@ -24,7 +24,11 @@ public class SubscriptionDAO {
         ArrayList<String> subscription_counts = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
 
-        String sql = "SELECT payment.subscriptionID, COUNT(payment.subscriptionID) as count FROM Payment as payment GROUP BY payment.subscriptionID";
+        String sql = "SELECT subscriptionID, COUNT(subscriptionID) as count "
+                   + "FROM Payment "
+                   + "WHERE subscriptionID IS NOT NULL "
+                   + "GROUP BY subscriptionID";
+
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
