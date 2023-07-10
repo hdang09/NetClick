@@ -5,6 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Account Management - NetClick</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%@ include file="../../components/imports.jsp" %>
   </head>
   <body class="bg-slate-100 dark:bg-slate-900 text-black dark:text-white">

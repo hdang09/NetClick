@@ -5,6 +5,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${action} Movie - NetClick</title>
     <%@ include file="../../components/imports.jsp" %>
   </head>
@@ -13,7 +14,7 @@
       <%@ include file="../../components/admin-sidebar.jsp" %>
 
       <!-- MAIN CONTENT -->
-      <main class="ml-0 sm:ml-[17rem] p-6 border-r-2 flex-1 bg-gray-100 min-h-screen">
+      <main class="ml-0 sm:ml-[17rem] p-6 border-r-2 flex-1 min-h-screen">
         <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-12">
           <h1 class="font-bold text-2xl">${action} Movie</h1>
 
