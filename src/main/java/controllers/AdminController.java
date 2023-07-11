@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -152,7 +153,11 @@ public class AdminController extends HttpServlet {
             default:
                 // DOUGHNUT
                 ArrayList<ArrayList<String>> result_subscription = subscriptionDAO.getPaymentSubscription();
-                int[] subscriptionData = result_subscription.get(1).stream().mapToInt(Integer::parseInt).toArray();
+                ArrayList<Integer> subscriptionData = result_subscription.get(1).stream().map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
+                // Auto fill 0 in subscriptionData
+                for (int i = 0; i < 4 - subscriptionData.size(); i++) {
+                    subscriptionData.add(0);
+                }
                 request.setAttribute("subscriptionData", new JSONArray(subscriptionData));
 
                 // BAR CHART

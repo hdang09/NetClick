@@ -6,7 +6,10 @@
             class="w-16 mr-3"
             />
         <div>
-            <h3 class="font-bold w-full overflow-hidden whitespace-nowrap text-ellipsis">${movie.title == null ? "Love Again" : movie.title}</h3>
+            <h3 
+                class="font-bold w-60 overflow-hidden whitespace-nowrap text-ellipsis"
+                title="${movie.title == null ? "Love Again" : movie.title}"
+            >${movie.title == null ? "Love Again" : movie.title}</h3>
             <p>Action, Horror</p>
             <div class="my-3">
                 <i class="fa-solid fa-star text-xl mx-1 text-yellow-500"></i>

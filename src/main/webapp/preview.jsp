@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${movie.title} Preview - NetClick</title>
     <%@ include file="components/imports.jsp" %>
     <style>
@@ -50,7 +51,7 @@
           </div>
 
           <!-- Buttons-->
-          <div class="mt-12 flex">
+          <div class="mt-12 hidden md:flex">
             <a
               href="/fav-list?movieID=${movie.ID}"
               class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md"
@@ -87,9 +88,9 @@
         </div>
       </div>
 
-      <div class="flex mt-6">
+      <div class="flex mt-6 flex-col md:flex-row">
         <%-- COMMENT AND RATING --%>
-        <div class="flex flex-col flex-1">
+        <div class="flex flex-col flex-1 mb-6">
           <h2 class="font-bold text-xl text-slate-400 mb-4">COMMENT AND RATING</h2>
           <form action="/preview?id=${movie.ID}" method="POST">
             <%-- Rating --%>
@@ -124,7 +125,7 @@
             <%-- Comment --%>
             <label class="mr-2">Comment: </label>
             <input type="hidden" name="action" value="comment" />
-            <textarea name="comment" class="border w-96 h-32 dark:bg-slate-800"></textarea>
+            <textarea name="comment" class="border w-full md:w-96 h-32 dark:bg-slate-800"></textarea>
             <input
               type="submit"
               value="Add comment"

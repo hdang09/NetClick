@@ -6,6 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>NetClick</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%@ include file="components/imports.jsp" %>
   </head>
 
@@ -14,7 +15,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ include file="components/header.jsp" %>
 
     <!-- MAIN CONTENT -->
-    <main>
+    <main class="max-w-screen">
       <%-- Hero --%>
       <section class="max-w-7xl mx-auto flex my-10 px-6">
         <%-- Left section --%>
@@ -64,7 +65,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <%-- Popular Movies --%>
       <section class="dark:text-white">
-        <div class="py-24 max-w-7xl mx-auto" data-aos="flip-up">
+        <div class="py-24 max-w-7xl mx-auto" data-aos="fade-down">
           <p class="text-primary mb-4">NetClick</p>
 
           <h2 class="font-bold text-4xl mb-12">Popular Movies</h2>
@@ -122,7 +123,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <%-- Top Rated Movies --%>
       <section class="dark:text-white">
-        <div class="py-24 text-center max-w-7xl mx-auto" data-aos="flip-down">
+        <div class="py-24 text-center max-w-7xl mx-auto" data-aos="fade-up">
           <p class="text-primary mb-4">NetClick</p>
 
           <h2 class="font-bold text-4xl mb-12">Top Rated Movies</h2>
