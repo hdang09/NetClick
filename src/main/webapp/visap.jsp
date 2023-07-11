@@ -29,7 +29,7 @@
         </div>
         <%@ include file="components/stepper.jsp" %>
         <div class="flex justify-center items-center mb-4">
-          <img src="assets/visa.png" alt="" class="w-24" />
+          <img src="https://i.imgur.com/zpj4HXg.png" alt="" class="w-24" />
         </div>
         <div class="w-full max-w-md mx-auto">
           <div class="w-full">
