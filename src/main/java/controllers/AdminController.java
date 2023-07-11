@@ -126,11 +126,15 @@ public class AdminController extends HttpServlet {
                 // Movie Details
                 String idParam = request.getParameter("id");
                 if (idParam != null) {
-                    int id = Integer.parseInt(idParam);
-                    MovieDTO movie = movieDAO.getById(id);
-                    request.setAttribute("movie", movie);
-                    request.getRequestDispatcher(MOVIE_DETAIL_PAGE).forward(request, response);
-                    return;
+                    try {
+                        int id = Integer.parseInt(idParam);
+                        MovieDTO movie = movieDAO.getById(id);
+                        request.setAttribute("movie", movie);
+                        request.getRequestDispatcher(MOVIE_DETAIL_PAGE).forward(request, response);
+                        return;
+                    } catch (NumberFormatException e) {
+                        request.getRequestDispatcher("/404").forward(request, response);
+                    }
                 }
 
                 // Pagination
