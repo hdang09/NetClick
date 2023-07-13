@@ -16,41 +16,37 @@
             <main class="ml-0 sm:ml-[17rem] py-8 px-12 flex-1">
                 <div class="max-w-7xl mx-auto">
                     <h1 class="font-bold text-2xl mb-4">DASHBOARD</h1>
-                    <div class="flex flex-col md:flex-row justify-around">
-                        <div class="flex flex-col sm:flex-row justify-around">
-                            <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
-                                <i class="fa-solid fa-sack-dollar fa-2xl m-[10px] text-lime-500"></i>
-                                <div>
-                                    <span class="text-xl font-bold text-lime-500" thanhf-animation>${totalIncome}</span>
-                                    <span class="text-xl font-bold text-lime-500">$</span><br />
-                                    <span class="text-xl text-lime-500">Total Income</span>
-                                </div>
-                            </div>
-
-                            <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
-                                <i class="fa-solid fa-user fa-2xl m-[10px] text-cyan-500"></i>
-                                <div>
-                                    <span class="text-xl font-bold text-cyan-500" thanhf-animation>${totalUser}</span><br />
-                                    <span class="text-xl text-cyan-500">Total users</span>
-                                </div>
+                    <div class="flex flex-col lg:flex-row justify-around">
+                        <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
+                            <i class="fa-solid fa-sack-dollar fa-2xl m-[10px] text-lime-500"></i>
+                            <div>
+                                <span class="text-xl font-bold text-lime-500" thanhf-animation>${totalIncome}</span>
+                                <span class="text-xl font-bold text-lime-500">$</span><br />
+                                <span class="text-xl text-lime-500">Total Income</span>
                             </div>
                         </div>
 
-                        <div class="flex flex-col sm:flex-row justify-around">
-                            <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
-                                <i class="fa-solid fa-user-slash fa-2xl m-[10px] text-red-500"></i>
-                                <div>
-                                    <span class="text-xl font-bold text-red-500" thanhf-animation>${totalBannedUser}</span><br />
-                                    <span class="text-xl text-red-500">Banned users</span>
-                                </div>
+                        <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
+                            <i class="fa-solid fa-user fa-2xl m-[10px] text-cyan-500"></i>
+                            <div>
+                                <span class="text-xl font-bold text-cyan-500" thanhf-animation>${totalUser}</span><br />
+                                <span class="text-xl text-cyan-500">Total users</span>
                             </div>
+                        </div>
 
-                            <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
-                                <i class="fa-solid fa-video fa-2xl m-[10px] text-pink-500"></i>
-                                <div>
-                                    <span class="text-xl font-bold text-pink-500" thanhf-animation>${totalMovie}</span><br />
-                                    <span class="text-xl text-pink-500">Total movies</span>
-                                </div>
+                        <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
+                            <i class="fa-solid fa-user-slash fa-2xl m-[10px] text-red-500"></i>
+                            <div>
+                                <span class="text-xl font-bold text-red-500" thanhf-animation>${totalBannedUser}</span><br />
+                                <span class="text-xl text-red-500">Banned users</span>
+                            </div>
+                        </div>
+
+                        <div class="py-4 px-6 my-2 flex items-center rounded-lg bg-white dark:bg-slate-800 shadow-md max-w-sm">
+                            <i class="fa-solid fa-video fa-2xl m-[10px] text-pink-500"></i>
+                            <div>
+                                <span class="text-xl font-bold text-pink-500" thanhf-animation>${totalMovie}</span><br />
+                                <span class="text-xl text-pink-500">Total movies</span>
                             </div>
                         </div>
                     </div>
