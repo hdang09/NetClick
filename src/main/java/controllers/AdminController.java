@@ -41,6 +41,10 @@ public class AdminController extends HttpServlet {
     final String USER_MANAGEMENT_PAGE = "/account-mgmt.jsp";
     final String MOVIE_FORM_PAGE = "/movie-form.jsp";
     final String MOVIE_DETAIL_PAGE = "/movie-detail.jsp";
+    final String LOGIN_PAGE = "/login";
+    final String USER_PAGE = "/";
+    
+    final int USER_ROLE = 1;
 
     final int MOVIES_EACH_PAGE = 5;
 
@@ -60,6 +64,19 @@ public class AdminController extends HttpServlet {
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
         HttpSession session = request.getSession();
+        AccountDTO account = (AccountDTO) session.getAttribute("account");
+        
+        // User hasn't login
+        if (account == null) {
+            response.sendRedirect(LOGIN_PAGE);
+            return;
+        }
+        
+        // Account with role user
+        if (account.getRole() == USER_ROLE) {
+            response.sendRedirect(USER_PAGE);
+            return;
+        }
 
         switch (path) {
             case "accounts":
