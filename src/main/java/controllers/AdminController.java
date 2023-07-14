@@ -12,7 +12,6 @@ import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -186,7 +185,7 @@ public class AdminController extends HttpServlet {
                 ArrayList<ArrayList<String>> result = movieDAO.getMostFiveWatchedMovie();
                 String[] films = result.get(0).toArray(new String[0]);
                 double[] data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
-                String label = "Watch count"; // query from database
+                String label = "Watch count";
 
                 // Filter
                 String filter = request.getParameter("filter");
@@ -197,14 +196,14 @@ public class AdminController extends HttpServlet {
                             result = movieDAO.getMostFiveRatingMovie();
                             films = result.get(0).toArray(new String[0]);
                             data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
-                            label = "Rated count"; // query from database
+                            label = "Rated count";
                             break;
                         // Most comment
                         case "most-comment":
                             result = movieDAO.getMostFiveCommentMovie();
                             films = result.get(0).toArray(new String[0]);
                             data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
-                            label = "Comment count"; // query from database
+                            label = "Comment count";
                             break;
                     }
                 }
