@@ -303,11 +303,17 @@ public class MovieDAO {
     }
 
     public void add(MovieDTO movie) {
-        String sql = "INSERT INTO Movie (title, description, thumbnail, movie_url, release, director, rating)\n"
+        System.out.println("Hello");
+        String insertMovieSQL = "INSERT INTO Movie (title, description, thumbnail, movie_url, release, director, rating)\n"
+                + "OUTPUT INSERTED.id "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertTagSQL = "INSERT INTO MovieTag VALUES (?, ?)";
+
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
+
+            // Insert movie
+            PreparedStatement ps = conn.prepareStatement(insertMovieSQL);
             ps.setString(1, movie.getTitle());
             ps.setString(2, movie.getDescription());
             ps.setString(3, movie.getThumbnail());
@@ -315,8 +321,23 @@ public class MovieDAO {
             ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
             ps.setString(6, movie.getDirector());
             ps.setFloat(7, movie.getRating());
-            ps.executeUpdate();
+            ResultSet rs = ps.executeQuery();
+            int id = 0;
+            if (rs.next()) {
+                id = rs.getInt("id");
+                System.out.println(id);
+            }
 
+            // Insert movie tag
+            String[] tags = movie.getTag().split(",");
+            for (String tag : tags) {
+                System.out.println(tag);
+
+                PreparedStatement ps2 = conn.prepareStatement(insertTagSQL);
+                ps2.setInt(1, id);
+                ps2.setString(2, tag);
+                ps2.executeUpdate();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

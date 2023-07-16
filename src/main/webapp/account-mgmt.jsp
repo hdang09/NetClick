@@ -101,7 +101,7 @@
                           </td>
                           <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                             <c:choose>
-                              <c:when test="${account.isBan}">
+                              <c:when test="${account.ban}">
                                 <div
                                   class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800"
                                 >

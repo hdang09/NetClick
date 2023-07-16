@@ -74,7 +74,7 @@ public class SubscriptionController extends HttpServlet {
         // Check if user has logined or not
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
-        if (account == null) {
+        if (account == null || account.isBan()) {
             request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
             return;
         }

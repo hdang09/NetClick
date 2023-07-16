@@ -43,7 +43,7 @@ public class AccountDAO {
                                 rs.getInt("subscriptionID")
                         );
                     }
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     return null;
                 }
             }
@@ -150,7 +150,7 @@ public class AccountDAO {
     }
 
     public void changeStatus(int accountID) {
-        int currentStatus = getById(accountID).isIsBan() ? 1 : 0;
+        int currentStatus = getById(accountID).isBan() ? 1 : 0;
         int switchStatus = currentStatus == 1 ? 0 : 1;
 
         String sql = "UPDATE Account SET is_ban = ? WHERE userID = ?";

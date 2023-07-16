@@ -66,7 +66,7 @@ public class PreviewController extends HttpServlet {
                 // Check if user has logined
                 HttpSession session = request.getSession();
                 AccountDTO account = (AccountDTO) session.getAttribute("account");
-                if (account == null) {
+                if (account == null || account.isBan()) {
                     response.sendRedirect(LOGIN_PAGE);
                     return;
                 }

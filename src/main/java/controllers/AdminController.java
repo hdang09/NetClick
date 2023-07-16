@@ -249,7 +249,7 @@ public class AdminController extends HttpServlet {
         Date release = new DateUtils().stringToDate(releaseStr);
         String director = request.getParameter("director");
         String thumnailURL = request.getParameter("thumbnail-url");
-        String tag = request.getParameter("tag");
+        String[] tags = request.getParameterValues("tag");
 
         boolean isValid = true;
         // Validate title 
@@ -288,7 +288,7 @@ public class AdminController extends HttpServlet {
             isValid = false;
         }
 
-        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tag);
+        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, String.join(",", tags));
         String action = request.getParameter("action");
         if (!isValid) {
             request.setAttribute("release", releaseStr);

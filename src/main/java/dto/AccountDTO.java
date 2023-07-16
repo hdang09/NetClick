@@ -5,19 +5,19 @@ public class AccountDTO {
     private String username;
     private String email;
     private String password;
-    private boolean isBan;
+    private boolean ban;
     private int role;
     private int subscriptionID;
 
     public AccountDTO() {
     }
 
-    public AccountDTO(int id, String username, String email, String password, boolean isBan, int role, int subscriptionID) {
+    public AccountDTO(int id, String username, String email, String password, boolean ban, int role, int subscriptionID) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.isBan = isBan;
+        this.ban = ban;
         this.role = role;
         this.subscriptionID = subscriptionID;
     }
@@ -54,12 +54,12 @@ public class AccountDTO {
         this.password = password;
     }
     
-    public boolean isIsBan() {
-        return isBan;
+    public boolean isBan() {
+        return ban;
     }
 
-    public void setIsBan(boolean isBan) {
-        this.isBan = isBan;
+    public void setBan(boolean ban) {
+        this.ban = ban;
     }
 
     public int getRole() {

@@ -8,7 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${action} Movie - NetClick</title>
     <%@ include file="../../components/imports.jsp" %>
+    
+     <!-- Multiple select -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    
+    <style>
+        html.dark .body.rounded,
+        html.dark .drawer.rounded {
+            background: #111827;
+        }
+        
+        .body.rounded {
+            border-color: #5b5b5b;
+        }
+    </style>
   </head>
+  
   <body class="bg-slate-100 dark:bg-slate-900 text-black dark:text-white">
     <div class="flex">
       <%@ include file="../../components/admin-sidebar.jsp" %>
@@ -87,11 +102,13 @@
                       name="tag"
                       id="tag"
                       class="block w-full rounded-l-none rtl:rounded-l-lg rtl:rounded-r-none placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                      multiple
                     >
                       <c:set var="dao" value="<%= new dao.MovieDAO() %>" />
 
-                      <c:forEach var="tag" items="${dao.getAllTag()}">
-                        <option value="${tag}">${tag}</option>
+                      <c:forEach var="tag" items="${dao.getAllTag()}" varStatus="loop">
+                          
+                        <option value="${loop.index + 1}">${tag}</option>
                       </c:forEach>
                     </select>
                   </div>
@@ -192,6 +209,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script>
       <%@include file="assets/dashboard-script.js" %>
+    </script>
+    
+    <!-- Multiple select -->
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+    <script>
+      new MultiSelectTag('tag')
     </script>
   </body>
 </html>
