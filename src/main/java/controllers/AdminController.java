@@ -60,6 +60,8 @@ public class AdminController extends HttpServlet {
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
         HttpSession session = request.getSession();
+        
+        System.out.println(session.getAttribute("account").getClass());
 
         switch (path) {
             case "accounts":
