@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.FavoriteListDAO;
 import dao.MovieDAO;
 import dao.ReviewDAO;
 import dto.AccountDTO;
@@ -73,7 +74,7 @@ public class PreviewController extends HttpServlet {
 
                 // Get review info
                 int userID = account.getId();
-                
+
                 String movieIDParam = request.getParameter("id");
                 int movieID = 0;
                 try {
@@ -81,7 +82,7 @@ public class PreviewController extends HttpServlet {
                 } catch (NumberFormatException e) {
                     request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
                 }
-                
+
                 // Handle rating
                 String ratingParam = request.getParameter("rating");
                 if (ratingParam == null) {
@@ -95,7 +96,7 @@ public class PreviewController extends HttpServlet {
                 } catch (NumberFormatException e) {
                     request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
                 }
-                
+
                 String comment = request.getParameter("comment");
                 ReviewDTO review = new ReviewDTO(movieID, userID, comment, rating);
 
@@ -115,6 +116,15 @@ public class PreviewController extends HttpServlet {
         request.setAttribute("movie", movieDAO.getById(movieID));
         request.setAttribute("reviews", new ReviewDAO().getReviewByMovieID(movieID));
         request.setAttribute("related", movieDAO.getRelatedByTag(movieID));
+
+        FavoriteListDAO fvDAO = new FavoriteListDAO();
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            AccountDTO account = (AccountDTO) session.getAttribute("account");
+            if (account != null && fvDAO.isExit(account.getId(), movieID)) {
+                request.setAttribute("favorited", "ok");
+            }
+        }
         request.getRequestDispatcher("preview.jsp").forward(request, response);
     }
 

@@ -38,7 +38,7 @@ public class FavoriteListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FavoriteListController</title>");            
+            out.println("<title>Servlet FavoriteListController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FavoriteListController at " + request.getContextPath() + "</h1>");
@@ -60,15 +60,15 @@ public class FavoriteListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         final String LOGIN_PAGE = "/login";
-        
+
         // Check if user has logined
         HttpSession session = request.getSession();
         AccountDTO account = (AccountDTO) session.getAttribute("account");
-        if (account == null || account.isBan()) {
+        if (account == null) {
             response.sendRedirect(LOGIN_PAGE);
             return;
         }
-        
+
         // Render all movies in favorite list
         MovieDAO movieDAO = new MovieDAO();
         String movieIDParam = request.getParameter("movieID");
@@ -77,12 +77,17 @@ public class FavoriteListController extends HttpServlet {
             request.getRequestDispatcher("fav-list.jsp").forward(request, response);
             return;
         }
-        
+
         // Add movie to favorite list
         int movieID = Integer.parseInt(movieIDParam);
         FavoriteListDAO fvDAO = new FavoriteListDAO();
-        fvDAO.insert(account.getId(), movieID);
-        request.setAttribute("message", "Add to favorite list successfully!");
+        if (fvDAO.isExit(account.getId(), movieID)) {
+            request.setAttribute("message", "Already added to favorite!");
+        }
+        else {
+            fvDAO.insert(account.getId(), movieID);
+            request.setAttribute("message", "Add to favorite list successfully!");
+        }
         request.getRequestDispatcher("/preview?id=" + movieIDParam).forward(request, response);
     }
 
