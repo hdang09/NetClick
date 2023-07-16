@@ -79,7 +79,7 @@ public class FavoriteListController extends HttpServlet {
         }
 
         // Add movie to favorite list
-        int accountID = account.getId()
+        int accountID = account.getId();
         int movieID = Integer.parseInt(movieIDParam);
         FavoriteListDAO fvDAO = new FavoriteListDAO();
         if (fvDAO.isExit(accountID, movieID)) {
