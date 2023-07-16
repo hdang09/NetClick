@@ -24,8 +24,8 @@ public class ReviewDAO {
     
     public ArrayList<ReviewDTO> getReviewByMovieID(int movieID) {
         ArrayList<ReviewDTO> reviews = new ArrayList<>();
-        String sql = "SELECT * FROM Review r, Account a "
-                   + "WHERE r.movieID = ? AND r.userID = a.userID "
+        String sql = "SELECT * FROM Review"
+                   + "WHERE movieID = ? "
                    + "ORDER BY ID DESC";
         try {
             Connection conn = DBUtils.getConnection();
