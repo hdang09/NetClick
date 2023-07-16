@@ -29,7 +29,7 @@ public class MovieDAO {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
         String movieSql = "SELECT * FROM Movie "
-                + "INNER JOIN ( "
+                + "LEFT JOIN ( "
                 + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
                 + "FROM Review "
                 + "GROUP BY Review.movieID "
@@ -314,7 +314,7 @@ public class MovieDAO {
             ps.setString(4, movie.getMovie_url());
             ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
             ps.setString(6, movie.getDirector());
-//            ps.setFloat(7, movie.getRating());
+            ps.setFloat(7, movie.getRating());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
