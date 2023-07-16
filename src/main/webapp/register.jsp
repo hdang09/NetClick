@@ -23,7 +23,7 @@
           <div class="flex items-center">
             <a class="mx-auto" href="/"><img src="https://i.imgur.com/VDWjEqQ.png" alt="Logo" class="h-16" /></a>
           </div>
-          <div class="sticky w-full flex justify-center items-center mt-2 text-2xl md:text-3xl">
+          <div class="sticky w-full flex justify-center items-center mt-2 text-2xl lg:text-3xl">
             <h1 class="block text-black font-light mb-2 mt-10 px-3">Welcome to</h1>
             <div>
               <h2 class="flex bg-primary rounded text-white font-light pb-2 mt-10 px-3">NetClick</h2>

@@ -12,7 +12,6 @@ import dto.AccountDTO;
 import dto.MovieDTO;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,6 +40,10 @@ public class AdminController extends HttpServlet {
     final String USER_MANAGEMENT_PAGE = "/account-mgmt.jsp";
     final String MOVIE_FORM_PAGE = "/movie-form.jsp";
     final String MOVIE_DETAIL_PAGE = "/movie-detail.jsp";
+    final String LOGIN_PAGE = "/login";
+    final String USER_PAGE = "/";
+    
+    final int USER_ROLE = 1;
 
     final int MOVIES_EACH_PAGE = 5;
 
@@ -60,8 +63,19 @@ public class AdminController extends HttpServlet {
         String uri = request.getRequestURI();
         String path = uri.substring(uri.indexOf("/", 1) + 1);
         HttpSession session = request.getSession();
+        AccountDTO account = (AccountDTO) session.getAttribute("account");
         
-        System.out.println(session.getAttribute("account").getClass());
+        // User hasn't login
+        if (account == null) {
+            response.sendRedirect(LOGIN_PAGE);
+            return;
+        }
+        
+        // Account with role user
+        if (account.getRole() == USER_ROLE) {
+            response.sendRedirect(USER_PAGE);
+            return;
+        }
 
         switch (path) {
             case "accounts":
@@ -171,7 +185,7 @@ public class AdminController extends HttpServlet {
                 ArrayList<ArrayList<String>> result = movieDAO.getMostFiveWatchedMovie();
                 String[] films = result.get(0).toArray(new String[0]);
                 double[] data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
-                String label = "Watch count"; // query from database
+                String label = "Watch count";
 
                 // Filter
                 String filter = request.getParameter("filter");
@@ -182,14 +196,14 @@ public class AdminController extends HttpServlet {
                             result = movieDAO.getMostFiveRatingMovie();
                             films = result.get(0).toArray(new String[0]);
                             data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
-                            label = "Rated count"; // query from database
+                            label = "Rated count";
                             break;
                         // Most comment
                         case "most-comment":
                             result = movieDAO.getMostFiveCommentMovie();
                             films = result.get(0).toArray(new String[0]);
                             data = result.get(1).stream().mapToDouble(Double::parseDouble).toArray();
-                            label = "Comment count"; // query from database
+                            label = "Comment count";
                             break;
                     }
                 }

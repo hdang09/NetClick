@@ -83,7 +83,6 @@ public class FavoriteListController extends HttpServlet {
         FavoriteListDAO fvDAO = new FavoriteListDAO();
         fvDAO.insert(account.getId(), movieID);
         request.setAttribute("message", "Add to favorite list successfully!");
-//        response.sendRedirect("/preview?id=" + movieIDParam);
         request.getRequestDispatcher("/preview?id=" + movieIDParam).forward(request, response);
     }
 

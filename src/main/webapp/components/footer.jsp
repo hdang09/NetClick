@@ -27,41 +27,35 @@
 
         <div class="flex flex-col items-start mt-5 space-y-2">
           <a
-            href="#"
+            href="/"
             class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
             >Home</a
           >
           <a
-            href="#"
+            href="/new-movies"
             class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-            >Who We Are</a
+            >All Movies</a
           >
           <a
-            href="#"
+            href="/fav-list"
             class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-            >Our Philosophy</a
+            >Favorite List</a
           >
         </div>
       </div>
 
       <div>
-        <p class="font-semibold text-gray-800 dark:text-white">Industries</p>
+        <p class="font-semibold text-gray-800 dark:text-white">About Us</p>
 
         <div class="flex flex-col items-start mt-5 space-y-2">
-          <a
-            href="#"
-            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-            >Retail & E-Commerce</a
-          >
-          <a
-            href="#"
-            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-            >Information Technology</a
-          >
-          <a
-            href="#"
-            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-            >Finance & Insurance</a
+          <span class="text-gray-600 transition-colors duration-300 dark:text-gray-300">
+              Phone Number: <a class="dark:hover:text-blue-400 hover:underline hover:text-blue-500" href="tel:0xxxxxxxxx">0xxx xxx xxx</a>
+          </span>
+          <span class="text-gray-600 transition-colors duration-300 dark:text-gray-300">
+              Email: <a class="dark:hover:text-blue-400 hover:underline hover:text-blue-500" href="mailto:netclick@gmail.com">netclick@gmail.com</a>
+          </span>
+          <span class="text-gray-600 transition-colors duration-300 dark:text-gray-300"
+            >Address: Lot E2a-7, Road D1, Long Thanh My, Thu Duc City, Ho Chi Minh City</span
           >
         </div>
       </div>
