@@ -22,7 +22,7 @@
 
                     <h2 class="font-bold text-4xl mb-12">All New Movies</h2>
 
-                    <ul class="flex flex-wrap justify-center">
+                    <ul class="flex flex-wrap">
                         <c:forEach var="movie" items="${movies}">
                             <c:set var="movie" value="${movie}" scope="request" />
                             <jsp:include page="components/movie.jsp" />
@@ -31,6 +31,10 @@
             </section>
 
         </main>
+        
+        <!-- FOOTER -->
+        <%@ include file="components/footer.jsp" %>
+
 
         <script type="text/javascript">
             <%@include file="assets/header-script.js" %>

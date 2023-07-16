@@ -149,7 +149,7 @@ public class MovieDAO {
     public ArrayList<MovieDTO> getRelatedByTag(int movieId) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
-        String sql = "SELECT * FROM MovieTag mt "
+        String sql = "SELECT TOP 10 * FROM MovieTag mt "
                 + "INNER JOIN Movie m  "
                 + "ON mt.movie_id = m.id   "
                 + "WHERE mt.tag_id = (  "

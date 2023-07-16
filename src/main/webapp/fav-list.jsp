@@ -29,6 +29,9 @@
         </ul>
       </section>
     </main>
+    
+    <!-- FOOTER -->
+    <%@ include file="components/footer.jsp" %>
 
     <script type="text/javascript">
       <%@include file="assets/header-script.js" %>

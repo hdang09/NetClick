@@ -31,10 +31,15 @@
     <%@ include file="components/header.jsp" %>
 
     <!-- MAIN CONTENT -->
-    <main class="text-black dark:text-white mt-6 max-w-7xl mx-auto">
-      <div class="flex rounded-lg">
+    <main class="text-black dark:text-white max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row rounded-lg my-6">
         <!-- Left content -->
-        <div class="w-[40rem] bg-slate-200 dark:bg-slate-800 text-xl p-6">
+        <div class="flex justify-center items-center mx-10 my-8 md:my-0">
+          <img src="${movie.thumbnail}" alt="Thumbnail" class="w-80" />
+        </div>
+        
+        <!-- Right content -->
+        <div class="flex-1 w-full md:w-[40rem] bg-slate-200 dark:bg-slate-800 text-xl p-6 rounded">
           <!-- Title -->
           <h1 class="font-bold text-5xl mb-2">${movie.title}</h1>
           <!-- Rating -->
@@ -50,48 +55,48 @@
             </div>
           </div>
 
-          <!-- Buttons-->
-          <div class="mt-12 hidden md:flex">
-            <a
-              href="/fav-list?movieID=${movie.ID}"
-              class="inline-flex justify-center items-center w-40 h-12 border border-slate-400 text-slate-400 rounded-md"
-              >+ Favorite List</a
-            >
-            <a
-              href="/subscription?movieID=${movie.ID}"
-              class="inline-flex justify-center items-center w-40 h-12 bg-slate-400 text-white rounded-md ml-4"
-              >> Watch</a
-            >
-          </div>
-          <p>${message}</p>
-
           <!-- Movie info -->
-          <div class="mt-12">
-            <p>Release date: ${movie.release}</p>
-            <p>Director: ${movie.director}</p>
+          <div class="mt-12 font-light">
+            <p>Release date: <span class="font-semibold">${movie.release}</span></p>
+            <p>Director: <span class="font-semibold">${movie.director}</span></p>
             <span>Tags: </span>
             <c:forEach var="tag" items="${movie.tag.substring(1, movie.tag.length() - 1)}" varStatus="loop">
                 <c:if test="${loop.index != movie.tag.length() - 1 && loop.index != 0}">
                     <span>,</span>
                 </c:if>
-                <a href="/tags?tag=${tag.trim().toLowerCase()}" class=" text-sky-400 hover:text-sky-700">${tag}</a>
+                <a href="/tags?tag=${tag.trim().toLowerCase()}" class="text-primary hover:text-sky-400 font-semibold">${tag}</a>
             </c:forEach>
           </div>
 
           <!-- Description -->
-          <p class="mt-12">${movie.description}</p>
+          <p class="mt-12 font-light">${movie.description}</p>
+          
+          <!-- Buttons-->
+          <div class="mt-12 flex">
+            <a
+              href="/fav-list?movieID=${movie.ID}"
+              class="inline-flex justify-center items-center w-40 h-12 border border-primary text-primary rounded-full"
+              >
+                <i class="fa-solid fa-plus mr-2 text-md"></i> Favorite
+            </a>
+            <a
+              href="/subscription?movieID=${movie.ID}"
+              class="inline-flex justify-center items-center w-40 h-12 bg-primary text-white rounded-full ml-4"
+              >
+                <i class="fa-solid fa-play mr-2 text-md"></i> Watch
+            </a>
+          </div>
+          <p>${message}</p>
+          
         </div>
 
-        <!-- Right content -->
-        <div class="flex justify-center items-center flex-1">
-          <img src="${movie.thumbnail}" alt="Thumbnail" class="w-96" />
-        </div>
+        
       </div>
 
       <div class="flex mt-6 flex-col md:flex-row">
         <%-- COMMENT AND RATING --%>
         <div class="flex flex-col flex-1 mb-6">
-          <h2 class="font-bold text-xl text-slate-400 mb-4">COMMENT AND RATING</h2>
+          <h2 class="font-bold text-xl text-primary mb-4">COMMENT AND RATING</h2>
           <form action="/preview?id=${movie.ID}" method="POST">
             <%-- Rating --%>
             <div class="mb-4">
@@ -157,8 +162,8 @@
         </div>
 
         <%-- BEGIN: SIMILAR --%>
-        <div class="w-96 mx-auto px-6">
-          <h2 class="font-bold text-xl text-slate-400 mb-4">SIMILAR</h2>
+        <div class="w-96 mx-auto px-6 mb-10">
+          <h2 class="font-bold text-xl text-primary mb-4">SIMILAR</h2>
           <ul class="flex justify-between flex-wrap">
             <c:forEach var="movie" items="${related}">
               <c:set var="movie" value="${movie}" scope="request" />
@@ -168,6 +173,9 @@
         </div>
       </div>
     </main>
+        
+    <!-- FOOTER -->
+    <%@ include file="components/footer.jsp" %>
 
     <script type="text/javascript">
       <%@include file="assets/header-script.js" %>
