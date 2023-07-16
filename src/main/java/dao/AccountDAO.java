@@ -97,7 +97,7 @@ public class AccountDAO {
     public List<AccountDTO> getAll() {
         List<AccountDTO> accounts = new ArrayList<>();
 
-        String sql = "SELECT * FROM Account";
+        String sql = "SELECT *, Payment.subscriptionID as subscriptionIDPayment FROM Account INNER JOIN Payment ON Account.userID = Payment.userID";
 
         try {
             Connection conn = DBUtils.getConnection();
@@ -112,7 +112,7 @@ public class AccountDAO {
                         rs.getString("password"),
                         rs.getInt("is_ban") == 1,
                         rs.getInt("role"),
-                        rs.getInt("subscriptionID")
+                        rs.getInt("subscriptionIDPayment")
                 );
                 accounts.add(movie);
             }
