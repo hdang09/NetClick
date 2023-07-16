@@ -71,8 +71,18 @@ public class SubscriptionController extends HttpServlet {
         PaymentDAO paymentDAO = new PaymentDAO();
         MovieDAO movieDAO = new MovieDAO();
         
-        // Check if user has logined or not
         HttpSession session = request.getSession();
+        
+        // Handle id param not exists
+        String movieIDParam = request.getParameter("movieID");
+        if (movieIDParam == null) {
+            request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
+            return;
+        }
+        int id = Integer.parseInt(movieIDParam);
+        session.setAttribute("movieID", id);
+        
+        // Check if user has logined or not
         AccountDTO account = (AccountDTO) session.getAttribute("account");
         if (account == null || account.isBan()) {
             request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
@@ -82,27 +92,21 @@ public class SubscriptionController extends HttpServlet {
         // Check if user has choose subscription plan
         int accountID = account.getId();
         boolean isChooseSubscriptionPlan = paymentDAO.isChooseSubscriptionPlan(accountID);
-        if (isChooseSubscriptionPlan) {
-            response.sendRedirect(SUBSCRIPTION_PLAN_PAGE);
+        if (!isChooseSubscriptionPlan) {
+            request.getRequestDispatcher(SUBSCRIPTION_PAGE).forward(request, response);
             return;
         }
         
         // Check if user has purchased subscription
         boolean isPurchased = paymentDAO.isPurchased(accountID);
         if (!isPurchased) {
-            request.getRequestDispatcher(SUBSCRIPTION_PAGE).forward(request, response);
+            response.sendRedirect(SUBSCRIPTION_PLAN_PAGE);
             return;
         }
         
-        // Handle id param not exists
-        String movieIDParam = request.getParameter("movieID");
-        if (movieIDParam == null) {
-            request.getRequestDispatcher(ERROR_PAGE).forward(request, response);
-            return;
-        }
+        
         
         // Move to movie page
-        int id = Integer.parseInt(movieIDParam);
         MovieDTO movie = movieDAO.getById(id);
         request.setAttribute("movie", movie);
         response.sendRedirect(MOVIE_PAGE + "?id=" + id);
