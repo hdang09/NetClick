@@ -31,7 +31,7 @@ public class MovieDAO {
         String movieSql = "SELECT * FROM Movie "
                 + "LEFT JOIN ( "
                 + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
-                + "FROM Review, Account WHERE Review.userID = Account.userID "
+                + "FROM Review "
                 + "GROUP BY Review.movieID "
                 + ") AS ratingQuery ON ratingQuery.movieID = Movie.id";
 
@@ -78,7 +78,7 @@ public class MovieDAO {
         String sql = "SELECT * FROM Movie "
                 + "LEFT JOIN ( "
                 + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
-                + "FROM Review "
+                + "FROM Review , Account WHERE Review.userID = Account.userID "
                 + "GROUP BY Review.movieID "
                 + ") AS ratingQuery ON ratingQuery.movieID = Movie.id "
                 + "LEFT JOIN MovieTag ON Movie.id = MovieTag.movie_id "
