@@ -303,7 +303,6 @@ public class MovieDAO {
     }
 
     public void add(MovieDTO movie) {
-        System.out.println("Hello");
         String insertMovieSQL = "INSERT INTO Movie (title, description, thumbnail, movie_url, release, director, rating)\n"
                 + "OUTPUT INSERTED.id "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -325,14 +324,11 @@ public class MovieDAO {
             int id = 0;
             if (rs.next()) {
                 id = rs.getInt("id");
-                System.out.println(id);
             }
 
             // Insert movie tag
             String[] tags = movie.getTag().split(",");
             for (String tag : tags) {
-                System.out.println(tag);
-
                 PreparedStatement ps2 = conn.prepareStatement(insertTagSQL);
                 ps2.setInt(1, id);
                 ps2.setString(2, tag);
