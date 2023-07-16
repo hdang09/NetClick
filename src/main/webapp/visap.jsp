@@ -66,7 +66,7 @@
                     <label for="cvv" class="block font-semibold">CVV</label>
                     <input
                       id="cvv"
-                      type="text"
+                      type="number"
                       name="cvv"
                       class="dark:bg-slate-800 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                       placeholder="CVV"

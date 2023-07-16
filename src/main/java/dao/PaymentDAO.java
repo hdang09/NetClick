@@ -50,8 +50,8 @@ public class PaymentDAO {
 
     // VISA
     public void insertv(int userID, String visa, Date expireDate, int cvv, String placeholderCard, Date startDate) {
-        String sql = "UPDATE payment " +
-                     "SET visa_num = ?, expire_visa_date = ?, cvv = ?, placeholder_card = ?, start_date = ?" +
+        String sql = "UPDATE Payment " +
+                     "SET visa_num = ?, expire_visa_date = ?, cvv = ?, placeholder_card = ?, start_date = ? " +
                      "WHERE userID = ?";
         
         try {
