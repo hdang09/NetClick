@@ -66,7 +66,7 @@ public class AdminController extends HttpServlet {
         AccountDTO account = (AccountDTO) session.getAttribute("account");
         
         // User hasn't login
-        if (account == null) {
+        if (account == null || account.isBan()) {
             response.sendRedirect(LOGIN_PAGE);
             return;
         }
@@ -236,6 +236,8 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
         // Movie form: add/ edit
         final int MAXIMUM_RATING = 5;
 
@@ -250,6 +252,7 @@ public class AdminController extends HttpServlet {
         String director = request.getParameter("director");
         String thumnailURL = request.getParameter("thumbnail-url");
         String[] tags = request.getParameterValues("tag");
+        System.out.println(director);
 
         boolean isValid = true;
         // Validate title 
@@ -287,8 +290,16 @@ public class AdminController extends HttpServlet {
             request.setAttribute("releaseMsg", "Release date is required");
             isValid = false;
         }
+        
+        // Validate release date
+        if (tags == null || tags.length == 0) {
+            request.setAttribute("tagMsg", "Tags is required");
+            isValid = false;
+        }
+        
+        
 
-        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, String.join(",", tags));
+        MovieDTO movie = new MovieDTO(title, description, thumnailURL, movieURL, release, director, MAXIMUM_RATING, tags == null ? "" : String.join(",", tags));
         String action = request.getParameter("action");
         if (!isValid) {
             request.setAttribute("release", releaseStr);

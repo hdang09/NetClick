@@ -19,7 +19,7 @@ public class DBUtils {
 
     public static Connection getConnection() {
         try {
-            String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName=" + dbName;
+            String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName=" + dbName + "?useUnicode=true&amp;characterEncoding=UTF-8";
             if (instance == null || instance.trim().isEmpty()) {
                 url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
             }

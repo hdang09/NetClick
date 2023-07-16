@@ -58,7 +58,7 @@ public class ReviewDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, review.getMovieID());
             ps.setInt(2, review.getUserID());
-            ps.setString(3, review.getComment());
+            ps.setNString(3, review.getComment());
             ps.setInt(4, review.getRating());
             ps.setDate(5, new java.sql.Date(new Date().getTime()));
             

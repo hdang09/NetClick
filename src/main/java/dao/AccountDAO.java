@@ -27,7 +27,7 @@ public class AccountDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, user);
+            ps.setNString(1, user);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String hashedPassword = rs.getString("password");
@@ -59,8 +59,8 @@ public class AccountDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, email);
+            ps.setNString(1, username);
+            ps.setNString(2, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return new AccountDTO(
@@ -85,9 +85,9 @@ public class AccountDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, email);
-            ps.setString(3, hashedPassword);
+            ps.setNString(1, username);
+            ps.setNString(2, email);
+            ps.setNString(3, hashedPassword);
             ps.executeUpdate();
         } catch (SQLException e) {
             // Xử lý exception

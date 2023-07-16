@@ -57,6 +57,8 @@ public class PreviewController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
         final String LOGIN_PAGE = "/login";
         final String ERROR_PAGE = "/404";
         ReviewDAO dao = new ReviewDAO();

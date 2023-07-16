@@ -123,7 +123,7 @@ public class MovieDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, tag);
+            ps.setNString(1, tag);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -313,12 +313,12 @@ public class MovieDAO {
 
             // Insert movie
             PreparedStatement ps = conn.prepareStatement(insertMovieSQL);
-            ps.setString(1, movie.getTitle());
-            ps.setString(2, movie.getDescription());
-            ps.setString(3, movie.getThumbnail());
-            ps.setString(4, movie.getMovie_url());
+            ps.setNString(1, movie.getTitle());
+            ps.setNString(2, movie.getDescription());
+            ps.setNString(3, movie.getThumbnail());
+            ps.setNString(4, movie.getMovie_url());
             ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
-            ps.setString(6, movie.getDirector());
+            ps.setNString(6, movie.getDirector());
             ps.setFloat(7, movie.getRating());
             ResultSet rs = ps.executeQuery();
             int id = 0;
@@ -331,7 +331,7 @@ public class MovieDAO {
             for (String tag : tags) {
                 PreparedStatement tagPs = conn.prepareStatement(insertTagSQL);
                 tagPs.setInt(1, id);
-                tagPs.setString(2, tag);
+                tagPs.setNString(2, tag);
                 tagPs.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -350,12 +350,12 @@ public class MovieDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, movie.getTitle());
-            ps.setString(2, movie.getDescription());
-            ps.setString(3, movie.getThumbnail());
-            ps.setString(4, movie.getMovie_url());
+            ps.setNString(1, movie.getTitle());
+            ps.setNString(2, movie.getDescription());
+            ps.setNString(3, movie.getThumbnail());
+            ps.setNString(4, movie.getMovie_url());
             ps.setDate(5, dateUtils.convertToSqlDate(movie.getRelease()));
-            ps.setString(6, movie.getDirector());
+            ps.setNString(6, movie.getDirector());
             ps.setInt(7, id);
             ps.executeUpdate();
 
@@ -370,7 +370,7 @@ public class MovieDAO {
             for (String tag : tags) {
                 PreparedStatement insertPs = conn.prepareStatement(insertTagSQL);
                 insertPs.setInt(1, id);
-                insertPs.setString(2, tag);
+                insertPs.setNString(2, tag);
                 insertPs.executeUpdate();
             }
 
@@ -515,9 +515,9 @@ public class MovieDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             String queryParam = "%" + query + "%";
-            ps.setString(1, queryParam);
-            ps.setString(2, queryParam);
-            ps.setString(3, queryParam);
+            ps.setNString(1, queryParam);
+            ps.setNString(2, queryParam);
+            ps.setNString(3, queryParam);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

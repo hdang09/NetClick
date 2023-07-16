@@ -25,10 +25,10 @@ public class PaymentDAO {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userID);
-            ps.setString(2, visa);
+            ps.setNString(2, visa);
             ps.setDate(3, dateUtils.convertToSqlDate(expireDate));
             ps.setInt(4, cvv);
-            ps.setString(5, placeholderCard);
+            ps.setNString(5, placeholderCard);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return new PaymentDTO(
@@ -57,10 +57,10 @@ public class PaymentDAO {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, visa);
+            ps.setNString(1, visa);
             ps.setDate(2, dateUtils.convertToSqlDate(expireDate));
             ps.setInt(3, cvv);
-            ps.setString(4, placeholderCard);
+            ps.setNString(4, placeholderCard);
             ps.setDate(5, dateUtils.convertToSqlDate(startDate));
             ps.setInt(6, userID);
             ps.executeUpdate();

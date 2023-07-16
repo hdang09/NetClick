@@ -1,4 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page import="dao.MovieDAO" %>
 
 <!DOCTYPE html>
@@ -113,7 +115,7 @@
                     </select>
                   </div>
 
-                  <!--<p class="mt-3 text-xs text-red-400">${tagMsg == null ? "" : tagMsg}</p>-->
+                  <p class="mt-3 text-xs text-red-400">${tagMsg == null ? "" : tagMsg}</p>
                 </div>
 
                 <!-- DIRECTOR Input -->
