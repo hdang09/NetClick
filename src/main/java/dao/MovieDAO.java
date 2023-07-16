@@ -76,13 +76,13 @@ public class MovieDAO {
 
     public MovieDTO getById(int id) {
         String sql = "SELECT * FROM Movie "
-                + "INNER JOIN ( "
+                + "LEFT JOIN ( "
                 + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
                 + "FROM Review "
                 + "GROUP BY Review.movieID "
                 + ") AS ratingQuery ON ratingQuery.movieID = Movie.id "
-                + "INNER JOIN MovieTag ON Movie.id = MovieTag.movie_id "
-                + "INNER JOIN Tag ON Tag.id = MovieTag.tag_id "
+                + "LEFT JOIN MovieTag ON Movie.id = MovieTag.movie_id "
+                + "LEFT JOIN Tag ON Tag.id = MovieTag.tag_id "
                 + "WHERE Movie.id = ?";
 
         try {
@@ -329,10 +329,10 @@ public class MovieDAO {
             // Insert movie tag
             String[] tags = movie.getTag().split(",");
             for (String tag : tags) {
-                PreparedStatement ps2 = conn.prepareStatement(insertTagSQL);
-                ps2.setInt(1, id);
-                ps2.setString(2, tag);
-                ps2.executeUpdate();
+                PreparedStatement tagPs = conn.prepareStatement(insertTagSQL);
+                tagPs.setInt(1, id);
+                tagPs.setString(2, tag);
+                tagPs.executeUpdate();
             }
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -343,6 +343,10 @@ public class MovieDAO {
         String sql = "UPDATE Movie "
                 + "SET title = ?, description = ?, thumbnail = ?, movie_url = ?, release = ?, director = ? "
                 + "WHERE id = ?";
+        String deleteTagSQL = "DELETE FROM MovieTag "
+                + "WHERE movie_id = ?";
+        String insertTagSQL = "INSERT INTO MovieTag VALUES (?, ?)";
+
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -354,6 +358,21 @@ public class MovieDAO {
             ps.setString(6, movie.getDirector());
             ps.setInt(7, id);
             ps.executeUpdate();
+
+            // Delete all current tag
+            PreparedStatement deletePs = conn.prepareStatement(deleteTagSQL);
+            deletePs.setInt(1, id);
+            deletePs.executeUpdate();
+
+            // Insert new tag
+            // Insert movie tag
+            String[] tags = movie.getTag().split(",");
+            for (String tag : tags) {
+                PreparedStatement insertPs = conn.prepareStatement(insertTagSQL);
+                insertPs.setInt(1, id);
+                insertPs.setString(2, tag);
+                insertPs.executeUpdate();
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
