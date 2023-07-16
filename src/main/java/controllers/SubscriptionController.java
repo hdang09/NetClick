@@ -64,7 +64,7 @@ public class SubscriptionController extends HttpServlet {
         
         final String LOGIN_PAGE = "/login";
         final String SUBSCRIPTION_PAGE = "subscription.jsp";
-        final String SUBSCRIPTION_PLAN_PAGE = "subscription-plan.jsp";
+        final String SUBSCRIPTION_PLAN_PAGE = "/subscription-plan";
         final String ERROR_PAGE = "404";
         final String MOVIE_PAGE = "/movie";
         
@@ -100,7 +100,7 @@ public class SubscriptionController extends HttpServlet {
         // Check if user has purchased subscription
         boolean isPurchased = paymentDAO.isPurchased(accountID);
         if (!isPurchased) {
-            response.sendRedirect(SUBSCRIPTION_PLAN_PAGE);
+            response.sendRedirect(SUBSCRIPTION_PLAN_PAGE + movieIDParam);
             return;
         }
         

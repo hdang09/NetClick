@@ -34,7 +34,7 @@
         </div>
       </c:when>
 
-      <c:when test="${requestScope['javax.servlet.forward.request_uri'] == '/subscription' && param.plan != null}">
+      <c:when test="${requestScope['javax.servlet.forward.request_uri'] == '/subscription-plan' || requestScope['javax.servlet.forward.request_uri'] == '/subscription' && param.plan != null}">
         <!-- First step -->
         <div class="flex justify-start md:justify-center w-72 my-3 md:my-6">
           <button class="w-12 h-12 font-semibold text-lg rounded-full bg-primary text-white">

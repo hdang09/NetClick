@@ -79,13 +79,14 @@ public class FavoriteListController extends HttpServlet {
         }
 
         // Add movie to favorite list
+        int accountID = account.getId()
         int movieID = Integer.parseInt(movieIDParam);
         FavoriteListDAO fvDAO = new FavoriteListDAO();
-        if (fvDAO.isExit(account.getId(), movieID)) {
-            request.setAttribute("message", "Already added to favorite!");
-        }
-        else {
-            fvDAO.insert(account.getId(), movieID);
+        if (fvDAO.isExit(accountID, movieID)) {
+            fvDAO.remove(accountID, movieID);
+            request.setAttribute("message", "Removed from favorite!");
+        } else {
+            fvDAO.insert(accountID, movieID);
             request.setAttribute("message", "Add to favorite list successfully!");
         }
         request.getRequestDispatcher("/preview?id=" + movieIDParam).forward(request, response);

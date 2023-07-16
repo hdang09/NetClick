@@ -23,7 +23,7 @@
       <!-- Stepper -->
       <%@ include file="components/stepper.jsp" %>
       <div class="flex justify-center items-center mb-8">
-          <img src="https://i.imgur.com/GX7JL9U.png" alt="MoMo" class="w-24 h-24" />
+          <img src="https://i.imgur.com/7AAXuIv.png" alt="MoMo" class="w-24 h-24" />
       </div>
 
       <!-- Description -->

@@ -22,6 +22,9 @@
         </div>
 
         <ul class="flex flex-wrap" data-aos="fade-up">
+          <c:if test="${movies.size() == 0}">
+            <img src="https://i.imgur.com/fEONLS1.png" alt="Empty" class="mx-auto"/>
+          </c:if>
           <c:forEach var="movie" items="${movies}">
             <c:set var="movie" value="${movie}" scope="request" />
             <jsp:include page="components/movie.jsp" />

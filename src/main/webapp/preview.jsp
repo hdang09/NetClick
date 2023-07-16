@@ -75,12 +75,12 @@
                     <div class="mt-12 flex">
                         <c:choose>
                             <c:when test="${not empty favorited}">
-                                <span class="inline-flex justify-center items-center w-40 h-12 border border-primary text-primary rounded-full">
-                                    Favorite Added
-                                </span>
+                                <a href="/fav-list?movieID=${movie.ID}" class="inline-flex justify-center items-center h-12 border border-primary text-primary rounded-full px-8">
+                                    <i class="fa-solid fa-heart-crack mr-2 text-md"></i> Unfavorite
+                                </a>
                             </c:when>
                             <c:otherwise>
-                                <a href="/fav-list?movieID=${movie.ID}" class="inline-flex justify-center items-center w-40 h-12 border border-primary text-primary rounded-full">
+                                <a href="/fav-list?movieID=${movie.ID}" class="inline-flex justify-center items-center h-12 border border-primary text-primary rounded-full px-8">
                                     <i class="fa-solid fa-plus mr-2 text-md"></i> Favorite
                                 </a>
                             </c:otherwise>

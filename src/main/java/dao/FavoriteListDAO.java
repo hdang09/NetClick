@@ -52,4 +52,18 @@ public class FavoriteListDAO {
         }
         return false;
     }
+
+    public void remove(int accountID, int movieID) {
+        String sql = "DELETE FROM FavoriteList WHERE accountID = ? AND movieID = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, accountID);
+            ps.setInt(2, movieID);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
