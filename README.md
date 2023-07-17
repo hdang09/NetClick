@@ -147,7 +147,8 @@ You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagr
 <img src="./.github/diagram.png" />
 
 ## 4. System design
-
+You can view full our diagram in here: [SystemDesign](https://www.figma.com/file/f8sMbLbsSoKWU1ytbPovD0/NetClick-System-Design?type=whiteboard&node-id=0-1&t=3IzNGSKUGcvnbUb0-0)
+![image](https://github.com/dunghuynh-teaching/prj301-se1714-05/assets/97839306/0f7590c4-d89d-4d6f-9cb2-6cb7c8781c68)
 ## 5. Conclusion and Discussion
 
 ### Pros of NetClick:
@@ -166,9 +167,11 @@ You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagr
 
 ### What was learned during the development of NetClick:
 
-- .....
-- .....
-- .....
+- Developing an online movie streaming application requires significant effort and resources. Creating a robust system that meets user demands involves substantial investments in time, technology, and personnel.
+- Ensuring the security of user information, particularly during the registration and login processes, is of utmost importance. Safeguarding user data and implementing secure authentication protocols such as password encryption and secure authentication protocols are essential.
+- Tracking user preferences and viewing history is crucial for providing personalized recommendations and enhancing the user experience. Collecting information about user preferences and viewing history enables the system to offer tailored suggestions, thereby improving user satisfaction and engagement.
+- Offering multiple payment options is vital for user convenience. Meeting user preferences for diverse payment methods, such as credit cards, bank transfers, ATMs, or Visa/MasterCard, enhances convenience and flexibility during the purchasing and payment process.
+  In summary, during the development of NetClick, we learned the significance of user data security, tracking user preferences and viewing history, and providing diverse payment options to cater to user needs.
 
   <!-- - Developing an online movie streaming application requires a lot of effort and resources.
   - The importance of ensuring the security of user information, especially during registration and login processes.
