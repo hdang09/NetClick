@@ -13,6 +13,6 @@
         <%@ include file="components/imports.jsp" %>
     </head>
     <body>
-        <img src="/assets/404.webp" alt="404" class="w-screen h-screen"/>
+        <img src="https://i.imgur.com/efX4CQE.png" alt="404" class="items-center h-screen"/>
     </body>
 </html>
