@@ -260,7 +260,6 @@ public class AdminController extends HttpServlet {
         String director = request.getParameter("director");
         String thumnailURL = request.getParameter("thumbnail-url");
         String[] tags = request.getParameterValues("tag");
-        System.out.println(director);
 
         boolean isValid = true;
         // Validate title 

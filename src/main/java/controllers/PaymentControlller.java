@@ -114,7 +114,6 @@ public class PaymentControlller extends HttpServlet {
                         } else {
                             paymentDAO.insertm(userID, momoNum, new Date());
                             String movieID = (String) session.getAttribute("movieID");
-                            System.out.println(movieID);
                             response.sendRedirect("/movie?id=" + movieID);
                             return;
                         }
@@ -155,7 +154,6 @@ public class PaymentControlller extends HttpServlet {
                 PaymentDTO checkv = paymentDAO.checkPaymentExist(userID, saNum, expireDate, cvv, placeholderCard);
                 if (checkv == null) {
                     paymentDAO.insertv(userID, saNum, expireDate, cvv, placeholderCard, new Date());
-                    System.out.println(session.getAttribute("movieID"));
                     String movieID = (String) session.getAttribute("movieID");
                     response.sendRedirect("/movie?id=" + movieID);
                     return;

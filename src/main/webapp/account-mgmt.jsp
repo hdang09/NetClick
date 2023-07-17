@@ -24,6 +24,93 @@
                                     class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400"
                                     >${size} accounts</span
                                 >
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M9 3L3 9M3 3L9 9"
+                                      stroke="currentColor"
+                                      stroke-width="1.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                  <h2 class="text-sm font-normal">Banned</h2>
+                                </div>
+                              </c:when>
+                              <c:otherwise>
+                                <div
+                                  class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800"
+                                >
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M10 3L4.5 8.5L2 6"
+                                      stroke="currentColor"
+                                      stroke-width="1.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                  <h2 class="text-sm font-normal">Active</h2>
+                                </div>
+                              </c:otherwise>
+                            </c:choose>
+                          </td>
+                          <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                              <c:if test="${account.subscriptionID == 0}"><span class="text-blue-500">Mobile</span></c:if>
+                              <c:if test="${account.subscriptionID == 1}"><span class="text-purple-500">Basic</span></c:if>
+                              <c:if test="${account.subscriptionID == 2}"><span class="text-orange-500">Standard</span></c:if>
+                              <c:if test="${account.subscriptionID == 3}"><span class="text-red-500">Premium</span></c:if>
+                              <c:if test="${account.subscriptionID == -1}"><span>None</span></c:if>
+                          </td>
+                          <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            ${account.role == 0 ? "Admin" : "User"}
+                          </td>
+                          <td class="px-4 py-4 text-sm whitespace-nowrap">
+                            <div class="flex items-center gap-x-6">
+                              <a
+                                href="/admin/accounts?action=change-status&accountID=${account.id}"
+                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                              >
+                                Change status
+                              </a>
+
+                              <a
+                                href="/admin/accounts?action=change-role&accountID=${account.id}"
+                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                              >
+                                Change role
+                              </a>
+                              <%--
+                              <form action="/MainController" method="GET">
+                                <input type="hidden" name="action" value="changeStatus" />
+                                <input type="hidden" name="accountID" value="${account.id}" />
+                                <input
+                                  class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none cursor-pointer"
+                                  type="submit"
+                                  value="Change status"
+                                />
+                              </form>
+                              <form action="/MainController" method="GET">
+                                <input type="hidden" name="action" value="changeRole" />
+                                <input type="hidden" name="accountID" value="${account.id}" />
+                                <input
+                                  class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none cursor-pointer"
+                                  type="submit"
+                                  value="Change role"
+                                />
+                              </form>
+                              --%>
                             </div>
 
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">These accounts have been registered.</p>
@@ -165,6 +252,85 @@
                                                                 >
                                                                 Change status
                                                             </a>
+                    <!-- Table body -->
+                    <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                      <c:forEach var="account" items="${accounts}">
+                        <tr>
+                          <td class="px-4 py-4 text-sm text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                            ${account.id}
+                          </td>
+                          <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            ${account.username}
+                          </td>
+                          <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            ${account.email}
+                          </td>
+                          <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                            <c:choose>
+                              <c:when test="${account.ban}">
+                                <div
+                                  class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800"
+                                >
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M9 3L3 9M3 3L9 9"
+                                      stroke="currentColor"
+                                      stroke-width="1.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                  <h2 class="text-sm font-normal">Banned</h2>
+                                </div>
+                              </c:when>
+                              <c:otherwise>
+                                <div
+                                  class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800"
+                                >
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M10 3L4.5 8.5L2 6"
+                                      stroke="currentColor"
+                                      stroke-width="1.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                  <h2 class="text-sm font-normal">Active</h2>
+                                </div>
+                              </c:otherwise>
+                            </c:choose>
+                          </td>
+                          <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                              <c:if test="${account.subscriptionID == 0}"><span class="text-blue-500">Mobile</span></c:if>
+                              <c:if test="${account.subscriptionID == 1}"><span class="text-purple-500">Basic</span></c:if>
+                              <c:if test="${account.subscriptionID == 2}"><span class="text-orange-500">Standard</span></c:if>
+                              <c:if test="${account.subscriptionID == 3}"><span class="text-red-500">Premium</span></c:if>
+                              <c:if test="${account.subscriptionID == -1}"><span>None</span></c:if>
+                          </td>
+                          <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            ${account.role == 0 ? "Admin" : "User"}
+                          </td>
+                          <td class="px-4 py-4 text-sm whitespace-nowrap">
+                            <div class="flex items-center gap-x-6">
+                              <a
+                                href="/admin/accounts?action=change-status&accountID=${account.id}"
+                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                              >
+                                Change status
+                              </a>
 
                                                             <a
                                                                 href="/admin/accounts?action=change-role&accountID=${account.id}"
