@@ -28,35 +28,36 @@
 
 **User Registration and Login**
 
-The user registration and login feature enables users to create an account and securely log into the application. The login form requires users to enter their username and password, and the application verifies the credentials for authentication. If the entered password is incorrect, an error message is displayed.
+   * The user registration and login feature enables users to create an account and securely log into the application. The login form requires users to enter their username and password, and the application verifies the credentials for authentication. If the entered password is incorrect, an error message is displayed.
 
-The register form collects the user's desired username, email address, password, and re-typed password for confirmation. The application checks if the username already exists in the database and displays an error message if it is taken. It also ensures that the entered password matches the re-typed password and prompts the user to correct any mismatches.
+   * The register form collects the user's desired username, email address, password, and re-typed password for confirmation. The application checks if the username already exists in the database and displays an error message if it is taken. It also ensures that the entered password matches the re-typed password and prompts the user to correct any mismatches.
 
-User information, such as name, email address, and password, is stored to facilitate user identification and authentication.
+   * The "Forgot password" feature allows users to recover their password if they forget it. Users can request a password reset by providing their registered email address. The system then sends them an email with a unique verification code or a special link. Upon clicking the link or entering the verification code, users can set a new password. This ensures that users can regain access to their accounts even if they forget their password.
+
+   * User information, such as name, email address, and password, is stored to facilitate user identification and authentication.
 
 **Movie Browsing and Searching**
 
-The movie browsing and searching feature allows users to find movies based on different criteria. Users can search for movies by title, actor, or director. The application retrieves relevant movie information from its database based on the user's search input.
+   * The movie browsing and searching feature allows users to find movies based on different criteria. Users can search for movies by title, actor, or director. The application retrieves relevant movie information from its database based on the user's search input.
 
-When a user selects a movie, the application displays detailed information about the movie. This includes a description of the plot, cast and crew details, ratings, reviews, release date, runtime, genre, and more. This comprehensive display helps users make informed decisions about the movies they want to watch.
+   * When a user selects a movie, the application displays detailed information about the movie. This includes a description of the plot, cast and crew details, ratings, reviews, release date, runtime, genre, and more. This comprehensive display helps users make informed decisions about the movies they want to watch.
 
-The application also provides additional sections to enhance the browsing experience. The "Top List" section showcases popular movies, and the "Incoming Movies" section highlights upcoming releases. Additionally, the application offers recommendations based on user preferences and viewing history, suggesting movies that users might enjoy.
+   * The application also provides additional sections to enhance the browsing experience. The "Top List" section showcases popular movies, and the "Incoming Movies" section highlights upcoming releases. Additionally, the application offers recommendations based on user preferences and viewing history, suggesting movies that users might enjoy.
 
-**History and Like Button** (Future plans)
-
-The history and like button feature lets users mark movies as favorites, keeping track of their preferences. It saves this information for easy access and also records the user's watched movie history, allowing them to resume from where they left off.
+**Favorite feature**
+   * The "+ Favorite" feature allows users to save movies they like or are interested in for easy access and future reference. When a user selects a movie and views its detailed information, the application provides an option to add the movie to their favorites list. This list can be accessed from the "Favorite List" section on the top website. 
 
 **Reviews and Ratings**
 
-Users have the ability to write reviews and provide ratings for movies using the reviews and ratings feature. They can share their opinions, thoughts, and experiences about a movie by writing a review. Additionally, users can rate movies based on their overall satisfaction or enjoyment level. The application also allows users to view reviews.
+   * Users have the ability to write reviews and provide ratings for movies using the reviews and ratings feature. They can share their opinions, thoughts, and experiences about a movie by writing a review. Additionally, users can rate movies based on their overall satisfaction or enjoyment level. The application also allows users to view reviews.
 
 **Subscriptions Purchasing**
 
-The ticket purchasing feature allows users to purchase subscriptions for watching movies. Users can choose from different subscription tiers such as weekly, monthly, or annually. The application displays available subscription options, including free and paid plans. Users can select their preferred subscription and proceed with the purchase using various payment methods such as credit cards, e-banking, ATMs, or Visa/MasterCard.
+   * The ticket purchasing feature allows users to purchase subscriptions for watching movies. Users can choose from different subscription tiers such as weekly, monthly, or annually. The application displays available subscription options, including free and paid plans. Users can select their preferred subscription and proceed with the purchase using various payment methods such as credit cards, e-banking, ATMs, or Visa/MasterCard.
 
 **Transaction History**
 
-Users can view their transaction history through the transaction history feature. This feature provides a record of past purchases and upcoming ticket reservations. Users can refer to this history to track their movie-related transactions, including subscriptions and ticket reservations.
+   * Users can view their transaction history through the transaction history feature. This feature provides a record of past purchases and upcoming ticket reservations. Users can refer to this history to track their movie-related transactions, including subscriptions and ticket reservations.
 
 ### Admin Features
 
@@ -76,77 +77,77 @@ Users can view their transaction history through the transaction history feature
 You can view full our wireframe in here: [Figma](https://www.figma.com/file/CB9zF3wsmZimnx8U83VW4C/NetClick?type=design&node-id=0-1&t=Aq8fdv3htqCGwmyM-0)
 <img src="./.github/wireframe.png" />
 
-### Reister page
+### Register Page
 
 When user didn't have any account, we can go to this page:
 <img src="./.github/register-page.png" />
 If username exists or retype password not match, it will show the message:
 <img src="./.github/register-error.png" />
 
-### Login page
+### Login Page
 
 <!-- Here is the login page: -->
 <img src="./.github/login-page.png" />
 If the password is wrong, it will show the message:
 <img src="./.github/login-error.png" />
 
-### Home page
+### Home Page
 
 <!-- Here is the home page: -->
 <img src="./.github/home-page.png" />
 
-### Preview page
+### Preview Page
 
 <!-- Here is the preview page for the film: -->
 <img src="./.github/preview-page.png" />
 
-### Movie page
+### Movie Page
 
 If the user has purchased subscription, it will navigate to the **Movie page**
 <img src="./.github/movie-page.png" />
 
-### Subscription page
+### Subscription Page
 
 If the user hasn't purchased subscription, it will navigate to the **Subscription page**
 <img src="./.github/subscription-page.png" /><br />
 \The user can choose which payment method to pay:
 <img src="./.github/subscription-page-2.png" />
 
-### Payment page
+### Payment Page
 
 Here is the page if the user choose to pay with credit card:
 <img src="./.github/payment-credit.png" /><br />
 And here is with digital card:
 <img src="./.github/payment-digital.png" />
 
-### Dashboard page (Admin)
+### Dashboard Page (Admin)
 
 <img src="./.github/dashboard.png" />
 
-### User Management page (Admin)
+### User Management Page (Admin)
 
 <img src="./.github/user-mgmt.png" />
 
-### Movie Management page (Admin)
+### Movie Management Page (Admin)
 
 <img src="./.github/movie-mgmt.png" />
 
-### Movie Detail page (Admin)
+### Movie Detail Page (Admin)
 
 <img src="./.github/movie-detail.png" />
 
-### Movie Form page (Admin)
+### Movie Form Page (Admin)
 
 This page is used for creating and editing the movie
 
 <img src="./.github/movie-form.png" />
 
-## 3. Database design
+## 3. Database Design
 
 You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagrams.com/#/d/o6Ffqs)
 <img src="./.github/diagram.png" />
 
-## 4. System design
+## 4. System Design
 You can view full our diagram in here: [SystemDesign](https://www.figma.com/file/f8sMbLbsSoKWU1ytbPovD0/NetClick-System-Design?type=whiteboard&node-id=0-1&t=3IzNGSKUGcvnbUb0-0)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1714-05/assets/97839306/0f7590c4-d89d-4d6f-9cb2-6cb7c8781c68)
 ## 5. Conclusion and Discussion
