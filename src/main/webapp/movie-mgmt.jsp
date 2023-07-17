@@ -86,7 +86,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">2024-12-12</td>
+                                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">${movie.release}</td>
                                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                         <p class="w-36 overflow-hidden whitespace-nowrap text-ellipsis">${movie.director}</p>
                                                     </td>
