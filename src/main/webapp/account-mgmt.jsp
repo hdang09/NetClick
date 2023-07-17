@@ -27,11 +27,18 @@
                             </div>
 
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">These accounts have been registered.</p>
-                            <form action="/admin/accounts" method="GET">
-                                <input type="text" name="search" placeholder="Input id or name user" class="text-zinc-950">
-                                <input type="submit">
-                            </form>
                         </div>
+
+                        <%-- Input --%>
+                        <form action="/admin/accounts" method='GET' class="drop-shadow my-2 items-center mb-0">
+                            <input class="bg-white dark:bg-gray-800 h-10 rounded-lg pl-4 pr-9 outline-none" name='search' placeholder="Input ID or username" />
+                            <button type="submit">
+                                <i
+                                    class="fa-solid fa-magnifying-glass absolute text-primary top-[0.75rem] right-0 px-4 cursor-pointer hover:text-white z-100"
+                                    >
+                                </i>
+                            </button>
+                        </form>
                     </div>
 
                     <div class="flex flex-col mt-6">

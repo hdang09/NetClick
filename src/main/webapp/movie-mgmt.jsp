@@ -25,12 +25,20 @@
                             </div>
 
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">These movies have been created.</p>
-                            <form action="/admin/movies" method="GET">
-                                <input type="text" name="search" placeholder="Input id or name movie" class="text-zinc-950">
-                                <input type="submit">
-                            </form>
                         </div>
 
+                        <%-- Input --%>
+                        <form action="/admin/movies" method='GET' class="drop-shadow my-2 items-center mb-0">
+                            <input class="bg-white dark:bg-gray-800 h-10 rounded-lg pl-4 pr-9 outline-none" name='search' placeholder="Input ID or movie name" />
+                            <button type="submit">
+                                <i
+                                    class="fa-solid fa-magnifying-glass absolute text-primary top-[0.75rem] right-0 px-4 cursor-pointer hover:text-white z-100"
+                                    >
+                                </i>
+                            </button>
+                        </form>
+
+                        <%-- Add movie --%>
                         <div class="flex items-center mt-4 gap-x-3">
                             <a href="/admin/add-movie" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-primary rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
