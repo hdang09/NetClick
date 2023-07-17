@@ -144,11 +144,11 @@
                         </a>
 
                         <div class="items-center hidden lg:flex gap-x-3">
-                            <c:forEach begin="${param.page != null ? param.page : 1}" end="${param.page != null ? param.page + 3 : 4}" var="i">
-                                <a href="/admin/movies?page=${i}" class="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">${i}</a>
-                            </c:forEach>
-                            <span class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300">...</span>
                             <c:if test="${pagination < 1}">
+                                <c:forEach begin="${param.page != null ? param.page : 1}" end="${param.page != null ? param.page + 3 : 4}" var="i">
+                                    <a href="/admin/movies?page=${i}" class="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">${i}</a>
+                                </c:forEach>
+                                <span class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300">...</span>
                                 <c:forEach begin="${pagination - 2}" end="${pagination}" var="page">
                                     <a href="/admin/movies?page=${page}" class="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">${page}</a>
                                 </c:forEach>
