@@ -147,7 +147,7 @@ You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagr
 <img src="./.github/diagram.png" />
 
 ## 4. System design
-
+![image](https://github.com/dunghuynh-teaching/prj301-se1714-05/assets/97839306/0f7590c4-d89d-4d6f-9cb2-6cb7c8781c68)
 ## 5. Conclusion and Discussion
 
 ### Pros of NetClick:
