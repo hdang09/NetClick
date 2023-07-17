@@ -115,9 +115,10 @@ If the user hasn't purchased subscription, it will navigate to the **Subscriptio
 
 ### Payment Page
 
-Here is the page if the user choose to pay with credit card:
+Here is the page if the user choose to pay with credit card(Visa):
 <img src="./.github/payment-credit.png" /><br />
-And here is with digital card:
+And here is with digital card(Momo):
+<br />
 <img src="./.github/payment-digital.png" />
 
 ### Dashboard Page (Admin)
