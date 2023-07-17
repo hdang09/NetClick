@@ -539,4 +539,55 @@ public class MovieDAO {
         }
         return null;
     }
+    
+    public ArrayList<MovieDTO> searchAdmin(String data) {
+        ArrayList<MovieDTO> movies = new ArrayList<>();
+
+        String movieSql = "SELECT * FROM Movie "
+                + "LEFT JOIN ( "
+                + "SELECT Review.movieID, AVG(Review.rating) AS average_rating "
+                + "FROM Review "
+                + "GROUP BY Review.movieID "
+                + ") AS ratingQuery ON ratingQuery.movieID = Movie.id " 
+                + "WHERE Movie.id LIKE ? OR Movie.title LIKE ?";
+
+        String tagSql = "SELECT * FROM Tag "
+                + "INNER JOIN MovieTag ON MovieTag.tag_id = Tag.id "
+                + "WHERE MovieTag.movie_id = ?";
+
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement moviePs = conn.prepareStatement(movieSql);
+            moviePs.setString(1, data + "%");
+            moviePs.setString(2, data + "%");
+            ResultSet movieRs = moviePs.executeQuery();
+            while (movieRs.next()) {
+                int id = movieRs.getInt("id");
+                String title = movieRs.getString("title");
+                String description = movieRs.getString("description");
+                String thumbnail = movieRs.getString("thumbnail");
+                String movieUrl = movieRs.getString("movie_url");
+                Date release = movieRs.getDate("release");
+                String director = movieRs.getString("director");
+                float rating = movieRs.getFloat("average_rating");
+
+                PreparedStatement tagPs = conn.prepareStatement(tagSql);
+                tagPs.setInt(1, id);
+                ResultSet tagResult = tagPs.executeQuery();
+
+                ArrayList<String> tags = new ArrayList<>();
+                while (tagResult.next()) {
+                    String tag = tagResult.getString("tag_name");
+                    tags.add(tag);
+                }
+
+                MovieDTO movie = new MovieDTO(id, title, description, thumbnail, movieUrl, release, director, rating, tags.toString());
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

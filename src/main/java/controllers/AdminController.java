@@ -162,7 +162,14 @@ public class AdminController extends HttpServlet {
                 }
 
                 // Pagination
-                List<MovieDTO> movies = movieDAO.getAll();
+                String searchMovie = request.getParameter("search");
+                List<MovieDTO> movies = null;
+                if(searchMovie != null) {
+                    movies = movieDAO.searchAdmin(searchMovie);
+                }
+                else {
+                    movies = movieDAO.getAll();
+                }
                 int size = movies.size();
                 request.setAttribute("size", size);
                 double pagination = (double) movies.size() / MOVIES_EACH_PAGE;
@@ -173,7 +180,9 @@ public class AdminController extends HttpServlet {
                     boolean isEndPagination = startPage == Math.ceil(pagination);
                     movies = movies.subList((startPage - 1) * MOVIES_EACH_PAGE, isEndPagination ? size : startPage * MOVIES_EACH_PAGE);
                 } else {
-                    movies = movies.subList(0, MOVIES_EACH_PAGE);
+                    if(size > 5) {
+                        movies = movies.subList(0, MOVIES_EACH_PAGE);
+                    }      
                 }
                 request.setAttribute("movies", movies);
                 request.getRequestDispatcher(MOVIE_MANAGEMENT_PAGE).forward(request, response);
