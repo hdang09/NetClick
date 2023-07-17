@@ -140,7 +140,7 @@ public class PaymentControlller extends HttpServlet {
                 request.setAttribute("validate", "Please enter at least a 3-digit number for CVV");
                 request.getRequestDispatcher("/visap.jsp").forward(request, response);
                 return;
-            } else if (!placeholderCard.matches("[a-zA-Z]{2,}")) {
+            } else if (!placeholderCard.matches("^\\w+( \\w+)+")) {
                 request.setAttribute("validate", "Enter at least 2 characters and must not contain numbers and special characters");
                 request.getRequestDispatcher("/visap.jsp").forward(request, response);
                 return;

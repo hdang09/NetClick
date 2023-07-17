@@ -71,7 +71,7 @@ public class PaymentDAO {
 
     // MOMO
     public void insertm(int userID, int momoNum, Date startDate) {
-        String sql = "UPDATE payment " +
+        String sql = "UPDATE Payment " +
                      "SET momo_num = ?, start_date = ? " + 
                      "WHERE userID = ?";
         
@@ -88,7 +88,7 @@ public class PaymentDAO {
     }
 
     public boolean isMomoExists(int momoNum) {
-        String sql = "SELECT * FROM payment WHERE momo_num = ?";
+        String sql = "SELECT * FROM Payment WHERE momo_num = ?";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

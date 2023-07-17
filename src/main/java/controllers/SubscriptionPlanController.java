@@ -63,6 +63,8 @@ public class SubscriptionPlanController extends HttpServlet {
         final String LOGIN_PAGE = "/login";
         final String SUBSCRIPTION_PLAN_PAGE = "subscription-plan.jsp";
         final String ERROR_PAGE = "/404";
+        
+        PaymentDAO paymentDAO = new PaymentDAO();
 
         // Check if user has logined or not
         HttpSession session = request.getSession();
@@ -83,7 +85,10 @@ public class SubscriptionPlanController extends HttpServlet {
         // Handle subscription ID:
         int subscriptionID = Integer.parseInt(plan);
         int accountID = account.getId();
-        new PaymentDAO().insertSubscriptionID(accountID, subscriptionID);
+        boolean isChooseSubscriptionPlan = paymentDAO.isChooseSubscriptionPlan(accountID);
+        if (!isChooseSubscriptionPlan) {
+            paymentDAO.insertSubscriptionID(accountID, subscriptionID);
+        }
         
         session.setAttribute("movieID", movieIDParam);
         request.getRequestDispatcher(SUBSCRIPTION_PLAN_PAGE).forward(request, response);
