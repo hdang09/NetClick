@@ -12,7 +12,9 @@
         <title>404 Not Found - NetClick</title>
         <%@ include file="components/imports.jsp" %>
     </head>
-    <body>
-        <img src="https://i.imgur.com/efX4CQE.png" alt="404" class="items-center h-screen"/>
+    <body>  
+        <div class="flex items-center justify-center h-screen">
+            <img src="https://i.imgur.com/efX4CQE.png" alt="404" class="h-full w-full object-contain">
+        </div>
     </body>
 </html>
