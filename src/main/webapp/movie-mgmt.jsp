@@ -144,7 +144,7 @@
                         </a>
 
                         <div class="items-center hidden lg:flex gap-x-3">
-                            <c:if test="${pagination < 1}">
+                            <c:if test="${pagination > 1}">
                                 <c:forEach begin="${param.page != null ? param.page : 1}" end="${param.page != null ? param.page + 3 : 4}" var="i">
                                     <a href="/admin/movies?page=${i}" class="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">${i}</a>
                                 </c:forEach>
