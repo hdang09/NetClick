@@ -148,7 +148,11 @@
                             </c:choose>
                           </td>
                           <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                            ${account.subscriptionID}
+                              <c:if test="${account.subscriptionID == 0}"><span class="text-blue-500">Mobile</span></c:if>
+                              <c:if test="${account.subscriptionID == 1}"><span class="text-purple-500">Basic</span></c:if>
+                              <c:if test="${account.subscriptionID == 2}"><span class="text-orange-500">Standard</span></c:if>
+                              <c:if test="${account.subscriptionID == 3}"><span class="text-red-500">Premium</span></c:if>
+                              <c:if test="${account.subscriptionID == -1}"><span>None</span></c:if>
                           </td>
                           <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             ${account.role == 0 ? "Admin" : "User"}
