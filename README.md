@@ -147,7 +147,7 @@ You can view full our diagram in here: [QuickDBD](https://app.quickdatabasediagr
 <img src="./.github/diagram.png" />
 
 ## 4. System design
-You can view full our diagram in here: [SystemDesign]([https://app.quickdatabasediagrams.com/#/d/o6Ffqs](https://www.figma.com/file/f8sMbLbsSoKWU1ytbPovD0/NetClick-System-Design?type=whiteboard&node-id=0-1&t=3IzNGSKUGcvnbUb0-0))
+You can view full our diagram in here: [SystemDesign](https://www.figma.com/file/f8sMbLbsSoKWU1ytbPovD0/NetClick-System-Design?type=whiteboard&node-id=0-1&t=3IzNGSKUGcvnbUb0-0)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1714-05/assets/97839306/0f7590c4-d89d-4d6f-9cb2-6cb7c8781c68)
 ## 5. Conclusion and Discussion
 
