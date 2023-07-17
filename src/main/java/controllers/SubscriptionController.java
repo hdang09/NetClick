@@ -64,7 +64,7 @@ public class SubscriptionController extends HttpServlet {
         
         final String LOGIN_PAGE = "/login";
         final String SUBSCRIPTION_PAGE = "subscription.jsp";
-        final String SUBSCRIPTION_PLAN_PAGE = "/subscription-plan";
+        final String SUBSCRIPTION_PLAN_PAGE = "/subscription-plan?plan=0&id=";
         final String ERROR_PAGE = "404";
         final String MOVIE_PAGE = "/movie";
         
