@@ -182,5 +182,34 @@ public class AccountDAO {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public List<AccountDTO> searchUser(String data) {
+        List<AccountDTO> accounts = new ArrayList<>();
+        String sql = "SELECT *, Payment.subscriptionID as subscriptionIDPayment FROM Account INNER JOIN Payment ON Account.userID = Payment.userID WHERE Account.userID like ? OR Account.username like ?";
+
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, data + "%");
+            ps.setString(2, data + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                AccountDTO account = new AccountDTO(
+                        rs.getInt("userID"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getInt("is_ban") == 1,
+                        rs.getInt("role"),
+                        rs.getInt("subscriptionIDPayment")
+                );
+                accounts.add(account);
+            }
+            return accounts;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

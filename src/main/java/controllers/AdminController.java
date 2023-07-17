@@ -99,7 +99,15 @@ public class AdminController extends HttpServlet {
                 }
 
                 // Pagination
-                List<AccountDTO> accounts = new AccountDAO().getAll();
+                String searchUser = request.getParameter("search");
+                List<AccountDTO> accounts = null;
+                if(searchUser != null) {
+                    accounts = new AccountDAO().searchUser(searchUser);
+                }
+                else {
+                    accounts = new AccountDAO().getAll();
+                }
+                
 //                request.setAttribute("pagination", Math.ceil(movies.size() / MOVIES_EACH_PAGE));
 //                String startPageParam = request.getParameter("page");
 //                if (startPageParam != null) {
