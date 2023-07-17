@@ -183,7 +183,7 @@ public class AccountDAO {
         }
     }
 
-    public List<AccountDTO> searchUser(String data) {
+    public List<AccountDTO> searchUserByAdmin(String data) {
         List<AccountDTO> accounts = new ArrayList<>();
         String sql = "SELECT *, Payment.subscriptionID as subscriptionIDPayment FROM Account INNER JOIN Payment ON Account.userID = Payment.userID WHERE Account.userID like ? OR Account.username like ?";
 

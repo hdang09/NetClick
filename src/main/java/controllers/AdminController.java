@@ -102,7 +102,7 @@ public class AdminController extends HttpServlet {
                 String searchUser = request.getParameter("search");
                 List<AccountDTO> accounts = null;
                 if(searchUser != null) {
-                    accounts = new AccountDAO().searchUser(searchUser);
+                    accounts = new AccountDAO().searchUserByAdmin(searchUser);
                 }
                 else {
                     accounts = new AccountDAO().getAll();
@@ -165,7 +165,7 @@ public class AdminController extends HttpServlet {
                 String searchMovie = request.getParameter("search");
                 List<MovieDTO> movies = null;
                 if(searchMovie != null) {
-                    movies = movieDAO.searchAdmin(searchMovie);
+                    movies = movieDAO.searchMovieByAdmin(searchMovie);
                 }
                 else {
                     movies = movieDAO.getAll();

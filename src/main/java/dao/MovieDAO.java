@@ -540,7 +540,7 @@ public class MovieDAO {
         return null;
     }
     
-    public ArrayList<MovieDTO> searchAdmin(String data) {
+    public ArrayList<MovieDTO> searchMovieByAdmin(String data) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
         String movieSql = "SELECT * FROM Movie "
