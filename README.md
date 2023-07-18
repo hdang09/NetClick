@@ -55,10 +55,6 @@
 
    * The ticket purchasing feature allows users to purchase subscriptions for watching movies. Users can choose from different subscription tiers such as weekly, monthly, or annually. The application displays available subscription options, including free and paid plans. Users can select their preferred subscription and proceed with the purchase using various payment methods such as credit cards, e-banking, ATMs, or Visa/MasterCard.
 
-**Transaction History**
-
-   * Users can view their transaction history through the transaction history feature. This feature provides a record of past purchases and upcoming ticket reservations. Users can refer to this history to track their movie-related transactions, including subscriptions and ticket reservations.
-
 ### Admin Features
 
 **Movie Management**
