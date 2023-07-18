@@ -151,11 +151,10 @@ You can view full our diagram in here: [SystemDesign](https://www.figma.com/file
 
 ### Pros of NetClick:
 
-- Provides a comprehensive movie browsing and searching experience for users.
+- Provides a modern and user-friendly movie search interface for user.
 - Offers various subscription options for users to choose from.
-- Allows users to mark movies as favorites and track their viewing history.
+- Allows users to mark movies as favorites.
 - Provides admins with the ability to manage movies and user accounts efficiently.
-- Offers a transaction history feature for users to track their purchases.
 
 ### Cons of NetClick:
 
