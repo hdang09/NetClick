@@ -23,7 +23,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class AccountDAO {
 
     public AccountDTO login(String user, String pass) {
-        String sql = "SELECT * FROM Account WHERE [username] = ?";
+        String sql = "SELECT * FROM Account WHERE username = ?";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class AccountDAO {
 
     public AccountDTO checkAccountExist(String username, String email) {
         String sql = "select * from Account\n"
-                + "where [username] = ? OR email = ?\n";
+                + "where username = ? OR email = ?\n";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

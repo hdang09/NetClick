@@ -149,13 +149,13 @@ public class MovieDAO {
     public ArrayList<MovieDTO> getRelatedByTag(int movieId) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
 
-        String sql = "SELECT TOP 10 * FROM MovieTag mt "
+        String sql = "SELECT * FROM MovieTag mt "
                 + "INNER JOIN Movie m  "
                 + "ON mt.movie_id = m.id   "
                 + "WHERE mt.tag_id = (  "
                 + "      SELECT tag_id FROM MovieTag WHERE movie_id = ? "
                 + ") "
-                + "AND m.id <> ?";
+                + "AND m.id <> ? LIMIT 10";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -209,7 +209,7 @@ public class MovieDAO {
         ArrayList<String> rating_counts = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
 
-        String sql = "SELECT TOP 5 movie.title, review.review_count FROM Movie AS movie INNER JOIN (SELECT review.movieID, AVG(Cast(review.rating as Float)) as review_count FROM Review AS review GROUP BY review.movieID) AS review ON movie.id = review.movieID ORDER BY review.review_count DESC";
+        String sql = "SELECT movie.title, review.review_count FROM Movie AS movie INNER JOIN (SELECT review.movieID, AVG(Cast(review.rating as Float)) as review_count FROM Review AS review GROUP BY review.movieID) AS review ON movie.id = review.movieID ORDER BY review.review_count DESC LIMIT 5";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -237,7 +237,7 @@ public class MovieDAO {
         ArrayList<String> watch_counts = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
 
-        String sql = "SELECT TOP 5 title, watch_count FROM Movie ORDER BY watch_count DESC";
+        String sql = "SELECT title, watch_count FROM Movie ORDER BY watch_count DESC LIMIT 5";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -265,7 +265,7 @@ public class MovieDAO {
         ArrayList<String> comment_counts = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
 
-        String sql = "SELECT TOP 5 movie.title, review.review_count FROM Movie AS movie INNER JOIN (SELECT review.movieID, COUNT(*) AS review_count FROM Review AS review GROUP BY review.movieID) AS review ON movie.id = review.movieID ORDER BY review.review_count DESC";
+        String sql = "SELECT movie.title, review.review_count FROM Movie AS movie INNER JOIN (SELECT review.movieID, COUNT(*) AS review_count FROM Review AS review GROUP BY review.movieID) AS review ON movie.id = review.movieID ORDER BY review.review_count DESC LIMIT 5";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -381,8 +381,8 @@ public class MovieDAO {
 
     public List<MovieDTO> getPopularMovies(int count) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
-        String sql = "SELECT TOP (?) * FROM Movie "
-                + "ORDER BY watch_count DESC";
+        String sql = "SELECT * FROM Movie "
+                + "ORDER BY watch_count DESC LIMIT ?";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -411,8 +411,8 @@ public class MovieDAO {
 
     public List<MovieDTO> getNewMovies(int count) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
-        String sql = "SELECT TOP (?) * FROM Movie "
-                + "ORDER BY release DESC";
+        String sql = "SELECT * FROM Movie "
+                + "ORDER BY `release` DESC LIMIT ?";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -441,12 +441,12 @@ public class MovieDAO {
 
     public List<MovieDTO> getTopRatedMovies(int count) {
         ArrayList<MovieDTO> movies = new ArrayList<>();
-        String sql = "SELECT TOP (?) movieID, title, thumbnail, movie_url, release, director, watch_count, AVG(r.rating) as rating "
+        String sql = "SELECT movieID, title, thumbnail, movie_url, `release`, director, watch_count, AVG(r.rating) as rating "
                 + "FROM Review r "
                 + "INNER JOIN Movie m "
                 + "ON r.movieID = m.id "
-                + "GROUP BY movieID, title, thumbnail, movie_url, release, director, watch_count "
-                + "ORDER BY rating DESC";
+                + "GROUP BY movieID, title, thumbnail, movie_url, `release`, director, watch_count "
+                + "ORDER BY rating DESC LIMIT ?";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
